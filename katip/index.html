@@ -1,9 +1,86 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katip</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Hello and welcome to Katip</h1>
-    <p>Here will be documentation for Katip - open-source spellchecker for Word.</p>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-xl font-bold">Katip</a>
+            <div>
+                <a href="/" class="text-white mx-2">Home</a>
+                <a href="#about" class="text-white mx-2">About</a>
+                <a href="https://github.com/berkesas/Katip4" class="text-white mx-2">Code</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4" id="about">About Katip</h1>
+            <p class="text-gray-700 mb-8">Katip is an add-in designed to enhance spellchecking capabilities in the
+                Microsoft Word desktop application using the Hunspell library and dictionaries.</p>
+            <p class="mb-8">Many languages around the world lack built-in spellchecking functionality and are not
+                supported by major software vendors. The goal of this add-in is to integrate Hunspell's robust
+                spellchecking features into Microsoft Word, thereby enabling spellchecking for low-resource languages.
+            </p>
+            <p>
+            <ul>
+                <li>Access the UI via the Word Ribbon menu.</li>
+                <li>Change/Change All misspelled words with suggestions.</li>
+                <li>Ignore Once/Ignore All options for the current spellchecking session.</li>
+                <li>Add words to the permanent user dictionary.</li>
+                <li>Change the UI display language of the add-in.</li>
+                <li>Change the spelling language based on available languages.</li>
+                <li>Toggle auto spellcheck and auto clear spellcheck functionalities on/off.</li>
+                <li>Customize the color used for highlighting misspellings.</li>
+                <li>Load additional dictionaries from a specified folder.</li>
+                <li>Navigate through misspellings efficiently.</li>
+                <li>Customize the set of characters considered as word separators.</li>
+                <li>Save settings permanently.</li>
+                <li>Log errors to a text file.</li>
+            </ul>
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Easy access</h2>
+                <p class="text-gray-700 mb-4">The buttons are available on the ribbon menu.</p>
+                <img src="img/menu.png" alt="ribbon menu">
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Customization</h2>
+                <p class="text-gray-700 mb-4">It can be customized to your needs.</p>
+                <img src="img/settings.png" alt="settings menu">
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">Fully open-source</h2>
+                <p class="text-gray-700 mb-4">Open-source available at <a
+                        href='https://github.com/berkesas/Katip4'>Katip</a>.</p>
+                <img src="img/source.png" alt="source code">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 p-4 mt-10">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2025 Nazar Mammedov. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>
