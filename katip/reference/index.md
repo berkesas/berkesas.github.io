@@ -1,4 +1,7 @@
 ---
+title: "Katip reference"
+author: "Nazar Mammedov"
+date: "2025-02-27"
 output: 
   html_document: 
     toc: yes
@@ -21,7 +24,7 @@ output:
   }
 </style>
 
-# Katip
+# Introduction
 
 Katip is an add-in designed to enhance spellchecking capabilities in the Microsoft Word desktop application using the Hunspell library and dictionaries.
 
