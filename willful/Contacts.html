@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts - Willful Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #002E4D;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIRNmJGE0xSPxQWq5sd8O68A3UbQwOXTzVJg&s');
+      opacity: 0.9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    header {
+      text-align: center;
+      padding: 14rem 5rem; /* Increased from 10rem to 14rem */
+      background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      max-height: none; /* Optional: remove max-height constraint */
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #ffffff;
+      display: inline-block;
+      padding: 0.2rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    .contact-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+
+    form label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #fbf9f9;
+    }
+
+    form input, form textarea {
+      background: #eff1f3;
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #65716a;
+
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .form-submit {
+      background-color: #cfae3c;
+      color: #f5f7f6;
+      padding: 0.75rem 1.6rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 6px 20px #cfae3c;
+    }
+
+    .form-submit:hover,
+    .form-submit:focus {
+      background-color: #b28e2f;
+      box-shadow: 0 8px 25px #b28e2f;
+      outline: none;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #002E4D 0%, #00457C 100%);
+      color: #f9f7f7;
+      padding: 2.3rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgb(0 46 77 / 0.35);
+      margin-bottom: 3rem;
+    }
+
+    .contact-card h2 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 3px solid #cfae3c;
+      padding-bottom: 0.4rem;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfae3c;
+      color: #002E4D;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        background: #b28e2f;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+    }
+    .social-links svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+    .call-to-action {
+      background: linear-gradient(135deg, #002E4D 0%, #00457C 100%);
+      border-left: 6px solid #cfae3c;
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      color: #fefefe;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .btn-contact {
+      background-color: #cfae3c;
+      color: white;
+      padding: 0.65rem 1.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 5px 15px #cfae3c;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+    }
+
+    .faq-category {
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .faq-category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #b28e2f;
+      color: #fff;
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .faq-category-header span.toggle-icon {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-left: 0.5rem;
+    }
+
+    .faq-category-content {
+      display: none;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      color:#000;
+    }
+
+    .faq-item button {
+      width: 100%;
+      background: #7d919f;
+      color: white;
+      padding: 1rem;
+      font-size: 1rem;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .faq-item button:hover {
+      background: #6b7f8d;
+    }
+
+    .faq-answer {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 3px solid #cfae3c;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+
+    /* Confirmation Modal */
+    #confirmation-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      width: 100%; height: 100%;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #ffffff;
+      color: #919aa4;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #010101;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .client-logos {
+      overflow: hidden;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, #002E4D 0%, #00457C 100%);
+      margin: 2rem 0;
+      position: relative;
+      border-radius: 12px;
+    }
+    
+    .client-logos .container {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    
+    .client-logos h2 {
+      text-align: center;
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .client-logos h2:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #cfae3c;
+      border-radius: 2px;
+    }
+    
+.logo-track {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  animation: scroll 40s linear infinite;
+  width: max-content;
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  transition: transform 0.3s ease;
+}
+
+.logo-item:hover {
+  transform: scale(1.1); /* Grows slightly on hover */
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  /* Removed filters to show original logo colors */
+  transition: transform 0.3s ease;
+}
+
+.logo-item:hover img {
+  transform: scale(1.1); /* Optional: scales the image itself */
+}
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-160px * 8 - 4rem * 8));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .client-logos h2 {
+        font-size: 1.75rem;
+      }
+      
+      .logo-item {
+        width: 120px;
+        height: 60px;
+        padding: 0 1.5rem;
+      }
+      
+      .logo-item img {
+        max-height: 40px;
+      }
+    }
+    .form-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    }
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #002E4D;
+            border-bottom: 1px solid #002E4D;
+            color: #f8f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #b28e2f;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #cfae3c;
+            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-grow: 1;
+            margin: 0 0 0 auto;
+            padding-right: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .nav-item {
+            position: relative;
+            color: #fbf7f7;
+        }
+
+        .nav-item > button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;  /* Added horizontal padding */
+            font: inherit;
+            color: #fbf9f9;
+            font-size: 1rem;
+            transition: color 0.3s ease;  /* Smooth color transition */
+        }
+        
+        .nav-item > button:hover {
+            color: #cfae3c;  /* Gold color on hover */
+        }
+
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ccc;
+      top: 100%;
+      left: 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .auth-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .auth-button {
+      background: #cfae3c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .auth-button:hover {
+      background: #b28e2f;
+    }
+
+    .icon {
+      font-size: 1.2rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 0, 0, 0.761);
+      border-radius: 50%;
+    }
+
+    .profile-container {
+      position: relative;
+    }
+
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      top: 100%;
+      min-width: 160px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 6px;
+    }
+
+    .profile-dropdown a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .profile-dropdown a:hover {
+      background: #f3f3f3;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: #fbfafa;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 350px;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .tabs button {
+      flex: 1;
+      background: #eee;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+
+    .tabs button.active {
+      background: #cfae3c;
+      color: #fff;
+    }
+
+    .tabs button.active:hover {
+      background: #b28e2f;
+    }
+
+
+    .modal-form {
+      display: none;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .modal-form input[type="text"],
+    .modal-form input[type="password"],
+    .modal-form input[type="email"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #f9f6f6;
+      border-radius: 4px;
+    }
+
+    .modal-form button {
+      background: #cfae3c;
+      color: white;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-form button:hover {
+      background: #b28e2f;
+    }
+
+    .checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      margin: 0;
+      padding: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #333;
+    }
+ 
+
+    .toTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #cfae3c;
+      color: #002E4D;
+      font-size: 1.4rem;
+      padding: 0.6rem 1rem;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      text-align: center;
+      z-index: 999;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .toTop:hover {
+      background: #b28e2f;
+      transform: translateY(-3px);
+    }
+
+
+  </style>
+</head>
+<body>
+  
+
+  <nav>
+        <div class="background-overlay"></div>
+        <div class="logo-circle">
+            <img src="Logo.png" alt="Willful Change Logo">
+        </div>
+        <h1 class="company-name">Willful Change</h1>
+
+        <div class="nav-links">
+            <a href="FinalHomePage.html" style="color: white; text-decoration: none;">Home</a>
+            
+            <div class="nav-item">
+                <button>About ▾</button>
+                <div class="dropdown">
+                    <a href="FinalAboutPage.html#our_company">Our Company</a>
+                    <a href="FinalAboutPage.html#our_story">Our Story</a>
+                    <a href="FinalAboutPage.html#our_mission">Mission</a>
+                    <a href="FinalAboutPage.html#">Vision</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button>Services ▾</button>
+                <div class="dropdown">
+                    <a href="Services.html#keynote-title">Keynote</a>
+                    <a href="Services.html#training-title">Training</a>
+                    <a href="Services.html#coaching-title">Coaching</a>
+                    <a href="Services.html#more-title">More Services</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button>More ▾</button>
+                <div class="dropdown">
+                    <a href="Final_More.html#testimonials">Testimonials</a>
+                    <a href="Final_More.html#join-us">Join Us</a>
+                    <a href="ResourceLibrary.html#">Resource Library</a>
+                </div>
+            </div>
+            
+            <a href="Contacts.html" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+
+        <div class="auth-section" id="authSection">
+            <button class="auth-button" onclick="openModal()">Login / Sign Up</button>
+        </div>
+
+        <div class="auth-section" id="userSection" style="display:none;">
+            <div class="icon" onclick="alert('You have 3 new notifications')">🔔<span class="notification-dot"></span></div>
+            <div class="profile-container">
+                <div class="icon" onclick="toggleProfileDropdown()">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  <!-- MODAL -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <div class="close-btn" onclick="closeModal()">×</div>
+      <h3 id="formTitle">Login</h3>
+      <div class="tabs">
+        <button class="active" onclick="switchTab('login')">Login</button>
+        <button onclick="switchTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="modal-form" id="loginForm" style="display: flex;">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="button" onclick="login()">Login</button>
+        <a href="#">Forgot password?</a>
+      </form>
+
+      <!-- Signup Form -->
+      <form class="modal-form" id="signupForm">
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <label class="checkbox-label">
+          <input type="checkbox" required>
+          <span>I agree to the terms and conditions</span>
+        </label>
+        <button type="submit">Sign Up</button>
+        <a href="#">Forgot password?</a>
+      </form>
+    </div>
+  </div>
+
+
+
+  <header>
+    <div>
+    <h1>Contact Willful Change</h1>
+    </div>
+    <div>
+    <h1>Helping you move forward with purpose.</h1>
+    </div>
+  </header>
+
+  <main>
+    
+
+
+
+
+
+    <section class="contact-card">
+      <h2>Company Contacts</h2>
+      <br>
+      <h1><strong>Wilbert Weche</strong></p></h1>
+      <p><strong>Email:</strong> <a href="mailto:hello@willfulchange.com" style="color: #b28e2f;">wweche@willfulchange.com​</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+18005550242" style="color: #b28e2f;">413-306-4309</a></p>
+    <br>
+      <h2>Follow Us</h2>
+      <div class="social-links">
+        <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="call-to-action">
+      <h2>Ready to Make a Willful Change?</h2>
+      <p>Whether you have questions, want to explore partnership opportunities, or just want to say hello,</p>
+      <p> we're eager to hear from you!</p>
+        <br>
+        <br>
+      <a href="#contact-form" class="form-submit">Start your journey</a>
+        <br>
+        <br>
+      <P>No question is too big or too small. let's start the conversation!</p>
+    </section>
+
+    <br>
+    <br>
+
+    <section class="client-logos">
+      <div class="container">
+        <h2>Trusted by Industry Leaders</h2>
+        <div class="logo-track">
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="contact-card">
+    <h2 class="video" style="font-size: 2rem; margin-bottom: 2rem; color: #fbf7f7;">Solutions in Action</h2>
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-radius: 12px;">
+        <iframe 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        title="About Willful Change" 
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+        </iframe>
+    </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="contact-card">
+      <h2 id="contact-form-title">Get in Touch</h2>
+      <form id="contact-form" novalidate>
+<br>
+        
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required placeholder="Subject of your message" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+
+        <div class="form-button-container">
+        <button type="submit" class="form-submit">Send Message</button>
+        </div>
+      </form>
+    </section>
+
+    <br>
+    <br>
+    <!-- Modal -->
+    <div id="confirmation-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <h3 id="modal-title">Message Sent</h3>
+        <p>Thank you for reaching out. We'll get back to you shortly!</p>
+        <button id="close-modal" class="form-submit">Close</button>
+      </div>
+    </div>
+
+
+
+    <section class="contact-card faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <!-- Category 1 -->
+      <div class="faq-category">
+        <div class="faq-category-header" data-toggle="category1">
+          General
+          <span class="toggle-icon" id="icon-category1">+</span>
+        </div>
+        <div class="faq-category-content" id="category1">
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq1" id="faq1-button">What services does Willful Change offer?</button>
+            <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-button" hidden>
+              <p>We offer personal coaching, organizational consulting, and transformation planning for individuals and companies seeking meaningful change.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq2" id="faq2-button">Do you provide virtual sessions?</button>
+            <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-button" hidden>
+              <p>Yes, we offer virtual coaching and consulting sessions through secure video platforms to serve clients globally.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq3" id="faq3-button">Is there a cancellation policy?</button>
+            <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-button" hidden>
+              <p>Yes, appointments can be canceled or rescheduled with at least 24 hours’ notice.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="faq-category">
+        <div class="faq-category-header" data-toggle="category2">
+          Consultation & Booking
+          <span class="toggle-icon" id="icon-category2">+</span>
+        </div>
+        <div class="faq-category-content" id="category2">
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq4" id="faq4-button">How can I schedule a consultation?</button>
+            <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4-button" hidden>
+              <p>You can use the contact form above or email us directly at hello@willfulchange.com to request an appointment.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq5" id="faq5-button">Are weekend appointments available?</button>
+            <div id="faq5" class="faq-answer" role="region" aria-labelledby="faq5-button" hidden>
+              <p>Weekend slots are limited but available upon request depending on your coach’s availability.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq6" id="faq6-button">How far in advance should I book?</button>
+            <div id="faq6" class="faq-answer" role="region" aria-labelledby="faq6-button" hidden>
+              <p>We recommend booking at least 1–2 weeks in advance to secure your preferred time slot.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="faq-category">
+        <div class="faq-category-header" data-toggle="category3">
+          Pricing & Policies
+          <span class="toggle-icon" id="icon-category3">+</span>
+        </div>
+        <div class="faq-category-content" id="category3">
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq7" id="faq7-button">Do you offer sliding scale pricing?</button>
+            <div id="faq7" class="faq-answer" role="region" aria-labelledby="faq7-button" hidden>
+              <p>Yes, we offer sliding scale pricing for select services based on financial need. Please inquire directly.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq8" id="faq8-button">Is payment due in advance?</button>
+            <div id="faq8" class="faq-answer" role="region" aria-labelledby="faq8-button" hidden>
+              <p>Yes, payment is typically required before the session to confirm your booking.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button aria-expanded="false" aria-controls="faq9" id="faq9-button">What payment methods do you accept?</button>
+            <div id="faq9" class="faq-answer" role="region" aria-labelledby="faq9-button" hidden>
+              <p>We accept credit/debit cards, PayPal, and direct bank transfers for both individuals and organizations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+    <footer style="background: #002E4D; color: #fff; padding: 4rem 2rem 2rem; margin-top: 4rem;">
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
+
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
+        </div>
+
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
+        </div>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+    </div>
+    <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+
+    </footer>
+
+
+  <script>
+    // Toggle for category expansion
+    document.querySelectorAll('.faq-category-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const categoryId = header.getAttribute('data-toggle');
+        const content = document.getElementById(categoryId);
+        const icon = document.getElementById('icon-' + categoryId);
+
+        const isVisible = content.style.display === 'block';
+
+        // Toggle current category
+        content.style.display = isVisible ? 'none' : 'block';
+        icon.textContent = isVisible ? '+' : '–';
+      });
+    });
+
+    // Toggle for each FAQ item
+    document.querySelectorAll('.faq-item button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        content.hidden = expanded;
+      });
+    });
+  </script>
+
+
+
+  <script>
+
+    // Contact form with modal
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      this.reset();
+      document.getElementById("confirmation-modal").style.display = "flex";
+    });
+
+    document.getElementById("close-modal").addEventListener("click", function () {
+      document.getElementById("confirmation-modal").style.display = "none";
+    });
+
+    document.querySelector("#confirmation-modal .modal-overlay").addEventListener("click", function () {
+      document.getElementById("confirmation-modal").style.display = "none";
+    });
+  </script>
+    <script>
+    function openModal() {
+      document.getElementById('authModal').style.display = 'flex';
+      switchTab('login');
+    }
+
+    function closeModal() {
+      document.getElementById('authModal').style.display = 'none';
+    }
+
+    function switchTab(tab) {
+      document.getElementById('loginForm').style.display = (tab === 'login') ? 'flex' : 'none';
+      document.getElementById('signupForm').style.display = (tab === 'signup') ? 'flex' : 'none';
+      document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tabs button')[tab === 'login' ? 0 : 1].classList.add('active');
+      document.getElementById('formTitle').textContent = tab === 'login' ? 'Login' : 'Sign Up';
+    }
+
+    function login() {
+      closeModal();
+      document.getElementById('authSection').style.display = 'none';
+      document.getElementById('userSection').style.display = 'flex';
+    }
+
+    function logout() {
+      document.getElementById('authSection').style.display = 'flex';
+      document.getElementById('userSection').style.display = 'none';
+      toggleProfileDropdown(true);
+    }
+
+    function toggleProfileDropdown(forceClose = false) {
+      const dropdown = document.getElementById('profileDropdown');
+      if (forceClose) {
+        dropdown.style.display = 'none';
+      } else {
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.closest('.profile-container') && !event.target.closest('.modal-content')) {
+        toggleProfileDropdown(true);
+      }
+    }
+  </script>
+  <script>
+  // Show button on scroll
+  window.addEventListener('scroll', () => {
+    const toTop = document.getElementById('toTop');
+    if (window.scrollY > 400) {
+      toTop.style.display = 'block';
+    } else {
+      toTop.style.display = 'none';
+    }
+  });
+
+  // Smooth scroll to top on click
+  document.getElementById('toTop').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  </script>
+
+</body>
+</html>
