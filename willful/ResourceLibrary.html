@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Willful Change | Resource Library</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+
+    /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #002E4D;
+            border-bottom: 1px solid #002E4D;
+            color: #f8f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #b28e2f;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #cfae3c;
+            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            flex-grow: 1;
+            margin: 0 2rem 0 auto;
+            padding-right: 1rem;
+            justify-content: flex-end;
+        }
+
+        .nav-item {
+            position: relative;
+            color: #fbf7f7;
+        }
+
+        .nav-item > button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            font: inherit;
+            color: #fbf9f9;
+            font-size: 1rem;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .auth-button {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .auth-button:hover {
+            background: #b28e2f;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            gap: 1.5rm;
+            border: 2px solid #b28e2f;
+            border-radius: 50%;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            min-width: 160px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            z-index: 1001;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .profile-dropdown a:hover {
+            background: #f3f3f3;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .modal-content {
+            background: #fbfafa;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 350px;
+            position: relative;
+            max-width: 90%;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabs button {
+            flex: 1;
+            background: #eee;
+            border: none;
+            padding: 0.7rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tabs button.active {
+            background: #cfae3c;
+            color: #fff;
+        }
+
+        .tabs button:not(.active):hover {
+            background: #e0e0e0;
+        }
+
+        .modal-form {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-form input[type="text"],
+        .modal-form input[type="password"],
+        .modal-form input[type="email"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .modal-form button[type="submit"],
+        .modal-form button[type="button"] {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .modal-form button:hover {
+            background: #b28e2f;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #555;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+        /* Back to Top Button */
+        .toTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 999;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .toTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1rem;
+                margin-left: 1rem;
+            }
+            
+            .company-name {
+                font-size: 1.3rem;
+            }
+            
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 0.8rem 1rem;
+            }
+            
+            .nav-links {
+                order: 3;
+                width: 100%;
+                margin: 1rem 0 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .auth-section {
+                margin-left: auto;
+            }
+        }
+
+    
+
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+    .toTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #cfae3c;
+      color: #002E4D;
+      font-size: 1.4rem;
+      padding: 0.6rem 1rem;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      text-align: center;
+      z-index: 999;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .toTop:hover {
+      background: #b28e2f;
+      transform: translateY(-3px);
+    }
+
+    
+    .hero-buttons .button:first-child {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .hero-buttons .button:last-child {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--gray-light);
+    }
+    
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      background: #f3f4f6;
+      padding: 0.5rem;
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .billing-option {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #6b7280;
+      transition: all 0.2s ease;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+    }
+    
+    .billing-option .discount {
+      font-size: 0.7rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.1rem 0.4rem;
+      border-radius: 10px;
+      margin-left: 0.5rem;
+      display: inline-block;
+      transform: scale(0.9);
+    }
+    
+    .featured-resources {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-resources::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: rgba(79, 70, 229, 0.1);
+      z-index: 0;
+      animation: float 15s infinite alternate;
+    }
+    
+    .featured-resources::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: rgba(16, 185, 129, 0.1);
+      z-index: 0;
+      animation: float 12s infinite alternate-reverse;
+    }
+    
+
+    
+    .hero {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+      padding: 8rem 2rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+      z-index: 10;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 25%);
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: #b28e2f;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      background: #b28e2f;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #cfae3c;
+      color: white;
+      padding: 0.875rem 1.75rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .button.secondary {
+      background: white;
+      color: #cfae3c;
+      border: 1px solid var(--gray-light);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    
+    .button.secondary::before {
+      background: var(--lighter);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .header-subtitle {
+      font-size: 1.25rem;
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      opacity: 0.9;
+      line-height: 1.6;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 3rem auto 0;
+      flex-wrap: wrap;
+      max-width: 800px;
+    }
+    
+    .stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      min-width: 120px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .stat:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      display: block;
+      color: white;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(90deg, #fff, #e0e9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent; /* Fallback for older browsers */
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+    
+
+
+
+      .resource-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+
+  
+
+  .see-more-container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .see-more-btn {
+    background-color: #004aad;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .see-more-btn:hover {
+    background-color: #00347d;
+  }
+
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .cta-buttons.visible {
+      display: flex;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    .cta-buttons .button:last-child {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    
+
+    
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header h3 {
+      margin: 0;
+      color: var(--dark);
+      font-size: 1.5rem;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    
+
+    
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .form-check {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .form-check-input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    .checkmark {
+      position: absolute;
+      left: 0;
+      height: 1.25rem;
+      width: 1.25rem;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .form-check:hover .checkmark {
+      border-color: var(--primary);
+    }
+    
+    .form-check-input:checked ~ .checkmark {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 7px;
+      top: 3px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    
+    .form-check-input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    .card-element-wrapper {
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+    
+
+    
+    
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --primary-dark: #4338ca;
+      --secondary: #10b981;
+      --secondary-light: #34d399;
+      --dark: #111827;
+      --darker: #0f172a;
+      --light: #f8fafc;
+      --lighter: #f1f5f9;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --red: #ef4444;
+      --yellow: #f59e0b;
+      --purple: #8b5cf6;
+      --teal: #14b8a6;
+      --pink: #ec4899;
+      --gradient: linear-gradient(135deg, var(--primary), var(--purple));
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    body {
+      font-family:'Playfair Display', serif;;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .resource-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .resource-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: calc(33.333% - 1rem);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .image-container img,
+    .image-container video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .resource-card-content {
+      padding: 1rem;
+    }
+
+    .resource-card-content h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .resource-card-content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem auto 0 auto; /* top margin + auto on left/right = center */
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .subscription-badge.premium {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #e91e63;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+
+    .image-container {
+      position: relative;
+    }
+
+    .see-more-btn {
+      display: block;
+      margin: 2rem auto 0 auto;  /* Center the button and add top margin */
+      background: transparent;
+      border: 2px solid #007bff;
+      color: #007bff;
+      padding: 0.75rem 1.5rem;   /* Make it bigger */
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;           /* Slightly larger font */
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .see-more-btn:hover {
+      background: #007bff;
+      color: white;
+    }
+
+    .hidden-card {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .resource-card {
+        width: calc(50% - 1rem);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .resource-card {
+        width: 100%;
+      }
+    }
+
+    
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 2.5rem;
+      text-align: center;
+      border-radius: 15px;
+      margin: 2rem 0;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 51, 102, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+
+
+    
+    .cta-box > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-box h3 {
+      margin: 0 0 1rem 0;
+      color: white;
+      font-size: 2rem;
+    }
+    
+    .cta-box p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .cta-buttons.visible {
+      display: flex;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    .login-button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3) !important;
+      backdrop-filter: blur(5px);
+    }
+    
+    .login-button:hover {
+      background: rgba(255,255,255,0.2) !important;
+    }
+    
+
+    
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 3rem auto 0;
+      flex-wrap: wrap;
+      max-width: 800px;
+    }
+    
+    .stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      min-width: 120px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .stat:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      display: block;
+      color: white;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(90deg, #fff, #e0e9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent; /* Fallback for older browsers */
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+    
+    
+    .resource-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: #1e293b;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .header-subtitle {
+      font-size: 1.25rem;
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      opacity: 0.9;
+      line-height: 1.6;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    /* Loading animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    .loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite linear;
+      -webkit-animation: shimmer 2s infinite linear;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @-webkit-keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    /* Hover effects */
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 200px;
+      background-color: var(--dark);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 100;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section {
+        padding: 2.5rem 1rem;
+      }
+      
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header-stats {
+        gap: 1rem;
+      }
+      
+      .stat {
+        padding: 1rem;
+        min-width: 100px;
+      }
+      
+      .stat-number {
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* Subscription Section */
+    .subscribe-section {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 2.5rem;
+      text-align: center;
+      border-radius: 15px;
+      margin: 2rem 0;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 51, 102, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .cta-box > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-box h3 {
+      margin: 0 0 1rem 0;
+      color: white;
+      font-size: 2rem;
+    }
+    
+    .cta-box p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: none;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .cta-buttons.visible {
+      display: flex;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    /* Modal Overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+        display: flex !important;
+        opacity: 1;
+    }
+    
+
+    
+    /* Resource Filters */
+    .filters-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      align-items: flex-end;
+    }
+    
+    .filter-group {
+      position: relative;
+    }
+    
+    .filter-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+    
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 2.5rem;
+      font-size: 0.9375rem;
+      color: #1f2937;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      appearance: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    .select-arrow {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #6b7280;
+    }
+    
+    /* Search Styles */
+    .search-group {
+      grid-column: 1 / -1;
+    }
+    
+    .search-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      padding-right: 3rem;
+      font-size: 0.9375rem;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #6b7280;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    
+    .search-button:hover {
+      color: #4b5563;
+      background-color: #f3f4f6;
+    }
+    
+    /* For the multiple select dropdown */
+    .filter-select[multiple] {
+      height: auto;
+      min-height: 46px;
+      padding: 0.5rem;
+    }
+    
+    .filter-select[multiple] option {
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin: 2px 0;
+      cursor: pointer;
+    }
+    
+    .filter-select[multiple] option:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .filter-select[multiple] option:checked {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .search-group {
+        grid-column: auto;
+      }
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    /* Custom checkbox */
+    .form-check {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .form-check-input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    .checkmark {
+      position: absolute;
+      left: 0;
+      height: 1.25rem;
+      width: 1.25rem;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .form-check:hover .checkmark {
+      border-color: var(--primary);
+    }
+    
+    .form-check-input:checked ~ .checkmark {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 7px;
+      top: 3px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    
+    .form-check-input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    /* Payment form styles */
+    .card-element-wrapper {
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Animations */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    
+    .shake {
+      animation: shake 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .membership-note {
+      margin: 0.5rem 0 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    
+    .resource-actions {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .subscribe-now {
+      background: var(--primary) !important;
+      color: white !important;
+      border: none;
+      width: 100%;
+      padding: 0.75rem 1.5rem !important;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    
+    .subscribe-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .resource-hero {
+      background:
+                  url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      color: #000000;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 16px;
+    }
+
+    .resource-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .resource-hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #f7c948;
+      color: #1a1a1a;
+      padding: 14px 28px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #ffd369;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="background-overlay"></div>
+        <div class="logo-circle">
+            <img src="Logo.png" alt="Willful Change Logo">
+        </div>
+        <h1 class="company-name">Willful Change</h1>
+
+        <div class="nav-links">
+            <a href="FinalHomePage.html" style="color: white; text-decoration: none;">Home</a>
+            
+            <div class="nav-item">
+                <button>About ▾</button>
+                <div class="dropdown">
+                    <a href="FinalAboutPage.html#our_company">Our Company</a>
+                    <a href="FinalAboutPage.html#our_story">Our Story</a>
+                    <a href="FinalAboutPage.html#our_mission">Mission</a>
+                    <a href="FinalAboutPage.html#">Vision</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button>Services ▾</button>
+                <div class="dropdown">
+                    <a href="Services.html#keynote-title">Keynote</a>
+                    <a href="Services.html#training-title">Training</a>
+                    <a href="Services.html#coaching-title">Coaching</a>
+                    <a href="Services.html#more-title">More Services</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button>More ▾</button>
+                <div class="dropdown">
+                    <a href="Final_More.html#testimonials">Testimonials</a>
+                    <a href="Final_More.html#join-us">Join Us</a>
+                    <a href="ResourceLibrary.html#">Resource Library</a>
+                </div>
+            </div>
+            
+            <a href="Contacts.html" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+
+        <div class="auth-section" id="authSection">
+            <button class="auth-button" onclick="openModal()">Login / Sign Up</button>
+        </div>
+
+        <div class="auth-section" id="userSection" style="display:none;">
+            <div class="icon" onclick="alert('You have 3 new notifications')">🔔<span class="notification-dot"></span></div>
+            <div class="profile-container">
+                <div class="icon" onclick="toggleProfileDropdown()">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeModal()">×</div>
+            <h3 id="formTitle">Login</h3>
+            <div class="tabs">
+                <button class="active" onclick="switchTab('login')">Login</button>
+                <button onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <form class="modal-form" id="loginForm" style="display: flex;">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="button" onclick="login()">Login</button>
+                <a href="#">Forgot password?</a>
+            </form>
+
+            <form class="modal-form" id="signupForm">
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <label class="checkbox-label">
+                    <input type="checkbox" required>
+                    <span>I agree to the terms and conditions</span>
+                </label>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="resource-hero">
+      <div class="hero-content">
+        <h1>Resource Library</h1>
+        <p>
+          Discover the tools, insights, and strategies you need to lead with confidence.
+          The <strong>Willful Change Member Resource Library</strong> offers curated
+          how-to guides, articles, and toolkits to help you excel in implementing standards,
+          best practices, and transformational change.
+        </p>
+        <p>
+          Whether you're just getting started or scaling impact, our resources are designed to meet you where you are—
+          and help you go further.
+        </p>
+        <a href="#resources" class="cta-button">Explore the Library</a>
+      </div>
+    </section>
+
+<br>
+<br>
+
+<!-- Resource Filters -->
+<section class="section">
+  <div class="filters-container">
+    <div class="filters-grid">
+      <!-- Topics Dropdown -->
+      <div class="filter-group">
+        <label for="topic-filter" class="filter-label">
+          <i class="fas fa-tags"></i> Topics
+        </label>
+        <div class="custom-select">
+          <select id="topic-filter" class="filter-select">
+            <option value="">All Topics</option>
+            <option value="keynote">Keynote Speaking</option>
+            <option value="coaching">Coaching</option>
+            <option value="leadership">Leadership</option>
+          </select>
+          <div class="select-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Types Dropdown -->
+
+      <div class="filter-group">
+        <label for="media-filter" class="filter-label">
+          <i class="fas fa-photo-video"></i> Media Type
+        </label>
+        <div class="custom-select">
+          <select id="media-filter" class="filter-select">
+            <option value="">All Media Types</option>
+            <option value="case-studies">Case Studies</option>
+            <option value="ebooks">eBooks</option>
+            <option value="handouts">Handouts</option>
+            <option value="infographic">Infographic</option>
+            <option value="podcast">Podcast</option>
+            <option value="posters">Posters</option>
+            <option value="videos">Videos</option>
+            <option value="webinar">Webinars</option>
+            <option value="whitepapers">Whitepapers</option>
+          </select>
+          <div class="select-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Search Box -->
+      <div class="filter-group search-group">
+        <label for="search-filter" class="filter-label">
+          <i class="fas fa-search"></i> Search
+        </label>
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="search-filter" 
+            class="search-input" 
+            placeholder="Search resources..."
+          >
+          <button type="button" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Free Resources Section -->
+  <section class="section">
+    <h2>📂 Free Resources</h2>
+    <div class="resource-grid">
+      <!-- First 3 cards -->
+      <div class="resource-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80" alt="Team Collaboration">
+        </div>
+        <div class="resource-card-content">
+          <h3>Leadership Essentials Guide</h3>
+          <p>Actionable leadership tips to strengthen influence and clarity.</p>
+          <a href="#" class="button" download>Download Free</a>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="image-container">
+          <video controls poster="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80">
+            <source src="#" type="video/mp4">
+            Your browser does not support video.
+          </video>
+        </div>
+        <div class="resource-card-content">
+          <h3>Teamwork in Action (2 min)</h3>
+          <p>A short video to inspire greater collaboration and trust.</p>
+          <a href="#" class="button">Watch Free</a>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=80" alt="Strategic Planning">
+        </div>
+        <div class="resource-card-content">
+          <h3>Strategic Planning Templates</h3>
+          <p>Comprehensive templates for organizational strategy development.</p>
+          <a href="#" class="button">Download Free</a>
+        </div>
+      </div>
+
+      <!-- Extra hidden cards -->
+      <div class="resource-card hidden-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1573497019113-c0e1a7ed1970?auto=format&fit=crop&w=1000&q=80" alt="Change Management">
+        </div>
+        <div class="resource-card-content">
+          <h3>Change Management Checklist</h3>
+          <p>Stay on track with effective organizational change efforts.</p>
+          <a href="#" class="button" download>Download Free</a>
+        </div>
+      </div>
+
+      <div class="resource-card hidden-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1000&q=80" alt="Inclusive Culture">
+        </div>
+        <div class="resource-card-content">
+          <h3>Inclusive Culture Guide</h3>
+          <p>Insights to build equity-centered environments and collaboration.</p>
+          <a href="#" class="button" download>Download Free</a>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-btn" onclick="toggleSection(this)">See More</button>
+  </section>
+
+  <!-- Premium Resources Section -->
+  <section class="section">
+    <h2>💼 Premium Resources</h2>
+    <div class="resource-grid">
+      <!-- First 3 cards -->
+      <div class="resource-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Eisenhower Matrix">
+          <span class="subscription-badge premium">Premium</span>
+        </div>
+        <div class="resource-card-content">
+          <h3>Eisenhower Matrix Toolkit</h3>
+          <p>Take control of priorities with proven tools and templates.</p>
+          <a href="#" class="button">Buy Now – $30</a>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="Leadership Growth">
+          <span class="subscription-badge premium">Premium</span>
+        </div>
+        <div class="resource-card-content">
+          <h3>Leadership Growth Workbook</h3>
+          <p>Deep-dive exercises to elevate your decision‑making journey.</p>
+          <a href="#" class="button">Buy Now – $25</a>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Focus and Productivity">
+          <span class="subscription-badge premium">Premium</span>
+        </div>
+        <div class="resource-card-content">
+          <h3>Focus & Flow Guide</h3>
+          <p>Scientific strategies for building sustainable focus habits.</p>
+          <a href="#" class="button">Buy Now – $20</a>
+        </div>
+      </div>
+
+      <!-- Extra hidden cards -->
+      <div class="resource-card hidden-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1531497865147-46cbb2b8b3da?auto=format&fit=crop&w=1000&q=80" alt="Personal Growth">
+          <span class="subscription-badge premium">Premium</span>
+        </div>
+        <div class="resource-card-content">
+          <h3>Personal Growth Blueprint</h3>
+          <p>Plan and track your development with this comprehensive kit.</p>
+          <a href="#" class="button">Buy Now – $35</a>
+        </div>
+      </div>
+
+      <div class="resource-card hidden-card">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1590080878065-d5b06d47f126?auto=format&fit=crop&w=1000&q=80" alt="Clarity Toolkit">
+          <span class="subscription-badge premium">Premium</span>
+        </div>
+        <div class="resource-card-content">
+          <h3>Clarity Toolkit</h3>
+          <p>Gain vision and purpose with worksheets and reflection prompts.</p>
+          <a href="#" class="button">Buy Now – $22</a>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-btn" onclick="toggleSection(this)">See More</button>
+  </section>
+
+
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Main CTA Section -->
+        <div class="cta-box">
+          <h2>Join Our Leadership Community</h2>
+          <p>
+            Get access to premium resources, exclusive webinars, and a supportive community of high-achieving leaders.
+            Start your transformation today with our comprehensive leadership development platform.
+          </p>
+
+          <button id="subscribeBtn" class="button">
+            Subscribe Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('🚀 Willful Change system initialized');
+
+        const subscribeBtn = document.getElementById('subscribeBtn');
+
+        subscribeBtn.addEventListener('click', function () {
+          // Open the target page in a new tab
+          window.open('final_complete_system.html', '_blank');
+        });
+
+        // Optional: handle Escape key for modal-based implementations
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+              modal.classList.remove('active');
+              document.body.style.overflow = '';
+            });
+          }
+        });
+      });
+    </script>
+
+
+
+<section class="section member-resources">
+  <h2 class="section-title">🔒 Member-Only Resources</h2>
+
+  <div class="resource-grid" id="member-resources-grid">
+    <!-- Card 1 -->
+    <div class="resource-card hover-lift fade-in">
+      <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Leadership Framework">
+        <span class="subscription-badge premium">Member Only</span>
+      </div>
+      <div class="resource-card-content">
+        <h3>Leadership Framework</h3>
+        <p>Gain access to an executive-level framework with tactical insights for leading transformation confidently.</p>
+        <p class="membership-note"><em>Available exclusively to members</em></p>
+        <div class="resource-actions">
+          <button class="button subscribe-now">Subscribe Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="resource-card hover-lift fade-in">
+      <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Planning Templates">
+        <span class="subscription-badge premium">Member Only</span>
+      </div>
+      <div class="resource-card-content">
+        <h3>Leadership Planning Kit</h3>
+        <p>Download customizable templates used by senior leaders to streamline strategic planning and execution.</p>
+        <p class="membership-note"><em>Members get instant access</em></p>
+        <div class="resource-actions">
+          <button class="button subscribe-now">Subscribe Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden Card 3 -->
+      <div class="resource-card hidden-card">
+        <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Emotional Intelligence">
+        <span class="subscription-badge premium">Member Only</span>
+      </div>
+      <div class="resource-card-content">
+        <h3>Deep Dive: Emotional Agility</h3>
+        <p>A powerful video session on navigating uncertainty, emotional regulation, and adaptive leadership in times of change.</p>
+        <p class="membership-note"><em>Unlock with your membership</em></p>
+        <div class="resource-actions">
+          <button class="button subscribe-now">Subscribe Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- You can add more .extra-card here -->
+  </div>
+
+    <button class="see-more-btn" onclick="toggleSection(this)">See More</button>
+
+
+
+</section>
+
+
+
+
+    <!-- Footer -->
+    <footer style="background: #002E4D; color: #fff; padding: 4rem 2rem 2rem; margin-top: 4rem;">
+        <hr style="border: none; border-top: 4px solid #ddd; margin: 0 auto 2rem; width: 90%; max-width: 1200px;">
+
+        <!-- Top Section -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+            <!-- Useful Links -->
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="color:#fcfafa; margin-bottom: 1rem;">Useful Links</h3>
+                <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="color:#fcfafa; margin-bottom: 1rem;">Services</h3>
+                <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Info Column -->
+            <div style="flex: 1.5; min-width: 250px;">
+                <!-- Social Icons -->
+                <div class="social-links" style="margin-top: 0;">
+                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <br>
+                <!-- Aspiration Text -->
+                <p style="margin: 0 0 0.5rem 0;">Let's grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+                <br>
+                <!-- Phone -->
+                <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+                <!-- Copyright -->
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+                    &copy; 2025 Willful Change. All rights reserved.
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Row -->
+        <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+        </div>
+        <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+
+
+        <style>
+            .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            }
+
+            .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #cfae3c;
+            color: #002E4D;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            }
+
+            .social-links a:hover,
+            .social-links a:focus {
+                background: #b28e2f;
+                color: #fff;
+                outline: none;
+                box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+            }
+            .social-links svg {
+                width: 22px;
+                height: 22px;
+                fill: currentColor;
+            }
+        </style>
+    </footer>
+
+
+        <!-- Chatbot Widget -->
+        <div class="chatbot-container">
+          <div class="chatbot-header">
+              <div class="chatbot-avatar">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <div class="chatbot-info">
+                  <h5>Willful Change Assistant</h5>
+                  <p>How can I help you today?</p>
+              </div>
+              <button class="chatbot-close" id="closeChatbot">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <div class="chatbot-message bot">
+                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <div class="chatbot-time">Just now</div>
+              </div>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
+              <button id="sendMessage">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+      <div class="floating-buttons">
+          <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
+              <i class="fas fa-comment-dots"></i>
+          </button>
+      </div>
+  
+      <!-- Chatbot Styles -->
+      <style>
+          /* Chatbot Styles */
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              z-index: 1000;
+              transform: translateY(100px);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-container.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+  
+          .chatbot-header {
+              background: #002E4D;
+              color: white;
+              padding: 15px 20px;
+              border-radius: 12px 12px 0 0;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              position: relative;
+          }
+  
+          .chatbot-avatar {
+              width: 40px;
+              height: 40px;
+              background: #CFAE3C;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+          }
+  
+          .chatbot-info h5 {
+              margin: 0;
+              font-size: 1rem;
+              font-weight: 600;
+          }
+  
+          .chatbot-info p {
+              margin: 2px 0 0;
+              font-size: 0.8rem;
+              opacity: 0.9;
+          }
+  
+          .chatbot-close {
+              background: none;
+              border: none;
+              color: white;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              opacity: 0.8;
+              transition: opacity 0.2s;
+          }
+  
+          .chatbot-close:hover {
+              opacity: 1;
+          }
+  
+          .chatbot-messages {
+              flex: 1;
+              padding: 15px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          .chatbot-message {
+              max-width: 80%;
+              padding: 10px 15px;
+              border-radius: 15px;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              position: relative;
+          }
+  
+          .chatbot-message.bot {
+              background: #f1f3f5;
+              align-self: flex-start;
+              border-bottom-left-radius: 5px;
+          }
+  
+          .chatbot-message.user {
+              background: #002E4D;
+              color: white;
+              align-self: flex-end;
+              border-bottom-right-radius: 5px;
+          }
+  
+          .chatbot-time {
+              font-size: 0.7rem;
+              opacity: 0.7;
+              margin-top: 5px;
+              text-align: right;
+          }
+  
+          .chatbot-input {
+              padding: 15px;
+              border-top: 1px solid #eee;
+              display: flex;
+              gap: 10px;
+          }
+  
+          .chatbot-input input {
+              flex: 1;
+              padding: 10px 15px;
+              border: 1px solid #ddd;
+              border-radius: 20px;
+              outline: none;
+              font-size: 0.9rem;
+          }
+  
+          .chatbot-input button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #002E4D;
+              color: white;
+              border: none;
+              cursor: pointer;
+              transition: background 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+  
+          .chatbot-input button:hover {
+              background: #001a2d;
+          }
+  
+          .chatbot-toggle {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-toggle:hover,
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.05);
+          }
+  
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
+          }
+  
+          .floating-buttons {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: center;
+              gap: 15px;
+              z-index: 999;
+              transform: translateY(-40px);
+          }
+  
+          .toTop {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: #002E4D;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              opacity: 0.7;
+              visibility: visible;
+              transform: translateY(0);
+              margin-bottom: 5px;
+          }
+  
+          .toTop.visible {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+          }
+  
+          /* Responsive adjustments */
+          @media (max-width: 576px) {
+              .chatbot-container {
+                  width: 100%;
+                  height: 100%;
+                  bottom: 0;
+                  right: 0;
+                  border-radius: 0;
+              }
+  
+              .chatbot-toggle {
+                  bottom: 20px;
+                  right: 20px;
+              }
+          }
+      </style>
+  
+      <!-- Chatbot Script -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const chatbotContainer = document.querySelector('.chatbot-container');
+              const toggleChatbot = document.getElementById('toggleChatbot');
+              const closeChatbot = document.getElementById('closeChatbot');
+              const chatInput = document.getElementById('chatbotInput');
+              const sendButton = document.getElementById('sendMessage');
+              const chatMessages = document.getElementById('chatbotMessages');
+  
+              // Toggle chat window
+              toggleChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.toggle('active');
+                  toggleChatbot.classList.add('hidden');
+              });
+  
+              // Close chat window
+              closeChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.remove('active');
+                  setTimeout(() => {
+                      toggleChatbot.classList.remove('hidden');
+                  }, 300);
+              });
+  
+              // Sample responses
+              const responses = [
+                  { 
+                      keywords: ['hello', 'hi', 'hey'],
+                      response: 'Hello! How can I assist you today?'
+                  },
+                  {
+                      keywords: ['service', 'services', 'offer', 'provides'],
+                      response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
+                  },
+                  {
+                      keywords: ['contact', 'email', 'phone', 'number'],
+                      response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
+                  },
+                  {
+                      keywords: ['about', 'who are you', 'company'],
+                      response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
+                  },
+                  {
+                      keywords: ['thank', 'thanks', 'appreciate'],
+                      response: 'You\'re welcome! Is there anything else I can help you with?'
+                  }
+              ];
+  
+              // Default response if no keywords match
+              const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
+  
+              // Function to add a message to the chat
+              function addMessage(message, isUser = false) {
+                  const messageDiv = document.createElement('div');
+                  messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+                  
+                  const messageContent = document.createElement('p');
+                  messageContent.textContent = message;
+                  
+                  const timeDiv = document.createElement('div');
+                  timeDiv.className = 'chatbot-time';
+                  timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
+                  
+                  messageDiv.appendChild(messageContent);
+                  messageDiv.appendChild(timeDiv);
+                  chatMessages.appendChild(messageDiv);
+                  
+                  // Scroll to bottom
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+  
+              // Function to process user input and generate response
+              function processUserInput(input) {
+                  if (!input.trim()) return;
+                  
+                  // Add user message to chat
+                  addMessage(input, true);
+                  
+                  // Convert input to lowercase for easier matching
+                  const lowerInput = input.toLowerCase();
+                  let response = defaultResponse;
+                  
+                  // Check for matching keywords
+                  for (const item of responses) {
+                      if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
+                          response = item.response;
+                          break;
+                      }
+                  }
+                  
+                  // Simulate typing delay
+                  setTimeout(() => {
+                      addMessage(response);
+                  }, 500);
+                  
+                  // Clear input
+                  chatInput.value = '';
+              }
+  
+              // Send message on button click
+              sendButton.addEventListener('click', () => {
+                  processUserInput(chatInput.value);
+              });
+  
+              // Send message on Enter key
+              chatInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      processUserInput(chatInput.value);
+                  }
+              });
+          });
+      </script>
+  
+
+
+
+
+    <!-- Navigation and Auth Scripts -->
+    <script>
+        // Auth Modal Functions
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            switchTab('login');
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function switchTab(tab) {
+            document.getElementById('loginForm').style.display = (tab === 'login') ? 'flex' : 'none';
+            document.getElementById('signupForm').style.display = (tab === 'signup') ? 'flex' : 'none';
+            document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tabs button')[tab === 'login' ? 0 : 1].classList.add('active');
+            document.getElementById('formTitle').textContent = tab === 'login' ? 'Login' : 'Sign Up';
+        }
+
+        function login() {
+            closeModal();
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('userSection').style.display = 'flex';
+        }
+
+        function logout() {
+            document.getElementById('authSection').style.display = 'flex';
+            document.getElementById('userSection').style.display = 'none';
+            toggleProfileDropdown(true);
+        }
+
+        function toggleProfileDropdown(forceClose = false) {
+            const dropdown = document.getElementById('profileDropdown');
+            if (forceClose) {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-container') && !event.target.closest('.modal-content')) {
+                toggleProfileDropdown(true);
+            }
+        }
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const toTop = document.getElementById('toTop');
+            if (window.scrollY > 400) {
+                toTop.style.display = 'block';
+            } else {
+                toTop.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to top
+        document.getElementById('toTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Initialize AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && document.querySelector(targetId)) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get references
+      const subscribeBtn = document.getElementById('subscribeBtn');
+      const ctaButtons = document.getElementById('ctaButtons');
+      const freeTrialBtn = document.getElementById('freeTrialBtn');
+      const memberBenefitsBtn = document.getElementById('memberBenefitsBtn');
+      const freeTrialModal = document.getElementById('freeTrialModal');
+      const memberBenefitsModal = document.getElementById('memberBenefitsModal');
+      const closeModalBtns = document.querySelectorAll('.close-modal');
+  
+      // Handle Subscribe Button
+      if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (ctaButtons) {
+            ctaButtons.classList.add('visible');
+            this.style.display = 'none';
+            ctaButtons.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      }
+  
+      // Show Free Trial Modal
+      if (freeTrialBtn) {
+        freeTrialBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (freeTrialModal) {
+            freeTrialModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+  
+      // Show Member Benefits Modal
+      if (memberBenefitsBtn) {
+        memberBenefitsBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (memberBenefitsModal) {
+            memberBenefitsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+  
+      // Close Modals
+      closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const modalId = this.getAttribute('data-modal');
+          if (modalId) {
+            document.getElementById(modalId).classList.remove('active');
+          } else {
+            const modal = this.closest('.modal-overlay');
+            if (modal) {
+              modal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          }
+        });
+      });
+  
+      // Close Modal on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        }
+      });
+    });
+  </script>
+
+
+
+<script>// Resource Filter Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const topicFilter = document.getElementById('topic-filter');
+    const mediaFilter = document.getElementById('media-filter');
+    const searchInput = document.getElementById('search-filter');
+    const searchButton = document.querySelector('.search-button');
+    
+    // Store all resource cards for filtering
+    const resourceCards = document.querySelectorAll('.resource-card');
+    
+    // Add data attributes to resource cards for filtering
+    resourceCards.forEach((card, index) => {
+      // Add sample data attributes (in a real app, these would come from a database)
+      const topics = ['keynote', 'coaching', 'leadership'];
+      const mediaTypes = ['videos', 'ebooks', 'case-studies', 'webinar', 'podcast', 'whitepapers', 'handouts', 'posters', 'infographic'];
+      
+      // Set a random topic for each card
+      const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+      card.setAttribute('data-topic', randomTopic);
+      
+      // Assign 1-3 random media types to each card
+      const cardMediaTypes = [];
+      const numMediaTypes = Math.min(3, Math.floor(Math.random() * 3) + 1);
+      while (cardMediaTypes.length < numMediaTypes) {
+        const randomMedia = mediaTypes[Math.floor(Math.random() * mediaTypes.length)];
+        if (!cardMediaTypes.includes(randomMedia)) {
+          cardMediaTypes.push(randomMedia);
+        }
+      }
+      card.setAttribute('data-media', cardMediaTypes.join(' '));
+    });
+    
+    // Function to filter resources
+    function filterResources() {
+      const selectedTopic = topicFilter ? topicFilter.value.toLowerCase() : '';
+      const selectedMedia = mediaFilter ? Array.from(mediaFilter.selectedOptions).map(opt => opt.value) : [];
+      const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+      
+      resourceCards.forEach(card => {
+        const cardTopic = card.getAttribute('data-topic') || '';
+        const cardMedia = card.getAttribute('data-media') || '';
+        const cardTitle = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+        const cardDesc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+        
+        // Check topic filter
+        const topicMatch = !selectedTopic || cardTopic === selectedTopic;
+        
+        // Check media type filter
+        const mediaMatch = selectedMedia.length === 0 || 
+          selectedMedia.some(media => cardMedia.includes(media));
+        
+        // Check search term
+        const searchMatch = !searchTerm || 
+          cardTitle.includes(searchTerm) || 
+          cardDesc.includes(searchTerm);
+        
+        // Show/hide card based on filters
+        if (topicMatch && mediaMatch && searchMatch) {
+          card.style.display = 'block';
+          // Trigger reflow for animation
+          void card.offsetWidth;
+          card.classList.add('fade-in');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    // Add event listeners
+    if (topicFilter) topicFilter.addEventListener('change', filterResources);
+    if (mediaFilter) mediaFilter.addEventListener('change', filterResources);
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') filterResources();
+      });
+    }
+    if (searchButton) {
+      searchButton.addEventListener('click', filterResources);
+    }
+  });
+  </script>
+
+
+      <script>
+        function toggleSection(button) {
+          const grid = button.previousElementSibling;
+          const hiddenCards = grid.querySelectorAll('.hidden-card');
+          const isExpanded = hiddenCards[0].style.display === 'flex';
+
+          hiddenCards.forEach(card => {
+            card.style.display = isExpanded ? 'none' : 'flex';
+          });
+
+          button.textContent = isExpanded ? 'See More' : 'See Less';
+        }
+      </script>
+
+
+
+        <script>
+        // Show Member Benefits Modal
+        document.querySelectorAll('.member-benefits-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            document.getElementById('memberBenefitsModal').style.display = 'flex';
+          });
+        });
+
+        // Show Free Trial Modal
+        document.querySelectorAll('.free-trial-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            document.getElementById('freeTrialModal').style.display = 'flex';
+          });
+        });
+
+        // Close modals (when clicking close buttons)
+        document.querySelectorAll('.close-modal').forEach(button => {
+          button.addEventListener('click', (e) => {
+            const modalId = e.target.dataset.modal;
+            document.getElementById(modalId).style.display = 'none';
+          });
+        });
+
+        // Optional: close modals if clicking outside content
+        window.addEventListener('click', (e) => {
+          document.querySelectorAll('.modal-overlay').forEach(modal => {
+            if (e.target === modal) {
+              modal.style.display = 'none';
+            }
+          });
+        });
+      </script>
+
+</body>
