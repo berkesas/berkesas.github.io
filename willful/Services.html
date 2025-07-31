@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Services - Willful Change</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
@@ -606,7 +608,7 @@
         background: #b28e2f;
         color: #fff;
         outline: none;
-        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.75);
     }
     .social-links svg {
         width: 22px;
@@ -662,7 +664,6 @@
             align-items: center;
             justify-content: center;
             background-color: #fff;
-            border: 2px solid #b28e2f;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -903,27 +904,32 @@
     }
  
 
-    .toTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #cfae3c;
-      color: #002E4D;
-      font-size: 1.4rem;
-      padding: 0.6rem 1rem;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
-      text-align: center;
-      z-index: 999;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
+        .toTop {
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+        }
 
-    .toTop:hover {
-      background: #b28e2f;
-      transform: translateY(-3px);
-    }
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
 
     /* CTA Section Styles */
     .cta-section {
@@ -1056,9 +1062,7 @@
 </head>
 <body>
 
-    <header class="main-header">
-
-  <nav>
+    <nav>
         <div class="background-overlay"></div>
         <div class="logo-circle">
             <img src="Logo.png" alt="Willful Change Logo">
@@ -1066,38 +1070,38 @@
         <h1 class="company-name">Willful Change</h1>
 
         <div class="nav-links">
-            <a href="FinalHomePage.html" style="color: white; text-decoration: none;">Home</a>
+            <a href="Home.html" style="color: white; text-decoration: none;">Home</a>
             
             <div class="nav-item">
-                <button>About ▾</button>
+                <button onclick="window.location.href='About.html'">About ▾</button>
                 <div class="dropdown">
-                    <a href="FinalAboutPage.html#our_company">Our Company</a>
-                    <a href="FinalAboutPage.html#our_story">Our Story</a>
-                    <a href="FinalAboutPage.html#our_mission">Mission</a>
-                    <a href="FinalAboutPage.html#">Vision</a>
+                    <a href="About.html#Company-Story">Company Bio</a>
+                    <a href="About.html#Our-Founder_Story">Founder & Ceo</a>
+                    <a href="About.html#Our-Mission">Our Mission</a>
+                    <a href="About.html#Our-Approach ">Our Approach</a>
                 </div>
             </div>
 
             <div class="nav-item">
-                <button>Services ▾</button>
+                <button onclick="window.location.href='Services.html'">Services ▾</button>
                 <div class="dropdown">
                     <a href="Services.html#keynote-title">Keynote</a>
                     <a href="Services.html#training-title">Training</a>
-                    <a href="Services.html#coaching-title">Coaching</a>
+                    <a href="Coaching.html">Coaching</a>
                     <a href="Services.html#more-title">More Services</a>
                 </div>
             </div>
 
             <div class="nav-item">
-                <button>More ▾</button>
+                <button onclick="window.location.href='Explore.html'">Explore ▾</button>
                 <div class="dropdown">
-                    <a href="Final_More.html#testimonials">Testimonials</a>
-                    <a href="Final_More.html#join-us">Join Us</a>
-                    <a href="ResourceLibrary.html#">Resource Library</a>
+                    <a href="Explore.html#Testimonials">Testimonials</a>
+                    <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="ResourceLibrary.html">Resource Library</a>
                 </div>
             </div>
             
-            <a href="Contacts.html" style="color: white; text-decoration: none;">Contact</a>
+            <a href="Contact.html" style="color: white; text-decoration: none;">Contact</a>
         </div>
 
         <div class="auth-section" id="authSection">
@@ -1117,8 +1121,6 @@
             </div>
         </div>
     </nav>
-</header>
-
   <!-- MODAL -->
   <div class="modal" id="authModal">
     <div class="modal-content">
@@ -1195,7 +1197,7 @@
         </div>
 
         <p class="cta-note">
-          Not sure which option fits you best? <a href="#" class="contact-link">Contact us</a> for a free consultation.
+          Not sure which option fits you best? <a href="https://www.linkedin.com/company/willful-change/about/" class="contact-link">Contact us</a> for a free consultation.
         </p>
       </div>
     </div>
@@ -1494,471 +1496,473 @@
 
 
 
-<footer>
-  <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
+    <footer>
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
 
-  <!-- Top Section -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
 
-      <!-- Useful Links -->
-      <div style="flex: 1; min-width: 200px;">
-      <h3 style="color:#fcfafa; margin-bottom: 1rem;">Useful Links</h3>
-      <ul style="list-style: none; padding: 0; line-height: 1.8;">
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
-      </ul>
-      </div>
-
-      <!-- Services -->
-      <div style="flex: 1; min-width: 200px;">
-      <h3 style="margin-bottom: 1rem;">Services</h3>
-      <ul style="list-style: none; padding: 0; line-height: 1.8;">
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
-          <li><a href="#" style="color:#fcfafa; text-decoration:none;">More srvices</a></li>
-      </ul>
-      </div>
-
-      <!-- Company Info Column (reordered) -->
-      <div style="flex: 1.5; min-width: 250px;">
-      <!-- Social Icons First -->
-      <div class="social-links">
-          <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-          <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
-      <br>
-      <!-- Aspiration Text -->
-      <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
-  <br>
-      <!-- Phone -->
-      <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
-
-      <!-- Copyright -->
-      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
-      &copy; 2025 Willful Change. All rights reserved.
-      </p>
-      </div>
-  </div>
-
-  <!-- Bottom Navigation Row -->
-  <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
-      <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
-      <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
-      <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
-      <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
-      <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
-  </div>
-  </footer>
-
-  <!-- Floating Action Buttons -->
-  <div class="floating-buttons">
-      <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
-      <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
-          <i class="fas fa-comments"></i>
-      </button>
-  </div>
-
-  <!-- Chatbot Widget -->
-  <div class="chatbot-container">
-        <div class="chatbot-header">
-            <div class="chatbot-avatar">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="chatbot-info">
-                <h5>Willful Change Assistant</h5>
-                <p>How can I help you today?</p>
-            </div>
-            <button class="chatbot-close" id="closeChatbot">
-                <i class="fas fa-times"></i>
-            </button>
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
         </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chatbot-message bot">
-                <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
-                <div class="chatbot-time">Just now</div>
-            </div>
+
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
         </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
-            <button id="sendMessage">
-                <i class="fas fa-paper-plane"></i>
-            </button>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
         </div>
     </div>
-    <div class="floating-buttons">
-        <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
-            <i class="fas fa-comment-dots"></i>
-        </button>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
     </div>
 
-    <!-- Chatbot Styles -->
-    <style>
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
 
-        .chatbot-container.active {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .chatbot-header {
-            background: #002E4D;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 12px 12px 0 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
-        .chatbot-avatar {
-            width: 40px;
-            height: 40px;
-            background: #CFAE3C;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .chatbot-info h5 {
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .chatbot-info p {
-            margin: 2px 0 0;
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .chatbot-close:hover {
-            opacity: 1;
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .chatbot-message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            position: relative;
-        }
-
-        .chatbot-message.bot {
-            background: #f1f3f5;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-
-        .chatbot-message.user {
-            background: #002E4D;
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-
-        .chatbot-time {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            margin-top: 5px;
-            text-align: right;
-        }
-
-        .chatbot-input {
-            padding: 15px;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 10px;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        .chatbot-input button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #002E4D;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chatbot-input button:hover {
-            background: #001a2d;
-        }
-
-        .chatbot-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #cfae3c;
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-toggle:hover,
-        .toTop:hover {
-            background: #b28e2f;
-            transform: scale(1.05);
-        }
-
-        .chatbot-toggle.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-        }
-
-        /* Back to Top Button */
-        .floating-buttons {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 999;
-        }
-
-        .chatbot-toggle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #002E4D;
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            opacity: 0.7;
-            visibility: hidden;
-            transform: translateY(10px);
-        }
-
-        .toTop {
-            background: #cfae3c;
-            color: #002E4D;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-
-        .toTop:hover {
-            background: #b28e2f;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-        }
-
-
-        /* Responsive adjustments */
-        @media (max-width: 576px) {
-            .chatbot-container {
-                width: 100%;
-                height: 100%;
-                bottom: 0;
-                right: 0;
-                border-radius: 0;
-            }
-
-            .chatbot-toggle {
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
-
-    <!-- Chatbot Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatbotContainer = document.querySelector('.chatbot-container');
-            const toggleChatbot = document.getElementById('toggleChatbot');
-            const closeChatbot = document.getElementById('closeChatbot');
-            const chatInput = document.getElementById('chatbotInput');
-            const sendButton = document.getElementById('sendMessage');
-            const chatMessages = document.getElementById('chatbotMessages');
-
-            // Toggle chat window
-            toggleChatbot.addEventListener('click', () => {
-                chatbotContainer.classList.toggle('active');
-                toggleChatbot.classList.add('hidden');
-            });
-
-            // Close chat window
-            closeChatbot.addEventListener('click', () => {
-                chatbotContainer.classList.remove('active');
-                setTimeout(() => {
-                    toggleChatbot.classList.remove('hidden');
-                }, 300);
-            });
-
-            // Sample responses
-            const responses = [
-                { 
-                    keywords: ['hello', 'hi', 'hey'],
-                    response: 'Hello! How can I assist you today?'
-                },
-                {
-                    keywords: ['service', 'services', 'offer', 'provides'],
-                    response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
-                },
-                {
-                    keywords: ['contact', 'email', 'phone', 'number'],
-                    response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
-                },
-                {
-                    keywords: ['about', 'who are you', 'company'],
-                    response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
-                },
-                {
-                    keywords: ['thank', 'thanks', 'appreciate'],
-                    response: 'You\'re welcome! Is there anything else I can help you with?'
-                }
-            ];
-
-            // Default response if no keywords match
-            const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
-
-            // Function to add a message to the chat
-            function addMessage(message, isUser = false) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-                
-                const messageContent = document.createElement('p');
-                messageContent.textContent = message;
-                
-                const timeDiv = document.createElement('div');
-                timeDiv.className = 'chatbot-time';
-                timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
-                
-                messageDiv.appendChild(messageContent);
-                messageDiv.appendChild(timeDiv);
-                chatMessages.appendChild(messageDiv);
-                
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            // Function to process user input and generate response
-            function processUserInput(input) {
-                if (!input.trim()) return;
-                
-                // Add user message to chat
-                addMessage(input, true);
-                
-                // Convert input to lowercase for easier matching
-                const lowerInput = input.toLowerCase();
-                let response = defaultResponse;
-                
-                // Check for matching keywords
-                for (const item of responses) {
-                    if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
-                        response = item.response;
-                        break;
-                    }
-                }
-                
-                // Simulate typing delay
-                setTimeout(() => {
-                    addMessage(response);
-                }, 500);
-                
-                // Clear input
-                chatInput.value = '';
-            }
-
-            // Send message on button click
-            sendButton.addEventListener('click', () => {
-                processUserInput(chatInput.value);
-            });
-
-            // Send message on Enter key
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    processUserInput(chatInput.value);
-                }
-            });
-        });
-    </script>
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+          <div class="chatbot-header">
+              <div class="chatbot-avatar">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <div class="chatbot-info">
+                  <h5>Willful Change Assistant</h5>
+                  <p>How can I help you today?</p>
+              </div>
+              <button class="chatbot-close" id="closeChatbot">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <div class="chatbot-message bot">
+                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <div class="chatbot-time">Just now</div>
+              </div>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
+              <button id="sendMessage">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+      <div class="floating-buttons">
+          <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+          <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
+              <i class="fas fa-comment-dots"></i>
+          </button>
+      </div>
+  
+      <!-- Chatbot Styles -->
+      <style>
+          /* Chatbot Styles */
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              z-index: 1000;
+              transform: translateY(100px);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-container.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+  
+          .chatbot-header {
+              background: #002E4D;
+              color: white;
+              padding: 15px 20px;
+              border-radius: 12px 12px 0 0;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              position: relative;
+          }
+  
+          .chatbot-avatar {
+              width: 40px;
+              height: 40px;
+              background: #cfae3c;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+              color: #002E4D;  /* Dark blue color for the icon */
+          }
+          
+          .chatbot-avatar i {
+              font-size: 1.5rem;  /* Slightly larger icon */
+          }
+  
+          .chatbot-info h5 {
+              margin: 0;
+              font-size: 1rem;
+              font-weight: 600;
+          }
+  
+          .chatbot-info p {
+              margin: 2px 0 0;
+              font-size: 0.8rem;
+              opacity: 0.9;
+          }
+  
+          .chatbot-close {
+              background: none;
+              border: none;
+              color: white;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              opacity: 0.8;
+              transition: opacity 0.2s;
+          }
+  
+          .chatbot-close:hover {
+              opacity: 1;
+          }
+  
+          .chatbot-messages {
+              flex: 1;
+              padding: 15px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          .chatbot-message {
+              max-width: 80%;
+              padding: 10px 15px;
+              border-radius: 15px;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              position: relative;
+          }
+  
+          .chatbot-message.bot {
+              background: #f1f3f5;
+              color: #000000;  /* Set text color to black */
+              align-self: flex-start;
+              border-bottom-left-radius: 5px;
+          }
+  
+          .chatbot-message.user {
+              background: #002E4D;
+              color: white;
+              align-self: flex-end;
+              border-bottom-right-radius: 5px;
+          }
+  
+          .chatbot-time {
+              font-size: 0.7rem;
+              opacity: 0.7;
+              margin-top: 5px;
+              text-align: right;
+          }
+  
+          .chatbot-input {
+              padding: 15px;
+              border-top: 1px solid #eee;
+              display: flex;
+              gap: 10px;
+          }
+  
+          .chatbot-input input {
+              flex: 1;
+              padding: 10px 15px;
+              border: 1px solid #ddd;
+              border-radius: 20px;
+              outline: none;
+              font-size: 0.9rem;
+          }
+  
+          .chatbot-input button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #002E4D;
+              color: white;
+              border: none;
+              cursor: pointer;
+              transition: background 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+  
+          .chatbot-input button:hover {
+              background: #001a2d;
+          }
+  
+          .chatbot-toggle {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+              transition: all 0.3s ease;
+          }
+  
+          .floating-buttons {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: center;
+              gap: 15px;
+              z-index: 9999;
+          }
+          
+          .chatbot-toggle {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              transition: all 0.3s ease;
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+          }
+          
+          .chatbot-toggle:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
+          }
+  
+          .toTop {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: #002E4D;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              opacity: 0.7;
+              visibility: visible;
+              transform: translateY(0);
+              margin-bottom: 5px;
+          }
+  
+          .toTop.visible {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+          }
+  
+          /* Responsive adjustments */
+          @media (max-width: 576px) {
+              .chatbot-container {
+                  width: 100%;
+                  height: 100%;
+                  bottom: 0;
+                  right: 0;
+                  border-radius: 0;
+              }
+  
+              .chatbot-toggle {
+                  bottom: 20px;
+                  right: 20px;
+              }
+          }
+      </style>
+  
+      <!-- Chatbot Script -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const chatbotContainer = document.querySelector('.chatbot-container');
+              const toggleChatbot = document.getElementById('toggleChatbot');
+              const closeChatbot = document.getElementById('closeChatbot');
+              const chatInput = document.getElementById('chatbotInput');
+              const sendButton = document.getElementById('sendMessage');
+              const chatMessages = document.getElementById('chatbotMessages');
+  
+              // Toggle chat window
+              toggleChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.toggle('active');
+                  toggleChatbot.classList.add('hidden');
+              });
+  
+              // Close chat window
+              closeChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.remove('active');
+                  setTimeout(() => {
+                      toggleChatbot.classList.remove('hidden');
+                  }, 300);
+              });
+  
+              // Sample responses
+              const responses = [
+                  { 
+                      keywords: ['hello', 'hi', 'hey'],
+                      response: 'Hello! How can I assist you today?'
+                  },
+                  {
+                      keywords: ['service', 'services', 'offer', 'provides'],
+                      response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
+                  },
+                  {
+                      keywords: ['contact', 'email', 'phone', 'number'],
+                      response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
+                  },
+                  {
+                      keywords: ['about', 'who are you', 'company'],
+                      response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
+                  },
+                  {
+                      keywords: ['thank', 'thanks', 'appreciate'],
+                      response: 'You\'re welcome! Is there anything else I can help you with?'
+                  }
+              ];
+  
+              // Default response if no keywords match
+              const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
+  
+              // Function to add a message to the chat
+              function addMessage(message, isUser = false) {
+                  const messageDiv = document.createElement('div');
+                  messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+                  
+                  const messageContent = document.createElement('p');
+                  messageContent.textContent = message;
+                  
+                  const timeDiv = document.createElement('div');
+                  timeDiv.className = 'chatbot-time';
+                  timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
+                  
+                  messageDiv.appendChild(messageContent);
+                  messageDiv.appendChild(timeDiv);
+                  chatMessages.appendChild(messageDiv);
+                  
+                  // Scroll to bottom
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+  
+              // Function to process user input and generate response
+              function processUserInput(input) {
+                  if (!input.trim()) return;
+                  
+                  // Add user message to chat
+                  addMessage(input, true);
+                  
+                  // Convert input to lowercase for easier matching
+                  const lowerInput = input.toLowerCase();
+                  let response = defaultResponse;
+                  
+                  // Check for matching keywords
+                  for (const item of responses) {
+                      if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
+                          response = item.response;
+                          break;
+                      }
+                  }
+                  
+                  // Simulate typing delay
+                  setTimeout(() => {
+                      addMessage(response);
+                  }, 500);
+                  
+                  // Clear input
+                  chatInput.value = '';
+              }
+  
+              // Send message on button click
+              sendButton.addEventListener('click', () => {
+                  processUserInput(chatInput.value);
+              });
+  
+              // Send message on Enter key
+              chatInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      processUserInput(chatInput.value);
+                  }
+              });
+          });
+      </script>
 
 
   <script>

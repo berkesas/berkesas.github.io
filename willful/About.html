@@ -1,0 +1,2879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Willful Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #1e40af;
+      --secondary-color: #002E4D;
+      --text-color: #2d3748;
+      --light-bg: #f5f7fa;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://www.shutterstock.com/image-illustration/white-gold-marble-texture-background-260nw-2207367891.jpg');
+      color: #ffffff;
+      opacity: 0.9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Container */
+    .container {
+        font-family: 'Playfair Display', serif;
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('Hero.jpg') 
+                    center/cover no-repeat;
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(66, 153, 225, 0.2), transparent);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Image */
+    .hero-image {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 90%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      width: 90%;
+      max-width: 1000px;
+      z-index: 2;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(66, 153, 225, 0.05), transparent);
+      z-index: -1;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 0.8rem auto;
+      border-radius: 2px;
+    }
+
+    /* Two Column Layout */
+    .two-column {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .two-column img {
+      width: 100%;
+      max-width: 500px;
+      max-height: 550px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+    }
+
+    .two-column > div:last-child {
+        flex: 1;
+        max-width: 40%;
+        position: relative;
+        overflow: hidden;  /* Changed from auto to hidden */
+        max-height: 80vh;
+        display: flex;
+        padding: 0;  /* Remove any padding */
+        margin: 0;   /* Remove any margin */
+    }
+    
+    .two-column iframe {
+        width: 100%;
+        height: 100%;  /* Changed from min-height to height */
+        min-height: 400px;
+        border-radius: 14px;
+        box-shadow: var(--shadow-md);
+        border: none;
+        object-fit: cover;  /* Ensures video fills the space */
+        margin: 0;  /* Remove any margin */
+    }
+
+
+    .text {
+      flex: 1;
+      max-width: 550px;
+      position: relative;
+    }
+
+    .text p {
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    /* Approach Section */
+    .approach ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .approach li {
+      padding: 1.5rem;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .approach li:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .approach li i {
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .approach li strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--text-color);
+    }
+
+    /* Team Section */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-member::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(66, 153, 225, 0.1), transparent);
+      z-index: 1;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .team-member h3 {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-bottom: 0.4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .team-member p {
+      color: #64748b;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Quote Section */
+    .quote {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 14px;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .quote::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary-color);
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.1;
+    }
+
+    .quote p {
+      font-size: 1.4rem;
+      color: #475569;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 14px;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    }
+
+    .cta h2 {
+      color: #1e40af;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta p {
+      color: rgba(33, 32, 32, 0.8);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta button {
+      background: #cfae3c;
+      color: #fbfaf9;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta button:hover {
+      background: #b28e2f;
+      color: #fbfaf9;
+      transform: translateY(-2px);
+    }
+
+    .cta input[type="email"] {
+      padding: 0.8rem 1.2rem;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.95rem;
+      margin: 1.2rem 0;
+      background: #7d919f;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      header h1 {
+        font-size: 3rem;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      .two-column {
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .team {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      .two-column {
+        gap: 2rem;
+      }
+
+      .team {
+        grid-template-columns: 1fr;
+      }
+
+      .team-member {
+        padding: 1.5rem;
+      }
+
+      .quote {
+        padding: 3rem 2rem;
+      }
+
+      .cta {
+        padding: 3rem 2rem;
+      }
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    /* Footer */
+
+
+    .footer a {
+      color: rgb(251, 250, 250);
+      margin: 0 3px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: left;
+      padding: 1rem 0;
+      background: #002E4D;
+      color: rgb(251, 250, 250);
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.5rem;
+      color: rgb(251, 250, 250)
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfae3c;
+      color: #002E4D;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        background: #b28e2f;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+    }
+    .social-links svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+
+
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #002E4D;
+            border-bottom: 1px solid #002E4D;
+            color: #f8f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #cfae3c;
+            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            flex-grow: 1;
+            margin: 0 2rem 0 auto;
+            padding-right: 1rem;
+            justify-content: flex-end;
+        }
+
+        .nav-item {
+            position: relative;
+            color: #fbf7f7;
+        }
+
+        .nav-item > button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            font: inherit;
+            color: #fbf9f9;
+            font-size: 1rem;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .auth-button {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .auth-button:hover {
+            background: #b28e2f;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            gap: 1.5rm;
+            border: 2px solid #b28e2f;
+            border-radius: 50%;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            min-width: 160px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            z-index: 1001;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .profile-dropdown a:hover {
+            background: #f3f3f3;
+        }
+
+
+        /* Back to Top Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .chatbot-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #002E4D;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            visibility: hidden;
+            transform: translateY(10px);
+        }
+
+        .toTop {
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .modal-content {
+            background: #fbfafa;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 350px;
+            position: relative;
+            max-width: 90%;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabs button {
+            flex: 1;
+            background: #eee;
+            border: none;
+            padding: 0.7rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tabs button.active {
+            background: #cfae3c;
+            color: #fff;
+        }
+
+        .tabs button:not(.active):hover {
+            background: #e0e0e0;
+        }
+
+        .modal-form {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-form input[type="text"],
+        .modal-form input[type="password"],
+        .modal-form input[type="email"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .modal-form button[type="submit"],
+        .modal-form button[type="button"] {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .modal-form button:hover {
+            background: #b28e2f;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #555;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1rem;
+                margin-left: 1rem;
+            }
+            
+            .company-name {
+                font-size: 1.3rem;
+            }
+            
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 0.8rem 1rem;
+            }
+            
+            .nav-links {
+                order: 3;
+                width: 100%;
+                margin: 1rem 0 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .auth-section {
+                margin-left: auto;
+            }
+        }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+
+
+
+
+  </style>
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="background-overlay"></div>
+        <div class="logo-circle">
+            <img src="Logo.png" alt="Willful Change Logo">
+        </div>
+        <h1 class="company-name">Willful Change</h1>
+
+        <div class="nav-links">
+            <a href="Home.html" style="color: white; text-decoration: none;">Home</a>
+            
+            <div class="nav-item">
+                <button onclick="window.location.href='About.html'">About ▾</button>
+                <div class="dropdown">
+                    <a href="About.html#Company-Story">Company Bio</a>
+                    <a href="About.html#Our-Founder_Story">Founder & Ceo</a>
+                    <a href="About.html#Our-Mission">Our Mission</a>
+                    <a href="About.html#Our-Approach ">Our Approach</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Services.html'">Services ▾</button>
+                <div class="dropdown">
+                    <a href="Services.html#keynote-title">Keynote</a>
+                    <a href="Services.html#training-title">Training</a>
+                    <a href="Coaching.html">Coaching</a>
+                    <a href="Services.html#more-title">More Services</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Explore.html'">Explore ▾</button>
+                <div class="dropdown">
+                    <a href="Explore.html#Testimonials">Testimonials</a>
+                    <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="ResourceLibrary.html">Resource Library</a>
+                </div>
+            </div>
+            
+            <a href="Contact.html" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+
+        <div class="auth-section" id="authSection">
+            <button class="auth-button" onclick="openModal()">Login / Sign Up</button>
+        </div>
+
+        <div class="auth-section" id="userSection" style="display:none;">
+            <div class="icon" onclick="alert('You have 3 new notifications')">🔔<span class="notification-dot"></span></div>
+            <div class="profile-container">
+                <div class="icon" onclick="toggleProfileDropdown()">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeModal()">×</div>
+            <h3 id="formTitle">Login</h3>
+            <div class="tabs">
+                <button class="active" onclick="switchTab('login')">Login</button>
+                <button onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <form class="modal-form" id="loginForm" style="display: flex;">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="button" onclick="login()">Login</button>
+                <a href="#">Forgot password?</a>
+            </form>
+
+            <form class="modal-form" id="signupForm">
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <label class="checkbox-label">
+                    <input type="checkbox" required>
+                    <span>I agree to the terms and conditions</span>
+                </label>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+  <header>
+    <div class="hero-image">
+      <div class="hero-content">
+        <h1>Intentional Transformation, Built on Human Will</h1>
+        <p class="lead">Willful Change partners with leaders and organizations to convert aspiration into disciplined, human‑centered action by aligning purpose, behavior, and sustainable performance.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <br>
+
+
+    <section class="container" id="Company-Story">
+        <div class="two-column">
+        <div class="text">
+                <h2>The Willful Change Way</h2>
+
+                <p>Founded in 2021, Willful Change is an innovative training and development firm renowned for its unique, non-traditional approach to igniting profound introspection among our esteemed clientele. Whether you engage with us during one of our compelling keynote presentations, enroll in our comprehensive training programs, or benefit from our personalized coaching services, our primary objective is to guide you through a transformative three-stage learning journey: Awareness, Training, and Practice.</p>
+                <p>Our core philosophy hinges on the belief that our clients possess untapped reservoirs of potential and that the solutions they require to achieve their aspirations already reside within them. As your collaborative partner, our mission is to incite profound reflection, rigorously assess and stimulate your commitment, and ultimately, galvanize you to take purposeful strides towards realizing your coveted objectives.</p>
+            </div>
+            <!-- Video Column -->
+            <div>
+                <iframe src="WillfulChangeAbout.mp4" title="About Willful Change" frameborder="0" allowfullscreen class="rounded-4 shadow"></iframe>
+            </div>
+        </div>
+    </section>
+
+    
+<br>
+    <section class="container" id="Our-Founder_Story">
+      <h2>Our Founder's Story</h2>
+      <div class="founder-single">
+        <div class="founder-image">
+          <img src="Wilbert Weche.png" 
+               alt="Wilbert Weche, Founder & CEO" 
+               class="fade-in">
+          <p class="founder-title"><strong>Wilbert Weche</strong><br>Founder & CEO</p>
+        </div>
+        <div class="founder-content">
+          <p>Greetings and thank you for gracing my page. I am Wilbert Weche, often referred to as "Will," and I am honored to be a Certified Speaker, Trainer, and Coach affiliated with the John Maxwell Team. My mission is to serve and add value to every individual I encounter on this transformative journey.</p>
+          <p>Like many entrepreneurs, I too have wrestled with the profound question of purpose during countless sleepless nights. The quest led me to introspect on my interests, strengths, and passions.</p>
+          <p>Armed with these insights, I embarked on a deliberate path to align my professional pursuits with my core values. The culmination of this introspection led to the inception of my own venture—a growth and development company specializing in leadership development, personal growth, and professional excellence.</p>
+          <p>Choosing the name for my company was a meticulous process. "Willful Change" encapsulates not just my moniker but also embodies meaning and substance. Derived from my first name, meaning "willful & smart" or, as some sources indicate, "bright will," the term 'willful' resonated deeply. It signifies being deliberate and intentional, qualities essential for impactful change. Rooted in this philosophy, I am dedicated to providing a distinctive sense of value to my clients, guiding them through a transformative journey where they learn not just from success but, crucially, from failure.</p>
+        </div>
+      </div>
+    </section>
+    <style>
+      .founder-single {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+      }
+      .founder-image {
+        flex: 0 0 500px;
+        text-align: center;
+      }
+      .founder-image img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 14px;
+        margin-bottom: 1rem;
+      }
+      .founder-title {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin: 0.5rem 0 0;
+        color: #002E4D;
+      }
+      .founder-content {
+        flex: 1;
+        text-align: left;
+        line-height: 1.7;
+      }
+      .founder-content p {
+        margin-bottom: 1.5rem;
+      }
+      @media (max-width: 768px) {
+        .founder-single {
+          flex-direction: column;
+          align-items: center;
+        }
+        .founder-image {
+          flex: 0 0 auto;
+          margin-bottom: 1.5rem;
+        }
+      }
+    </style>
+<br>
+<br>
+    <section class="container" id="Our-Mission">
+    <h2>Our Mission</h2>
+    <div class="two-column">
+        <div class="text">
+        <p>
+            Our mission is to deliver a non-conventional approach to training, coaching, and development that sparks reflection, cultivates courage, and drives meaningful action. We don’t just inform; we disrupt comfort zones to ignite intentional transformation.
+        </p>
+        <br>
+        <p>
+            At the heart of our philosophy is <strong>Willful Change</strong>: the conscious choice to grow, even when it’s difficult. We believe real development comes not through easy wins, but through setbacks that shape resilience and reveal character.
+        </p>
+        <br>
+        <p>
+            Every program we design is a catalyst for self-discovery, challenging our clients to embrace discomfort, learn through failure, and evolve into leaders who move with purpose, clarity, and authenticity.
+        </p>
+        </div>
+        <img 
+        src="Mission.jpg" 
+        alt="Mission illustration - Business team collaborating" 
+        class="fade-in">
+    </div>
+    </section>
+<br>
+<br>
+    <section id="Our-Approach">
+      <h2 style="font-family: 'Playfair Display', serif;">Our Approach</h2>
+      
+      <div class="approach-content">
+        <div class="approach-image">
+            <img src="OurApproach.jpg" 
+                 alt="Team collaborating on strategy"
+                 class="approach-side-image">
+        </div>
+        <div class="approach-text">
+          <div class="approach-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3><i class="fas fa-seedling"></i> Awareness</h3>
+              <p>We help individuals and teams gain clarity by uncovering hidden patterns and</p>
+              <p>unconscious behaviors that may be holding them back.</p>
+              <ul>
+                <li>Deep personal and organizational introspection</li>
+                <li>Recognition of blind spots and patterns</li>
+                <li>Foundation for sustainable transformation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="approach-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3><i class="fas fa-handshake"></i> Training</h3>
+              <p>Our customized training programs deliver practical skills and strategies that can</p>
+              <p>be immediately applied to real-world challenges.</p>
+              <ul>
+                <li>Structured, experiential learning</li>
+                <li>Practical tools and frameworks</li>
+                <li>Alignment with organizational objectives</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="approach-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3><i class="fas fa-recycle"></i> Practice</h3>
+              <p>Sustainable change requires consistent application. We provide the support</p>
+              <p>and accountability needed to turn insights into action.</p>
+              <ul>
+                <li>Deliberate application of new skills</li>
+                <li>Ongoing support and feedback</li>
+                <li>Measurement of progress and impact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      /* Main Content Layout */
+      .approach-content {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      
+      .approach-text {
+        flex: 1;
+        min-width: 0; /* Prevents flex items from overflowing */
+      }
+      
+      .approach-image {
+        flex: 0 0 38%;
+        position: relative;
+        top: 1rem;
+        height: 75vh; /* Full viewport height */
+        min-height: 500px;
+        max-height: 700px;
+        display: flex;
+        overflow: hidden;
+      }
+      
+      .approach-side-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top; /* Focus on the top of the image */
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      
+      .approach-side-image:hover {
+        transform: scale(1.02);
+      }
+      
+      /* Steps Styling */
+      .approach-step {
+        display: flex;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      
+      .step-number {
+        flex: 0 0 42px;
+        height: 42px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-right: 1.25rem;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 3px 12px rgba(30, 64, 175, 0.15);
+      }
+      
+      .step-content {
+        flex: 1;
+        background: transparent;
+        padding: 0.5rem 0 0.5rem 0.5rem;
+        border-left: none;
+        box-shadow: none;
+      }
+      
+      .step-content h3 {
+        color: var(--primary-color);
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .step-content h3 i {
+        color: var(--secondary-color);
+        font-size: 1em;
+      }
+      
+      .step-content p {
+        color: #4a5568;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.5;
+        font-size: 0.9rem;
+      }
+      
+      .step-content ul {
+        list-style: none;
+        padding: 0 0 0 0.25rem;
+        margin: 0.4rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      
+      .step-content li {
+        position: relative;
+        padding-left: 1.1rem;
+        color: #4a5568;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      
+      .step-content li:before {
+        content: "•";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0.25rem;
+      }
+      
+      /* Connector line between steps */
+      .approach-step:not(:last-child):after {
+        content: '';
+        position: absolute;
+        left: 25px;
+        top: 50px;
+        bottom: -2rem;
+        width: 2px;
+        background: #e2e8f0;
+        z-index: 0;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .approach-content {
+          flex-direction: column;
+          gap: 2rem;
+        }
+        
+        .approach-image {
+          order: -1;
+          width: 100%;
+          max-width: 500px;
+          margin: 0 auto;
+          position: static;
+        }
+        
+        .approach-step {
+          margin-bottom: 1.5rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .approach-step {
+          flex-direction: column;
+        }
+        
+        .step-number {
+          margin: 0 0 0.75rem 0;
+          align-self: flex-start;
+        }
+        
+        .step-content {
+          padding: 1.25rem;
+        }
+        
+        .approach-step:not(:last-child):after {
+          left: 25px;
+          top: 50px;
+          bottom: -1.5rem;
+        }
+      }
+    </style>
+<br>
+<br>
+    <section class="container">
+      <h2 style="font-family: 'Playfair Display', serif;">Our People</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" 
+               alt="Sarah Johnson - Professional woman" 
+               class="fade-in">
+            <h3>Maria Zhang</h3>
+            <p>Innovation Partner</p>
+            <p>“People, not plans, drive change.”</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" 
+               alt="Michael Chen - Professional man" 
+               class="fade-in">
+            <h3>Jordan Lee</h3>
+            <p>Behavioral Coach</p>
+            <p>“Curiosity drives everything I do.”</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" 
+               alt="Emily Rodriguez - Professional woman" 
+               class="fade-in">
+            <h3>Alex Smith</h3>
+            <p>Transformation Strategist</p>
+            <p>“I believe change starts with awareness.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="container">
+        <p style="color: #002E4D;">"You have the power to be the change you wish to see.</p>
+        <p style="color: #002E4D;">Start with purpose, lead with courage, and trust the journey."</p>
+      </div>
+    </section>
+
+
+   <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h1 class="cta-title" style="font-family: 'Playfair Display', serif;">Unlock Your <span class="highlight">Full Potential</span> Today</h1>
+                <p class="cta-subtext">Join 500+ successful businesses who've transformed their operations with our expert guidance. Schedule your free, no-obligation consultation now.</p>
+                
+                <div class="cta-actions">
+                    <button class="cta-button primary pulse" onclick="toggleFormPopup('popupForm')">
+                        <span class="button-icon">📅</span>
+                        Schedule Your Free Discovery Call
+                    </button>
+                    <button class="cta-button secondary" id="openChatButton">
+                        <span class="button-icon">💬</span>
+                        Chat With Our Team
+                    </button>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="trust-item">
+                        <span class="trust-icon">⭐</span>
+                        <span>4.9/5 from 200+ reviews</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">🏆</span>
+                        <span>Industry Experts</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-image">
+                <img src="FreeCall.jpg" alt="Professional team meeting" class="cta-img">
+            </div>
+            <div class="testimonial-card">
+                    <div class="testimonial-content">"Working with this team transformed our business. 10/10 would recommend!"</div>
+                    <div class="testimonial-author">— Sarah K., CEO at TechCorp</div>
+            </div>
+        </div>
+<style>
+        /* CTA Section */
+        .cta-section {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            margin: 80px auto;
+            border: 1px solid rgba(203, 213, 225, 0.3);
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        }
+        
+        .cta-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .cta-image {
+                display: none;
+            }
+        }
+        
+        .cta-content {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+
+        
+        .cta-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin: 1rem 0 1.5rem;
+            color: #1e293b;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, #1e293b, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 90%;
+        }
+        
+        .cta-title .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cta-subtext {
+            font-size: 1.2rem;
+            color: #475569;
+            margin: 0 0 2.5rem;
+            line-height: 1.7;
+            max-width: 90%;
+        }
+        
+        /* CTA Buttons */
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+        
+        @media (max-width: 480px) {
+            .cta-actions {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #cfae3c;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        .cta-button.primary {
+            background: #cfae3c;
+            color: white;
+            box-shadow: 0 4px 14px -2px rgba(37, 99, 235, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button.primary:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px -5px rgba(37, 99, 235, 0.5);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: #3b82f6;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #f8fafc;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .cta-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            min-height: 600px;
+            max-height: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+        
+        .cta-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-image img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease 0.3s forwards;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+        
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .trust-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Modal Styles */
+        .modal-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+        
+        .modal-popup.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-popup.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+        
+        .modal-body {
+            padding: 2.5rem;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--text);
+        }
+        
+        /* Form Styles */
+        .form-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.75rem;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 2.75rem 0.9rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .input-wrapper .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+        
+        .select-wrapper {
+            position: relative;
+        }
+        
+        .select-wrapper::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+        
+        .form-group input::placeholder {
+            color: #94a3b8;
+            opacity: 0.8;
+        }
+        
+        .form-group select:required:invalid {
+            color: #94a3b8;
+        }
+        
+        .form-group select option {
+            color: #1e293b;
+        }
+        
+        .form-group select option[value=""][disabled] {
+            display: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #475569;
+        }
+        
+        .required {
+            color: #ef4444;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .submit-button:hover::before {
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px -1px rgba(59, 130, 246, 0.2);
+        }
+        
+        .submit-button span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .submit-button .button-arrow {
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-button:hover .button-arrow {
+            transform: translateX(3px);
+        }
+        
+        /* Confirmation Message */
+        .confirmation-message {
+            background: #f0fdf4;
+            border: 1px solid #b6e8c9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            color: #065f46;
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .cta-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .cta-content {
+                padding: 2.5rem 2rem;
+            }
+            
+            .cta-image {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .cta-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-subtext {
+                font-size: 1rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cta-title {
+                font-size: 1.75rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    </section>
+
+    <!-- Discovery Call Popup -->
+    <div id="popupForm" class="modal-popup">
+        <div class="modal-content">
+            <div>
+                <h3>Schedule Your Free Discovery Call</h3>
+                <button onclick="toggleFormPopup('popupForm')" class="close-btn" aria-label="Close modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="formContent">
+                    <form id="discoveryForm" class="form-layout">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </span>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </span>
+                                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+            <label for="time">Preferred Time <span class="required">*</span></label>
+            <div class="select-wrapper">
+                <select id="time" name="time" required>
+                    <option value="" disabled selected>Select best time</option>
+                    <option value="morning">Morning (9am - 12pm)</option>
+                    <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                    <option value="evening">Evening (4pm - 7pm)</option>
+                </select>
+            </div>
+        </div>
+                        
+                        <div class="form-group" style="margin-top: -0.5rem; margin-bottom: 0.5rem;">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                <label for="newsletter">Sign me up for monthly insights and inspiration</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span class="button-text">Schedule My Call</span>
+                            <span class="button-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="confirmationMessage" class="confirmation-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle modal function
+        function toggleFormPopup(id) {
+            const popup = document.getElementById(id);
+            const body = document.body;
+            
+            if (popup.classList.contains('active')) {
+                popup.classList.remove('active');
+                body.style.overflow = 'auto';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 300);
+            } else {
+                popup.style.display = 'flex';
+                body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    popup.classList.add('active');
+                }, 10);
+            }
+        }
+        
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('discoveryForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const time = document.getElementById('time').value;
+                    const subscribed = document.getElementById('newsletter').checked;
+                    
+                    // Format time for display
+                    const timeDisplay = document.querySelector(`#time option[value="${time}"]`).textContent;
+                    
+                    // Create confirmation message
+                    const confirmationMessage = `
+                        <div style="text-align: center; padding: 1rem 0;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">✓</div>
+                            <p style="margin-bottom: 1rem; line-height: 1.6;">
+                                We've received your contact info: <strong>${email}</strong><br>
+                                and our team will contact you in the <strong>${timeDisplay}</strong> within 24–48 hours.
+                            </p>
+                            ${subscribed ? '<p style="color: #059669; font-size: 0.9rem; margin-top: 0.5rem;">✓ Subscribed to monthly insights</p>' : ''}
+                        </div>
+                    `;
+                    
+                    // Hide form and show confirmation
+                    document.getElementById('formContent').style.display = 'none';
+                    const confirmationBox = document.getElementById('confirmationMessage');
+                    confirmationBox.innerHTML = confirmationMessage;
+                    confirmationBox.style.display = 'block';
+                    
+                    // In a real application, you would send the form data to your server here
+                    console.log('Form submitted:', { name, email, phone, time, subscribed });
+                    
+                    // Reset form after submission
+                    setTimeout(() => {
+                        form.reset();
+                    }, 1000);
+                });
+            }
+            
+            // Close modal when clicking outside content
+            const modals = document.querySelectorAll('.modal-popup');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        toggleFormPopup(modal.id);
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModal = document.querySelector('.modal-popup.active');
+                    if (activeModal) {
+                        toggleFormPopup(activeModal.id);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+  </main>
+
+    <footer>
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
+
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
+        </div>
+
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
+        </div>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+    </div>
+
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+          <div class="chatbot-header">
+              <div class="chatbot-avatar">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <div class="chatbot-info">
+                  <h5>Willful Change Assistant</h5>
+                  <p>How can I help you today?</p>
+              </div>
+              <button class="chatbot-close" id="closeChatbot">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <div class="chatbot-message bot">
+                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <div class="chatbot-time">Just now</div>
+              </div>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
+              <button id="sendMessage">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+      <div class="floating-buttons">
+          <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+          <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
+              <i class="fas fa-comment-dots"></i>
+          </button>
+      </div>
+  
+      <!-- Chatbot Styles -->
+      <style>
+          /* Chatbot Styles */
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              z-index: 1000;
+              transform: translateY(100px);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-container.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+  
+          .chatbot-header {
+              background: #002E4D;
+              color: white;
+              padding: 15px 20px;
+              border-radius: 12px 12px 0 0;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              position: relative;
+          }
+  
+          .chatbot-avatar {
+              width: 40px;
+              height: 40px;
+              background: #CFAE3C;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+          }
+  
+          .chatbot-info h5 {
+              margin: 0;
+              font-size: 1rem;
+              font-weight: 600;
+          }
+  
+          .chatbot-info p {
+              margin: 2px 0 0;
+              font-size: 0.8rem;
+              opacity: 0.9;
+          }
+  
+          .chatbot-close {
+              background: none;
+              border: none;
+              color: white;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              opacity: 0.8;
+              transition: opacity 0.2s;
+          }
+  
+          .chatbot-close:hover {
+              opacity: 1;
+          }
+  
+          .chatbot-messages {
+              flex: 1;
+              padding: 15px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          .chatbot-message {
+              max-width: 80%;
+              padding: 10px 15px;
+              border-radius: 15px;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              position: relative;
+          }
+  
+          .chatbot-message.bot {
+              background: #f1f3f5;
+              align-self: flex-start;
+              border-bottom-left-radius: 5px;
+          }
+  
+          .chatbot-message.user {
+              background: #002E4D;
+              color: white;
+              align-self: flex-end;
+              border-bottom-right-radius: 5px;
+          }
+  
+          .chatbot-time {
+              font-size: 0.7rem;
+              opacity: 0.7;
+              margin-top: 5px;
+              text-align: right;
+          }
+  
+          .chatbot-input {
+              padding: 15px;
+              border-top: 1px solid #eee;
+              display: flex;
+              gap: 10px;
+          }
+  
+          .chatbot-input input {
+              flex: 1;
+              padding: 10px 15px;
+              border: 1px solid #ddd;
+              border-radius: 20px;
+              outline: none;
+              font-size: 0.9rem;
+          }
+  
+          .chatbot-input button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #002E4D;
+              color: white;
+              border: none;
+              cursor: pointer;
+              transition: background 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+  
+          .chatbot-input button:hover {
+              background: #001a2d;
+          }
+  
+          .chatbot-toggle {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+              transition: all 0.3s ease;
+          }
+  
+          .floating-buttons {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: center;
+              gap: 15px;
+              z-index: 9999;
+          }
+          
+          .chatbot-toggle {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              transition: all 0.3s ease;
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+          }
+          
+          .chatbot-toggle:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
+          }
+  
+          .toTop {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: #002E4D;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              opacity: 0.7;
+              visibility: visible;
+              transform: translateY(0);
+              margin-bottom: 5px;
+          }
+  
+          .toTop.visible {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+          }
+  
+          /* Responsive adjustments */
+          @media (max-width: 576px) {
+              .chatbot-container {
+                  width: 100%;
+                  height: 100%;
+                  bottom: 0;
+                  right: 0;
+                  border-radius: 0;
+              }
+  
+              .chatbot-toggle {
+                  bottom: 20px;
+                  right: 20px;
+              }
+          }
+      </style>
+  
+      <!-- Chatbot Script -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const chatbotContainer = document.querySelector('.chatbot-container');
+              const toggleChatbot = document.getElementById('toggleChatbot');
+              const closeChatbot = document.getElementById('closeChatbot');
+              const chatInput = document.getElementById('chatbotInput');
+              const sendButton = document.getElementById('sendMessage');
+              const chatMessages = document.getElementById('chatbotMessages');
+  
+              // Toggle chat window
+              toggleChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.toggle('active');
+                  toggleChatbot.classList.add('hidden');
+              });
+  
+              // Close chat window
+              closeChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.remove('active');
+                  setTimeout(() => {
+                      toggleChatbot.classList.remove('hidden');
+                  }, 300);
+              });
+  
+              // Sample responses
+              const responses = [
+                  { 
+                      keywords: ['hello', 'hi', 'hey'],
+                      response: 'Hello! How can I assist you today?'
+                  },
+                  {
+                      keywords: ['service', 'services', 'offer', 'provides'],
+                      response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
+                  },
+                  {
+                      keywords: ['contact', 'email', 'phone', 'number'],
+                      response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
+                  },
+                  {
+                      keywords: ['about', 'who are you', 'company'],
+                      response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
+                  },
+                  {
+                      keywords: ['thank', 'thanks', 'appreciate'],
+                      response: 'You\'re welcome! Is there anything else I can help you with?'
+                  }
+              ];
+  
+              // Default response if no keywords match
+              const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
+  
+              // Function to add a message to the chat
+              function addMessage(message, isUser = false) {
+                  const messageDiv = document.createElement('div');
+                  messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+                  
+                  const messageContent = document.createElement('p');
+                  messageContent.textContent = message;
+                  
+                  const timeDiv = document.createElement('div');
+                  timeDiv.className = 'chatbot-time';
+                  timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
+                  
+                  messageDiv.appendChild(messageContent);
+                  messageDiv.appendChild(timeDiv);
+                  chatMessages.appendChild(messageDiv);
+                  
+                  // Scroll to bottom
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+  
+              // Function to process user input and generate response
+              function processUserInput(input) {
+                  if (!input.trim()) return;
+                  
+                  // Add user message to chat
+                  addMessage(input, true);
+                  
+                  // Convert input to lowercase for easier matching
+                  const lowerInput = input.toLowerCase();
+                  let response = defaultResponse;
+                  
+                  // Check for matching keywords
+                  for (const item of responses) {
+                      if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
+                          response = item.response;
+                          break;
+                      }
+                  }
+                  
+                  // Simulate typing delay
+                  setTimeout(() => {
+                      addMessage(response);
+                  }, 500);
+                  
+                  // Clear input
+                  chatInput.value = '';
+              }
+  
+              // Send message on button click
+              sendButton.addEventListener('click', () => {
+                  processUserInput(chatInput.value);
+              });
+  
+              // Send message on Enter key
+              chatInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      processUserInput(chatInput.value);
+                  }
+              });
+          });
+      </script>
+  
+
+
+
+
+    <!-- Navigation and Auth Scripts -->
+    <script>
+        // Auth Modal Functions
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            switchTab('login');
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function switchTab(tab) {
+            document.getElementById('loginForm').style.display = (tab === 'login') ? 'flex' : 'none';
+            document.getElementById('signupForm').style.display = (tab === 'signup') ? 'flex' : 'none';
+            document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tabs button')[tab === 'login' ? 0 : 1].classList.add('active');
+            document.getElementById('formTitle').textContent = tab === 'login' ? 'Login' : 'Sign Up';
+        }
+
+        function login() {
+            closeModal();
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('userSection').style.display = 'flex';
+        }
+
+        function logout() {
+            document.getElementById('authSection').style.display = 'flex';
+            document.getElementById('userSection').style.display = 'none';
+            toggleProfileDropdown(true);
+        }
+
+        function toggleProfileDropdown(forceClose = false) {
+            const dropdown = document.getElementById('profileDropdown');
+            if (forceClose) {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-container') && !event.target.closest('.modal-content')) {
+                toggleProfileDropdown(true);
+            }
+        }
+        
+
+            
+            // Smooth scroll to top
+            toTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Show/hide button on scroll
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 400) {
+                    toTopButton.style.opacity = '1';
+                    toTopButton.style.visibility = 'visible';
+                    toTopButton.style.transform = 'translateY(0)';
+                    toggleChatbot.style.opacity = '1';
+                    toggleChatbot.style.visibility = 'visible';
+                    toggleChatbot.style.transform = 'translateY(0)';
+                } else {
+                    toTopButton.style.opacity = '0.7';
+                    toTopButton.style.transform = 'translateY(10px)';
+                    toggleChatbot.style.opacity = '0.7';
+                    toggleChatbot.style.transform = 'translateY(10px)';
+                }
+            });
+
+        // Smooth scroll to top
+        document.getElementById('toTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Initialize AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && document.querySelector(targetId)) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

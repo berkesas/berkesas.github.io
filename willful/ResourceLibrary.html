@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Willful Change | Resource Library</title>
+  <title>Resource Library | Willful Change</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
 
-    /* Navigation Styles */
+        /* Navigation Styles */
         nav {
             position: fixed;
             top: 0;
@@ -34,7 +34,6 @@
             align-items: center;
             justify-content: center;
             background-color: #fff;
-            border: 2px solid #b28e2f;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -291,39 +290,7 @@
             line-height: 1;
         }
 
-        /* Back to Top Button */
-        .toTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #cfae3c;
-            color: #002E4D;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 999;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
 
-        .toTop.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .toTop:hover {
-            background: #b28e2f;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-        }
 
         /* Responsive Adjustments */
         @media (max-width: 992px) {
@@ -362,7 +329,6 @@
                 margin-left: auto;
             }
         }
-
     
 
 
@@ -376,32 +342,37 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-text);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.6;
+          color: var(--dark-text);
         }
 
-    .toTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #cfae3c;
-      color: #002E4D;
-      font-size: 1.4rem;
-      padding: 0.6rem 1rem;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
-      text-align: center;
-      z-index: 999;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
+        .toTop {
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+        }
 
-    .toTop:hover {
-      background: #b28e2f;
-      transform: translateY(-3px);
-    }
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
 
     
     .hero-buttons .button:first-child {
@@ -652,7 +623,77 @@
 
 
 
-      .resource-grid {
+  /* Section Title Styles */
+  .section {
+    margin-bottom: 4rem;
+  }
+  
+  .section-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 3rem 0;
+    padding: 0 1rem 1.5rem;
+    color: #002E4D;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #002E4D, #4a90e2);
+    border-radius: 2px;
+  }
+
+  .section-title i {
+    font-size: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .section-title:hover i {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .free-title i {
+    background-color: #4CAF50; /* Green */
+  }
+
+  .premium-title i {
+    background-color: #FFC107; /* Amber */
+    color: #333;
+  }
+
+  .member-title i {
+    background-color: #9C27B0; /* Purple */
+  }
+
+  .section-title span {
+    position: relative;
+    padding: 0 15px 10px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .resource-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -884,7 +925,6 @@
     }
     
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background-color: var(--light);
@@ -897,7 +937,6 @@
     }
     
     body {
-      font-family:'Playfair Display', serif;;
       margin: 0;
       padding: 2rem;
     }
@@ -909,7 +948,7 @@
     h2 {
       margin-bottom: 1rem;
       font-size: 1.8rem;
-      color: #333;
+      color: #000000;
     }
 
     .resource-grid {
@@ -953,7 +992,7 @@
       display: inline-block;
       margin: 1rem auto 0 auto; /* top margin + auto on left/right = center */
       padding: 0.5rem 1rem;
-      background-color: #007bff;
+      background-color: #cfae3c;
       color: white;
       text-decoration: none;
       border-radius: 4px;
@@ -961,6 +1000,12 @@
       font-size: 0.9rem;
       text-align: center;
     }
+
+    .button:hover {
+      background-color: #b28e2f;
+    }
+
+
     .subscription-badge.premium {
       position: absolute;
       top: 8px;
@@ -1289,7 +1334,7 @@
     }
     
     .cta-box {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: #002E4D;
       padding: 2.5rem;
       text-align: center;
       border-radius: 15px;
@@ -1480,6 +1525,64 @@
       background-color: #f3f4f6;
     }
     
+    /* Footer */
+
+
+    .footer a {
+      color: rgb(251, 250, 250);
+      margin: 0 3px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: left;
+      padding: 1rem 0;
+      background: #002E4D;
+      color: rgb(251, 250, 250);
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.5rem;
+      color: rgb(251, 250, 250)
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfae3c;
+      color: #ffffff;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        background: #b28e2f;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+    }
+    .social-links svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+
+
     /* For the multiple select dropdown */
     .filter-select[multiple] {
       height: auto;
@@ -1727,38 +1830,38 @@
         <h1 class="company-name">Willful Change</h1>
 
         <div class="nav-links">
-            <a href="FinalHomePage.html" style="color: white; text-decoration: none;">Home</a>
+            <a href="Home.html" style="color: white; text-decoration: none;">Home</a>
             
             <div class="nav-item">
-                <button>About ▾</button>
+                <button onclick="window.location.href='About.html'">About ▾</button>
                 <div class="dropdown">
-                    <a href="FinalAboutPage.html#our_company">Our Company</a>
-                    <a href="FinalAboutPage.html#our_story">Our Story</a>
-                    <a href="FinalAboutPage.html#our_mission">Mission</a>
-                    <a href="FinalAboutPage.html#">Vision</a>
+                    <a href="About.html#Company-Story">Company Bio</a>
+                    <a href="About.html#Our-Founder_Story">Founder & Ceo</a>
+                    <a href="About.html#Our-Mission">Our Mission</a>
+                    <a href="About.html#Our-Approach ">Our Approach</a>
                 </div>
             </div>
 
             <div class="nav-item">
-                <button>Services ▾</button>
+                <button onclick="window.location.href='Services.html'">Services ▾</button>
                 <div class="dropdown">
                     <a href="Services.html#keynote-title">Keynote</a>
                     <a href="Services.html#training-title">Training</a>
-                    <a href="Services.html#coaching-title">Coaching</a>
+                    <a href="Coaching.html">Coaching</a>
                     <a href="Services.html#more-title">More Services</a>
                 </div>
             </div>
 
             <div class="nav-item">
-                <button>More ▾</button>
+                <button onclick="window.location.href='Explore.html'">Explore ▾</button>
                 <div class="dropdown">
-                    <a href="Final_More.html#testimonials">Testimonials</a>
-                    <a href="Final_More.html#join-us">Join Us</a>
-                    <a href="ResourceLibrary.html#">Resource Library</a>
+                    <a href="Explore.html#Testimonials">Testimonials</a>
+                    <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="ResourceLibrary.html">Resource Library</a>
                 </div>
             </div>
             
-            <a href="Contacts.html" style="color: white; text-decoration: none;">Contact</a>
+            <a href="Contact.html" style="color: white; text-decoration: none;">Contact</a>
         </div>
 
         <div class="auth-section" id="authSection">
@@ -1819,37 +1922,36 @@
           best practices, and transformational change.
         </p>
         <p>
-          Whether you're just getting started or scaling impact, our resources are designed to meet you where you are—
-          and help you go further.
+          Whether you're just getting started or scaling impact, our resources are designed to meet you where you are, and help you go further.
         </p>
-        <a href="#resources" class="cta-button">Explore the Library</a>
+        <a href="#📂 Free Resources" class="cta-button">Explore the Library</a>
       </div>
     </section>
 
 <br>
 <br>
 
-<!-- Resource Filters -->
-<section class="section">
-  <div class="filters-container">
-    <div class="filters-grid">
-      <!-- Topics Dropdown -->
-      <div class="filter-group">
-        <label for="topic-filter" class="filter-label">
-          <i class="fas fa-tags"></i> Topics
-        </label>
-        <div class="custom-select">
-          <select id="topic-filter" class="filter-select">
-            <option value="">All Topics</option>
-            <option value="keynote">Keynote Speaking</option>
-            <option value="coaching">Coaching</option>
-            <option value="leadership">Leadership</option>
-          </select>
-          <div class="select-arrow">
-            <i class="fas fa-chevron-down"></i>
+  <!-- Resource Filters -->
+  <section class="section">
+    <div class="filters-container">
+      <div class="filters-grid">
+        <!-- Topics Dropdown -->
+        <div class="filter-group">
+          <label for="topic-filter" class="filter-label">
+            <i class="fas fa-tags"></i> Topics
+          </label>
+          <div class="custom-select">
+            <select id="topic-filter" class="filter-select">
+              <option value="">All Topics</option>
+              <option value="keynote">Keynote Speaking</option>
+              <option value="coaching">Coaching</option>
+              <option value="leadership">Leadership</option>
+            </select>
+            <div class="select-arrow">
+              <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- Media Types Dropdown -->
 
@@ -1900,7 +2002,10 @@
 
   <!-- Free Resources Section -->
   <section class="section">
-    <h2>📂 Free Resources</h2>
+    <h2 class="section-title free-title">
+    <i class="fas fa-folder-open"></i>
+    <span>Free Resources</span>
+  </h2>
     <div class="resource-grid">
       <!-- First 3 cards -->
       <div class="resource-card">
@@ -1967,7 +2072,10 @@
 
   <!-- Premium Resources Section -->
   <section class="section">
-    <h2>💼 Premium Resources</h2>
+    <h2 class="section-title premium-title">
+    <i class="fas fa-star"></i>
+    <span>Premium Resources</span>
+  </h2>
     <div class="resource-grid">
       <!-- First 3 cards -->
       <div class="resource-card">
@@ -2041,7 +2149,7 @@
 
         <!-- Main CTA Section -->
         <div class="cta-box">
-          <h2>Join Our Leadership Community</h2>
+          <h2 style="color: white;">Join Our Leadership Community</h2>
           <p>
             Get access to premium resources, exclusive webinars, and a supportive community of high-achieving leaders.
             Start your transformation today with our comprehensive leadership development platform.
@@ -2080,7 +2188,10 @@
 
 
 <section class="section member-resources">
-  <h2 class="section-title">🔒 Member-Only Resources</h2>
+  <h2 class="section-title member-title">
+    <i class="fas fa-users"></i>
+    <span>Member-Only Resources</span>
+  </h2>
 
   <div class="resource-grid" id="member-resources-grid">
     <!-- Card 1 -->
@@ -2142,106 +2253,68 @@
 
 
 
+    <footer>
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
 
-    <!-- Footer -->
-    <footer style="background: #002E4D; color: #fff; padding: 4rem 2rem 2rem; margin-top: 4rem;">
-        <hr style="border: none; border-top: 4px solid #ddd; margin: 0 auto 2rem; width: 90%; max-width: 1200px;">
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
 
-        <!-- Top Section -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
-            <!-- Useful Links -->
-            <div style="flex: 1; min-width: 200px;">
-                <h3 style="color:#fcfafa; margin-bottom: 1rem;">Useful Links</h3>
-                <ul style="list-style: none; padding: 0; line-height: 1.8;">
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Services -->
-            <div style="flex: 1; min-width: 200px;">
-                <h3 style="color:#fcfafa; margin-bottom: 1rem;">Services</h3>
-                <ul style="list-style: none; padding: 0; line-height: 1.8;">
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
-                    <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
-                </ul>
-            </div>
-
-            <!-- Company Info Column -->
-            <div style="flex: 1.5; min-width: 250px;">
-                <!-- Social Icons -->
-                <div class="social-links" style="margin-top: 0;">
-                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-                <br>
-                <!-- Aspiration Text -->
-                <p style="margin: 0 0 0.5rem 0;">Let's grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
-                <br>
-                <!-- Phone -->
-                <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
-
-                <!-- Copyright -->
-                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
-                    &copy; 2025 Willful Change. All rights reserved.
-                </p>
-            </div>
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
         </div>
 
-        <!-- Bottom Navigation Row -->
-        <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
-            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
-            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
-            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
-            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
-            <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
         </div>
-        <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+    </div>
 
 
-        <style>
-            .social-links {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1.5rem;
-            }
-
-            .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #cfae3c;
-            color: #002E4D;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            text-decoration: none;
-            }
-
-            .social-links a:hover,
-            .social-links a:focus {
-                background: #b28e2f;
-                color: #fff;
-                outline: none;
-                box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
-            }
-            .social-links svg {
-                width: 22px;
-                height: 22px;
-                fill: currentColor;
-            }
-        </style>
-    </footer>
-
-
-        <!-- Chatbot Widget -->
-        <div class="chatbot-container">
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
           <div class="chatbot-header">
               <div class="chatbot-avatar">
                   <i class="fas fa-robot"></i>
@@ -2268,6 +2341,7 @@
           </div>
       </div>
       <div class="floating-buttons">
+          <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
           <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
               <i class="fas fa-comment-dots"></i>
           </button>
@@ -2424,8 +2498,8 @@
           }
   
           .chatbot-toggle {
-              width: 40px;
-              height: 40px;
+              width: 50px;
+              height: 50px;
               border-radius: 50%;
               background: #cfae3c;
               color: white;
@@ -2435,20 +2509,8 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 1rem;
+              font-size: 1.2rem;
               transition: all 0.3s ease;
-          }
-  
-          .chatbot-toggle:hover,
-          .toTop:hover {
-              background: #b28e2f;
-              transform: scale(1.05);
-          }
-  
-          .chatbot-toggle.hidden {
-              opacity: 0;
-              visibility: hidden;
-              transform: translateY(20px);
           }
   
           .floating-buttons {
@@ -2459,8 +2521,42 @@
               flex-direction: row-reverse;
               align-items: center;
               gap: 15px;
-              z-index: 999;
-              transform: translateY(-40px);
+              z-index: 9999;
+          }
+          
+          .chatbot-toggle {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              transition: all 0.3s ease;
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+          }
+          
+          .chatbot-toggle:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
           }
   
           .toTop {
@@ -2618,7 +2714,6 @@
               });
           });
       </script>
-  
 
 
 
