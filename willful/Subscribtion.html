@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Now | Willful Change</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: url('https://varunmarbles.b-cdn.net/wp-content/uploads/2024/06/indian-marble-types.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #002E4D;
+            text-shadow: #1f2937 0px 2px 4px;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: rgba(0, 0, 0, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            max-width: 700px;
+        }
+
+        .cta-box h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            background: #cfae3c;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .button:hover {
+            background: #b28e2f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #000000;
+            border: 2px solid #3b82f6;
+            box-shadow: none;
+        }
+
+        .button.secondary:hover {
+            background: #b28e2f;
+            border: 2px solid #f8f8f8;
+            color: white;
+        }
+
+        .button.premium {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .button.premium:hover {
+            background: linear-gradient(135deg, #ea580c, #dc2626);
+        }
+
+        .button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .button.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .button.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        #ctaButtons {
+            display: none;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        #ctaButtons.visible {
+            display: flex;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(-20px);
+            animation: modalSlideUp 0.3s ease-out;
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 2.5rem 2rem 2rem;
+            border-radius: 24px 24px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Form Styles */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: stepFadeIn 0.3s ease-out;
+        }
+
+        @keyframes stepFadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+            background: white;
+            padding: 0 15px;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-circle {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .step.completed .step-circle {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .step.completed .step-label {
+            color: #10b981;
+        }
+
+        /* Billing Toggle */
+        .billing-toggle {
+            display: flex;
+            background: #f8fafc;
+            padding: 0.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .billing-option {
+            flex: 1;
+            padding: 1.25rem;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .billing-option.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .billing-option:not(.active):hover {
+            background: #e2e8f0;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .success-animation {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            animation: successPulse 0.8s ease-out;
+            position: relative;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-animation::after {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 3px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50%;
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .success-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .success-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .confirmation-card {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            border: 2px solid #bbf7d0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .confirmation-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-icon {
+            width: 50px;
+            height: 50px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .countdown-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .countdown-text {
+            font-size: 1.1rem;
+            color: #1e40af;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .benefit-icon.resources { background: linear-gradient(135deg, #10b981, #059669); }
+        .benefit-icon.webinars { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .benefit-icon.templates { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .benefit-icon.support { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .benefit-icon.community { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .benefit-icon.challenges { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .benefit-description {
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Security Notice */
+        .security-notice {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            color: #166534;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .modal {
+                width: 95%;
+                margin: 1rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-steps {
+                margin-bottom: 1.5rem;
+            }
+            
+            .step-label {
+                display: none;
+            }
+            
+            #ctaButtons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <!-- Header -->
+        <div class="header">
+            <h1>Accelerate your leadership journey</h1>
+        </div>
+
+        <!-- Main CTA Section -->
+        <div class="cta-box">
+            <h2>Resource Library</h2>
+            <p>Get access to premium resources, exclusive webinars, and a supportive community of high-achieving leaders. Start your transformation today with our comprehensive leadership development platform.</p>
+            
+            <button id="subscribeBtn" class="button">
+                Subscribe Now
+            </button>
+            
+            <div id="ctaButtons">
+                <button class="button" id="freeTrialBtn">
+                    🎉 Start Your Free Trial
+                </button>
+                <button class="button secondary" id="memberBenefitsBtn">
+                    ✨ View Member Benefits
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Trial Modal -->
+    <div class="modal-overlay" id="freeTrialModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">🎉 Start Your Free Trial</h2>
+                <p id="modalSubtitle">7 days of full access, no commitment required</p>
+                <button class="close-modal" onclick="closeModal('freeTrialModal')">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="freeTrialForm">
+                    <!-- Progress Steps -->
+                    <div class="progress-steps">
+                        <div class="progress-line" id="progressLine" style="width: 0%;"></div>
+                        <div class="step active" data-step="1">
+                            <div class="step-circle">1</div>
+                            <span class="step-label">Account</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-circle">2</div>
+                            <span class="step-label">Billing</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-circle">3</div>
+                            <span class="step-label">Complete</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Account Info -->
+                    <div class="form-step active" id="step-1">
+                        <div class="form-group">
+                            <label for="trialEmail">Email Address *</label>
+                            <input type="email" id="trialEmail" name="email" class="form-control" placeholder="you@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="trialPassword">Create Password *</label>
+                            <input type="password" id="trialPassword" name="password" class="form-control" placeholder="••••••••" required minlength="8">
+                            <small style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem; display: block;">At least 8 characters, including numbers and letters.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-weight: 400; font-size: 0.95rem;">
+                                <input type="checkbox" name="notifications" checked style="width: 18px; height: 18px;"> 
+                                Notify me before my trial ends
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-weight: 400; font-size: 0.95rem;">
+                                <input type="checkbox" name="terms" required style="width: 18px; height: 18px;"> 
+                                I agree to the <a href="#" style="color: #3b82f6; text-decoration: underline;">Terms of Service</a> and <a href="#" style="color: #3b82f6; text-decoration: underline;">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <button type="button" id="nextToBilling" class="button" style="width: 100%; margin-top: 1.5rem;">
+                            Continue to Billing →
+                        </button>
+                    </div>
+
+                    <!-- Step 2: Billing -->
+                    <div class="form-step" id="step-2">
+                        <h3 style="margin-bottom: 1.5rem; color: #1f2937; font-size: 1.5rem;">Choose Your Plan</h3>
+                        
+                        <div class="billing-toggle">
+                            <div class="billing-option active" data-plan="monthly">
+                                <strong style="display: block; font-size: 1.1rem;">Monthly</strong>
+                                <span style="font-size: 1.5rem; font-weight: 700; color: inherit;">$9.99/mo</span>
+                            </div>
+                            <div class="billing-option" data-plan="yearly">
+                                <strong style="display: block; font-size: 1.1rem;">Yearly</strong> 
+                                <span style="background: #10b981; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">SAVE 20%</span>
+                                <br>
+                                <span style="font-size: 1.5rem; font-weight: 700; color: inherit;">$7.99/mo</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="billingCycle" name="billingCycle" value="monthly">
+
+                        <div class="form-group">
+                            <label>Card Number *</label>
+                            <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expiry Date *</label>
+                                <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label>CVC *</label>
+                                <input type="text" id="cvcCode" class="form-control" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cardholder Name *</label>
+                            <input type="text" id="cardholderName" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="security-notice">
+                            🔒 Your payment information is encrypted and secure. We use industry-standard SSL encryption.
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <button type="button" id="backToAccount" class="button secondary" style="flex: 1;">
+                                ← Back
+                            </button>
+                            <button type="submit" id="startTrialButton" class="button" style="flex: 2;">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #6b7280;">
+                            <strong>No charges today.</strong> Your free trial will end on <span id="trialEndDate"></span>
+                        </p>
+                    </div>
+
+                    <!-- Step 3: Success -->
+                    <div class="form-step" id="step-3">
+                        <div class="success-screen">
+                            <div class="success-animation">✓</div>
+                            
+                            <h3 class="success-title">Welcome to Willful Change!</h3>
+                            <p class="success-subtitle">Your 7-day free trial is now active. Get ready to transform your leadership journey!</p>
+
+                            <div class="confirmation-card">
+                                <div class="confirmation-header">
+                                    <div class="confirmation-icon">📧</div>
+                                    <div>
+                                        <h4 style="margin: 0; color: #065f46; font-size: 1.25rem;">Confirmation Sent</h4>
+                                        <p style="margin: 0.25rem 0 0 0; color: #059669; font-size: 0.95rem;">Check your inbox for details</p>
+                                    </div>
+                                </div>
+                                <p style="margin: 0; color: #047857; line-height: 1.6;">
+                                    We've sent a welcome email with your login details and getting started guide to: 
+                                    <strong id="confirmedEmail">your@email.com</strong>
+                                </p>
+                            </div>
+
+                            <div class="countdown-box">
+                                <div class="countdown-text">
+                                    🚀 Redirecting to your dashboard in
+                                </div>
+                                <div class="countdown-number" id="countdown">5</div>
+                                <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
+                                    seconds...
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                <button type="button" class="button" onclick="goToDashboard()">
+                                    🎯 Go to Dashboard Now
+                                </button>
+                                <button type="button" class="button secondary" onclick="closeModal('freeTrialModal')">
+                                    Close
+                                </button>
+                            </div>
+
+                            <p style="font-size: 0.875rem; color: #6b7280; margin-top: 2rem; text-align: center;">
+                                Didn't receive the email? <a href="#" onclick="resendConfirmation()" style="color: #3b82f6; text-decoration: underline;">Resend confirmation</a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member Benefits Modal -->
+    <div class="modal-overlay" id="memberBenefitsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>✨ Member Benefits</h2>
+                <p>Everything you get with your Willful Change membership</p>
+                <button class="close-modal" onclick="closeModal('memberBenefitsModal')">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon resources">📚</div>
+                            <div>
+                                <h3 class="benefit-title">Unlimited Premium Resources</h3>
+                                <p class="benefit-description">Access our complete library of leadership frameworks, templates, and comprehensive guides designed by industry experts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon webinars">🎥</div>
+                            <div>
+                                <h3 class="benefit-title">Exclusive Member Webinars</h3>
+                                <p class="benefit-description">Monthly live sessions with industry experts, thought leaders, and interactive Q&A opportunities with your peers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon templates">📋</div>
+                            <div>
+                                <h3 class="benefit-title">Downloadable Templates</h3>
+                                <p class="benefit-description">Ready-to-use worksheets, planning tools, assessment frameworks, and strategic templates for immediate implementation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon support">🎯</div>
+                            <div>
+                                <h3 class="benefit-title">Priority Email Support</h3>
+                                <p class="benefit-description">Get personalized guidance and answers from our leadership development experts within 24 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon community">👥</div>
+                            <div>
+                                <h3 class="benefit-title">Member Community Access</h3>
+                                <p class="benefit-description">Connect with like-minded leaders in our private online community for networking and peer learning.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-header">
+                            <div class="benefit-icon challenges">🏆</div>
+                            <div>
+                                <h3 class="benefit-title">Monthly Leadership Challenges</h3>
+                                <p class="benefit-description">Structured activities and real-world scenarios to practice and develop your leadership skills progressively.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- CTA Section -->
+                <div style="background: #f8fafc; padding: 2rem; border-radius: 16px; text-align: center; margin-top: 2rem;">
+                    <p style="margin-bottom: 1.5rem; font-size: 1.2rem; color: #4b5563; font-weight: 500;">
+                        Ready to accelerate your leadership journey?
+                    </p>
+                    
+                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin: 1.5rem 0; text-align: center; font-size: 0.875rem; color: #166534;">
+                        ✅ <strong>30-Day Money-Back Guarantee</strong><br>
+                        Not satisfied? Get a full refund, no questions asked.
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <button class="button premium" onclick="startFreeTrialFromBenefits()">
+                            🎉 Start 7-Day Free Trial
+                        </button>
+                        <button class="button" onclick="joinNow()">
+                            💳 Join Now
+                        </button>
+                    </div>
+
+                    <p style="margin-top: 1.5rem; font-size: 0.875rem; color: #6b7280;">
+                        Join over <strong>2,847 leaders</strong> who are already transforming their careers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentStep = 1;
+        let countdownTimer;
+        let formData = {};
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Willful Change system initialized');
+            setupEventListeners();
+            updateTrialEndDate();
+        });
+
+        function setupEventListeners() {
+            // Main CTA flow
+            const subscribeBtn = document.getElementById('subscribeBtn');
+            const ctaButtons = document.getElementById('ctaButtons');
+            
+            subscribeBtn?.addEventListener('click', function() {
+                console.log('📝 Subscribe button clicked');
+                this.style.display = 'none';
+                ctaButtons.classList.add('visible');
+            });
+
+            // Free trial modal
+            const freeTrialBtn = document.getElementById('freeTrialBtn');
+            freeTrialBtn?.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('🎉 Opening free trial modal');
+                openModal('freeTrialModal');
+            });
+
+            // Member benefits modal
+            const memberBenefitsBtn = document.getElementById('memberBenefitsBtn');
+            memberBenefitsBtn?.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('✨ Opening member benefits modal');
+                openModal('memberBenefitsModal');
+            });
+
+            // Form navigation
+            document.getElementById('nextToBilling')?.addEventListener('click', handleNextToBilling);
+            document.getElementById('backToAccount')?.addEventListener('click', () => goToStep(1));
+
+            // Form submission
+            document.getElementById('freeTrialForm')?.addEventListener('submit', handleFormSubmission);
+
+            // Billing plan selection
+            document.querySelectorAll('.billing-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.billing-option').forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('billingCycle').value = this.dataset.plan;
+                    console.log('💳 Plan selected:', this.dataset.plan);
+                });
+            });
+
+            // Input formatting
+            setupInputFormatting();
+
+            // Modal close handlers
+            setupModalHandlers();
+
+            console.log('✅ All event listeners attached successfully');
+        }
+
+        function setupInputFormatting() {
+            // Card number formatting
+            document.getElementById('cardNumber')?.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+            });
+
+            // Expiry date formatting
+            document.getElementById('expiryDate')?.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+
+            // CVC formatting
+            document.getElementById('cvcCode')?.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+        }
+
+        function setupModalHandlers() {
+            // Close on outside click
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                        closeModal(modal.id);
+                    });
+                }
+            });
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                if (modalId === 'freeTrialModal') {
+                    resetTrialForm();
+                    goToStep(1);
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                if (modalId === 'freeTrialModal') {
+                    resetTrialForm();
+                }
+                
+                if (countdownTimer) {
+                    clearInterval(countdownTimer);
+                }
+                
+                console.log('✅ Modal closed:', modalId);
+            }
+        }
+
+        function resetTrialForm() {
+            currentStep = 1;
+            updateStepIndicators();
+            updateProgressLine();
+            showCurrentStep();
+            document.getElementById('freeTrialForm').reset();
+            
+            // Reset submit button
+            const submitBtn = document.getElementById('startTrialButton');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'Start Free Trial';
+            }
+        }
+
+        function handleNextToBilling() {
+            if (validateAccountStep()) {
+                formData.email = document.getElementById('trialEmail').value;
+                formData.password = document.getElementById('trialPassword').value;
+                formData.notifications = document.querySelector('input[name="notifications"]').checked;
+                
+                console.log('✅ Account step validated, moving to billing');
+                goToStep(2);
+            }
+        }
+
+        function validateAccountStep() {
+            const email = document.getElementById('trialEmail');
+            const password = document.getElementById('trialPassword');
+            const terms = document.querySelector('input[name="terms"]');
+
+            if (!email.value || !email.checkValidity()) {
+                showError('Please enter a valid email address');
+                email.focus();
+                return false;
+            }
+
+            if (!password.value || password.value.length < 8) {
+                showError('Password must be at least 8 characters long');
+                password.focus();
+                return false;
+            }
+
+            if (!terms.checked) {
+                showError('Please agree to the Terms of Service and Privacy Policy');
+                terms.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function handleFormSubmission(e) {
+            e.preventDefault();
+            console.log('📝 Form submission started');
+
+            if (!validateBillingStep()) {
+                return;
+            }
+
+            // Store billing data
+            formData.plan = document.getElementById('billingCycle').value;
+            formData.cardNumber = document.getElementById('cardNumber').value;
+            formData.expiryDate = document.getElementById('expiryDate').value;
+            formData.cvc = document.getElementById('cvcCode').value;
+            formData.cardholderName = document.getElementById('cardholderName').value;
+
+            // Show loading state
+            const submitButton = document.getElementById('startTrialButton');
+            submitButton.disabled = true;
+            submitButton.classList.add('loading');
+            submitButton.textContent = 'Processing...';
+
+            console.log('💳 Processing payment...', formData);
+
+            // Simulate API call
+            setTimeout(() => {
+                processTrialSignup();
+            }, 2500);
+        }
+
+        function validateBillingStep() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvc = document.getElementById('cvcCode').value;
+            const cardholderName = document.getElementById('cardholderName').value;
+
+            if (!cardNumber || cardNumber.replace(/\s/g, '').length < 15) {
+                showError('Please enter a valid card number');
+                document.getElementById('cardNumber').focus();
+                return false;
+            }
+
+            if (!expiryDate || !expiryDate.match(/^\d{2}\/\d{2}$/)) {
+                showError('Please enter expiry date in MM/YY format');
+                document.getElementById('expiryDate').focus();
+                return false;
+            }
+
+            if (!cvc || cvc.length < 3) {
+                showError('Please enter a valid CVC code');
+                document.getElementById('cvcCode').focus();
+                return false;
+            }
+
+            if (!cardholderName.trim()) {
+                showError('Please enter the cardholder name');
+                document.getElementById('cardholderName').focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function processTrialSignup() {
+            console.log('✅ Trial signup successful!');
+
+            // Update confirmation details
+            document.getElementById('confirmedEmail').textContent = formData.email;
+            
+            // Update modal title
+            document.getElementById('modalTitle').textContent = '🎊 Welcome to Willful Change!';
+            document.getElementById('modalSubtitle').textContent = 'Your free trial is now active!';
+            
+            // Go to success step
+            goToStep(3);
+
+            // Start countdown
+            startCountdown();
+        }
+
+        function goToStep(step) {
+            currentStep = step;
+            updateStepIndicators();
+            updateProgressLine();
+            showCurrentStep();
+            console.log('📍 Moved to step:', step);
+        }
+
+        function updateStepIndicators() {
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        function updateProgressLine() {
+            const progressLine = document.getElementById('progressLine');
+            const widths = { 1: '0%', 2: '50%', 3: '100%' };
+            progressLine.style.width = widths[currentStep];
+        }
+
+        function showCurrentStep() {
+            document.querySelectorAll('.form-step').forEach((step, index) => {
+                step.classList.remove('active');
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        function startCountdown() {
+            let seconds = 5;
+            const countdownEl = document.getElementById('countdown');
+            
+            countdownTimer = setInterval(() => {
+                seconds--;
+                countdownEl.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdownTimer);
+                    goToDashboard();
+                }
+            }, 1000);
+        }
+
+        function goToDashboard() {
+            console.log('🚀 Redirecting to dashboard');
+            alert('🎉 Success! Welcome to your dashboard!\n\n✅ Your free trial is active\n📧 Check your email for login details\n🎯 Start exploring premium resources\n\n(In a real app, this would redirect to your member dashboard)');
+            closeModal('freeTrialModal');
+        }
+
+        function resendConfirmation() {
+            console.log('📧 Resending confirmation email');
+            alert('📧 Confirmation email resent to ' + formData.email + '\n\nPlease check your inbox and spam folder.');
+        }
+
+        function updateTrialEndDate() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+            const formatted = endDate.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            document.getElementById('trialEndDate').textContent = formatted;
+        }
+
+        function showError(message) {
+            alert('⚠️ ' + message);
+            console.log('❌ Validation error:', message);
+        }
+
+        // Member Benefits Modal Functions
+        function startFreeTrialFromBenefits() {
+            console.log('🎉 Starting free trial from benefits modal');
+            closeModal('memberBenefitsModal');
+            setTimeout(() => {
+                openModal('freeTrialModal');
+            }, 300);
+        }
+
+        function joinNow() {
+            console.log('💳 Direct join now clicked');
+            alert('💳 Redirecting to secure checkout...\n\n✅ Plan: Monthly Membership ($9.99/month)\n🔒 Secure payment processing\n🎁 No setup fees\n📞 Cancel anytime\n\n(In a real app, this would redirect to payment processing)');
+        }
+
+        console.log('✅ Willful Change system fully loaded and operational');
+    </script>
+</body>
+</html>

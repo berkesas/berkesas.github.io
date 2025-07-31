@@ -1,0 +1,3021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore - Willful Change</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+
+  <style>
+
+/* Base Styles & Variables */
+
+ root {     
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      
+      /* Spacing */
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --spacing-3xl: 4rem;
+      
+      /* Border Radius */
+      --radius-sm: 0.25rem;
+      --radius: 8px;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      
+      /* Transitions */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-serif: 'Playfair Display', serif;
+      --font-heading: 'Poppins', sans-serif;
+    }
+
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('data:image/jpeg;base64,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');
+      color: #ffffff;
+      opacity: 0.9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+
+
+
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+      text-align: center;
+      text-decoration: none;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn i {
+      margin-left: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn:hover i {
+      transform: translateX(3px);
+    }
+
+    .btn-primary {
+      background-color: #cfae3c;
+      color: white;
+      border-color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #b28e2f;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: #002E4D;
+      border: 1px solid #b28e2f;
+    }
+
+    .btn-secondary:hover {
+      background-color: #b28e2f;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      max-width: 3000px;
+    }
+
+    .hero .container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .hero-image {
+      flex: 1;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: var(--transition);
+    }
+
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.0);
+    }
+
+    /* Section Styling */
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-header h2 {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #002E4D;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* Testimonial Section */
+    .testimonial-section {
+      padding: 6rem 0;
+      background-color: white;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .testimonial-slides-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      gap: 2rem;
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Hide scrollbar for Firefox */
+      -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .testimonial-slides-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-slide {
+      flex: 0 0 calc(33.333% - 1.33rem);
+      min-width: 300px;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      scroll-snap-align: start;
+    }
+
+    .testimonial-slide:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-light);
+    }
+
+    .author-info h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .author-info p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .slider-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slider-btn:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slider-dot.active,
+    .slider-dot:hover {
+      background: var(--primary);
+      transform: scale(1.1);
+    }
+
+
+    .community-cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #e3f2fd 100%);
+      border-radius: var(--border-radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .community-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .community-cta h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .community-cta p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+     /* Join Section */
+    .join-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 8rem auto 2rem;
+    }
+
+    .join-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #b28e2f, #cfae3c);
+    }
+
+    .join-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .join-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .join-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .join-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .benefits {
+      list-style: none;
+      padding: 0;
+      margin: 2rem auto 3rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .benefits li {
+      background: #f8fafc;
+      padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-left: 3px solid var(--primary);
+      transition: var(--transition);
+    }
+
+    .benefits li:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #cfae3c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: #b28e2f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+    }
+
+    .btn i {
+      margin-left: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn:hover i {
+      transform: translateX(3px);
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: var(--transition);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .form-group label.required::after {
+      content: '*';
+      color: var(--error);
+      margin-left: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      transition: var(--transition);
+      font-family: var(--font-sans);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+    }
+
+    .form-control::placeholder {
+      color: var(--text-lighter);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    select.form-control {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-top: 0.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      color: white;
+      font-size: 0.75rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checkbox-container label {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #cfae3c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .submit-btn:hover {
+      background-color: #b28e2f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+    }
+
+    .submit-btn i {
+      margin-left: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: #f0fdf4;
+      border-radius: 8px;
+      border: 1px solid #bbf7d0;
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .success-message i {
+      font-size: 3rem;
+      color: var(--success);
+      margin-bottom: 1rem;
+      animation: bounce 1s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-message h3 {
+      color: var(--success);
+      margin-bottom: 1rem;
+      font-size: 1.75rem;
+    }
+
+    .success-message p {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .join-section {
+        padding: 2rem 1.5rem;
+        margin: 6rem auto 2rem;
+      }
+
+      .join-header h2 {
+        font-size: 2rem;
+      }
+
+      .join-header p {
+        font-size: 1rem;
+      }
+
+      .modal {
+        padding: 1.75rem;
+        width: 95%;
+      }
+
+      .modal-header h3 {
+        font-size: 1.5rem;
+      }
+
+      .btn-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .join-section {
+        padding: 1.5rem 1rem;
+        margin: 5rem auto 1rem;
+      }
+
+      .join-header h2 {
+        font-size: 1.75rem;
+      }
+
+      .modal {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .form-control {
+        padding: 0.75rem 1rem;
+      }
+    }
+
+
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #002E4D;
+            border-bottom: 1px solid #002E4D;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #b28e2f;
+            margin: 0 1rem;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            flex-grow: 1;
+            margin: 0 2rem 0 auto;
+            padding-right: 1rem;
+            justify-content: flex-end;
+            
+        }
+
+        .nav-item {
+            position: relative;
+            color: #fbf7f7;
+
+        }
+
+        .nav-item > button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            font: inherit;
+            color: #fbf9f9;
+            font-size: 1rem;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .auth-button {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .auth-button:hover {
+            background: #b28e2f;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            gap: 1.5rm;
+            border: 2px solid #b28e2f;
+            border-radius: 50%;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            min-width: 160px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            z-index: 1001;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .profile-dropdown a:hover {
+            background: #f3f3f3;
+        }
+
+        /* Back to Top Button */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 999;
+        }
+        .toTop {
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+
+
+
+
+    :root {
+      --primary: #002E4D;
+      --primary-dark: #002E4D;
+      --primary-light: #e8f5e9;
+      --text: #2d3748;
+      --text-light: #718096;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .join-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .join-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #b28e2f);
+    }
+
+    .join-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .join-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .join-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .join-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .form-type-select {
+      margin: 2.5rem auto;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .form-type-select label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .form-type-select .select-wrapper {
+      position: relative;
+    }
+
+    .form-type-select .select-wrapper::after {
+      content: '▼';
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      color: var(--primary);
+      pointer-events: none;
+      font-size: 0.8rem;
+    }
+
+    .form-type-select select {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      background: #fff;
+      appearance: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .form-type-select select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+    }
+
+    .form-type-select select:hover {
+      border-color: #cbd5e0;
+    }
+
+    .form-row {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .form-row.visible {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2.5rem;
+      flex: 1;
+      min-width: 320px;
+      max-width: 600px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .modal:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .modal-content h3 {
+      margin: 0 0 2rem 0;
+      font-size: 1.75rem;
+      color: var(--primary-dark);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .modal-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .form-group label.required::after {
+      content: '*';
+      color: #e53e3e;
+      margin-left: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+    }
+
+    .form-control::placeholder {
+      color: #a0aec0;
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      margin: 1.5rem 0 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-top: 0.25rem;
+      margin-right: 0.75rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .checkbox-container input[type="checkbox"]:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      color: white;
+      font-size: 0.75rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checkbox-container label {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #cfae3c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .submit-btn:hover {
+      background-color: #b28e2f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn i {
+      margin-left: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Form validation styles */
+    .form-control:invalid:not(:focus):not(:placeholder-shown) {
+      border-color: #e53e3e;
+    }
+
+    .form-control:invalid:not(:focus):not(:placeholder-shown) + .error-message {
+      display: block;
+    }
+
+    .error-message {
+      display: none;
+      color: #e53e3e;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: #f0fdf4;
+      border-radius: 8px;
+      border: 1px solid #bbf7d0;
+      margin-top: 2rem;
+    }
+
+    .success-message i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .success-message h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    .success-message p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .join-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .join-header h2 {
+        font-size: 2rem;
+      }
+
+      .join-header p {
+        font-size: 1rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .modal {
+        padding: 1.75rem;
+      }
+
+      .modal-content h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .join-section {
+        padding: 1.5rem 1rem;
+        margin: 1rem 0;
+      }
+
+      .join-header h2 {
+        font-size: 1.75rem;
+      }
+
+      .modal {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .form-control {
+        padding: 0.75rem 1rem;
+      }
+    }
+
+    #form-section {
+      margin-bottom: 20px;
+    }
+
+
+        /* Footer */
+
+
+    .footer a {
+      color: rgb(251, 250, 250);
+      margin: 0 3px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: left;
+      padding: 1rem 0;
+      background: #002E4D;
+      color: rgb(251, 250, 250);
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.5rem;
+      color: rgb(251, 250, 250)
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfae3c;
+      color: #002E4D;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        background: #b28e2f;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+    }
+    .social-links svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Adjust as needed */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Add spacing between navigation items */
+}
+
+.nav-item {
+    margin: 0 1rem; /* Add horizontal margin to nav items */
+}
+
+.nav-item a {
+    padding: 0.5rem 0; /* Add vertical padding to links */
+    display: block;
+}
+
+/* Add margin to the contacts div */
+nav > div:has(a[href*='#']) {
+    margin-right: 1rem;
+}
+
+  </style>
+</head>
+
+
+
+<body>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <nav>
+        <div class="background-overlay"></div>
+        <div class="logo-circle">
+            <img src="Logo.png" alt="Willful Change Logo">
+        </div>
+        <h1 class="company-name">Willful Change</h1>
+
+        <div class="nav-links">
+            <a href="Home.html" style="color: white; text-decoration: none;">Home</a>
+            
+            <div class="nav-item">
+                <button onclick="window.location.href='About.html'">About ▾</button>
+                <div class="dropdown">
+                    <a href="About.html#Company-Story">Company Bio</a>
+                    <a href="About.html#Our-Founder_Story">Founder & Ceo</a>
+                    <a href="About.html#Our-Mission">Our Mission</a>
+                    <a href="About.html#Our-Approach ">Our Approach</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Services.html'">Services ▾</button>
+                <div class="dropdown">
+                    <a href="Services.html#keynote-title">Keynote</a>
+                    <a href="Services.html#training-title">Training</a>
+                    <a href="Coaching.html">Coaching</a>
+                    <a href="Services.html#more-title">More Services</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Explore.html'">Explore ▾</button>
+                <div class="dropdown">
+                    <a href="Explore.html#Testimonials">Testimonials</a>
+                    <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="ResourceLibrary.html">Resource Library</a>
+                </div>
+            </div>
+            
+            <a href="Contact.html" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+
+        <div class="auth-section" id="authSection">
+            <button class="auth-button" onclick="openModal()">Login / Sign Up</button>
+        </div>
+
+        <div class="auth-section" id="userSection" style="display:none;">
+            <div class="icon" onclick="alert('You have 3 new notifications')">🔔<span class="notification-dot"></span></div>
+            <div class="profile-container">
+                <div class="icon" onclick="toggleProfileDropdown()">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="Hero-container">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Transform Your Life with Willful Change</h1>
+        <p>Join a community of purpose-driven individuals committed to personal and professional growth. Together, we create meaningful impact.</p>
+        <div class="hero-buttons">
+          <a href="https://www.linkedin.com/company/willful-change/about/" class="btn btn-primary">Join Now</a>
+          <a href="About.html" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community coming together">
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+    <section id="join" class="join-section">
+
+
+  <!-- Testimonials Section -->
+
+      <div class="section-header" id="Testimonials">
+        <h2>What Our Community Says</h2>
+        <p>Hear from individuals and organizations who have transformed through Willful Change</p>
+      </div>
+      
+      <div class="testimonial-slider">
+        <div class="testimonial-slides-container" id="testimonialContainer">
+          <!-- Testimonials will be loaded by JavaScript -->
+        </div>
+        
+        <div class="slider-nav">
+          <button aria-label="Previous" class="slider-btn prev-slide"><i class="fas fa-chevron-left"></i></button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button aria-label="Next" class="slider-btn next-slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <header class="join-header">
+      <div>
+        <h2>Connect with Like-Minded Professionals</h2>
+        <p style="color: #070707;">Join our growing community of change-makers who are transforming their lives with purpose and impact.</p>
+        <a href="#join-individual" class="btn btn-primary">Connect Now</a>
+      </div>
+  </section>
+
+
+
+
+    <!-- Join Community Section -->
+    <section id="join" class="join-section">
+      <div class="join-header">
+        <h2>Become a Part of the Willful Change Community</h2>
+        <p>
+          Step into a growth-oriented environment where continuous learning is not just encouraged—it's expected. Join a network of purpose-driven individuals committed to excellence, accountability, and lifelong development.
+        </p>
+        
+        <p><strong>What you'll gain as a community member:</strong></p>
+        <ul class="benefits">
+          <li>Engaging weekly virtual training sessions focused on personal and professional development</li>
+          <li>In-depth discussions and practical action planning aligned with our core training curriculum</li>
+          <li>A strong sense of community, support, and shared accountability</li>
+          <li>On-demand access to a comprehensive library of recorded sessions and valuable resources</li>
+          <li>Personalized professional coaching (available to Standard Plus & Premium members)</li>
+        </ul>
+
+        <div class="btn-container">
+          <button id="join-individual" class="btn" onclick="openModal('individual')">
+            Join as Individual <i class="fas fa-user"></i>
+          </button>
+          <button class="btn" onclick="openModal('organization')">
+            Join as Organization <i class="fas fa-building"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success Message -->
+      <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle"></i>
+        <h3>Thank you for joining Willful Change!</h3>
+        <p>We're excited to have you as part of our community. You'll receive a confirmation email shortly with next steps.</p>
+      </div>
+    </section>
+
+      <!-- Individual Modal -->
+      <div id="individualModal" class="modal-overlay">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Join as Individual</h3>
+            <button class="close-btn" onclick="closeModal('individual')">&times;</button>
+          </div>
+          
+          <form id="individualForm" novalidate>
+            <div class="form-group">
+              <label for="indFirstName" class="required">First Name</label>
+              <input type="text" id="indFirstName" name="firstName" class="form-control" required placeholder="Enter your first name" />
+            </div>
+
+            <div class="form-group">
+              <label for="indLastName" class="required">Last Name</label>
+              <input type="text" id="indLastName" name="lastName" class="form-control" required placeholder="Enter your last name" />
+            </div>
+
+            <div class="form-group">
+              <label for="indEmail" class="required">Email</label>
+              <input type="email" id="indEmail" name="email" class="form-control" required placeholder="Enter your email address" />
+            </div>
+
+            <div class="form-group">
+              <label for="indPhone">Phone Number</label>
+              <input type="tel" id="indPhone" name="phone" class="form-control" placeholder="Enter your phone number" />
+            </div>
+
+            <div class="form-group">
+              <label for="indRegion" class="required">Region</label>
+              <select id="indRegion" name="region" class="form-control" required>
+                <option value="" disabled selected>Select your region</option>
+                <option value="north-america">North America</option>
+                <option value="europe">Europe</option>
+                <option value="asia">Asia</option>
+                <option value="south-america">South America</option>
+                <option value="africa">Africa</option>
+                <option value="australia">Australia</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="indComment">How did you hear about us?</label>
+              <textarea id="indComment" name="comment" class="form-control" placeholder="Tell us how you discovered Willful Change"></textarea>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="indNewsletter" name="newsletter" checked />
+              <label for="indNewsletter">Subscribe to our newsletter for the latest updates, resources, and community events</label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              Join Community <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Organization Modal -->
+      <div id="organizationModal" class="modal-overlay">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Join as Organization</h3>
+            <button class="close-btn" onclick="closeModal('organization')">&times;</button>
+          </div>
+          
+          <form id="organizationForm" novalidate>
+            <div class="form-group">
+              <label for="orgFirstName" class="required">First Name</label>
+              <input type="text" id="orgFirstName" name="firstName" class="form-control" required placeholder="Enter your first name" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgLastName" class="required">Last Name</label>
+              <input type="text" id="orgLastName" name="lastName" class="form-control" required placeholder="Enter your last name" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgEmail" class="required">Email</label>
+              <input type="email" id="orgEmail" name="email" class="form-control" required placeholder="Enter your email address" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgPhone">Phone Number</label>
+              <input type="tel" id="orgPhone" name="phone" class="form-control" placeholder="Enter your phone number" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgJobTitle" class="required">Job Title</label>
+              <input type="text" id="orgJobTitle" name="jobTitle" class="form-control" required placeholder="Enter your job title" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgOrganization" class="required">Organization</label>
+              <input type="text" id="orgOrganization" name="organization" class="form-control" required placeholder="Enter your organization name" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgSize" class="required">Organization Size</label>
+              <select id="orgSize" name="organizationSize" class="form-control" required>
+                <option value="" disabled selected>Select organization size</option>
+                <option value="1-10">1-10 employees</option>
+                <option value="11-50">11-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-500">201-500 employees</option>
+                <option value="500+">500+ employees</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="orgRegion" class="required">Region</label>
+              <select id="orgRegion" name="region" class="form-control" required>
+                <option value="" disabled selected>Select your region</option>
+                <option value="north-america">North America</option>
+                <option value="europe">Europe</option>
+                <option value="asia">Asia</option>
+                <option value="south-america">South America</option>
+                <option value="africa">Africa</option>
+                <option value="australia">Australia</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="orgIndustry" class="required">Industry</label>
+              <input type="text" id="orgIndustry" name="industry" class="form-control" required placeholder="Enter your industry" />
+            </div>
+
+            <div class="form-group">
+              <label for="orgComment">Tell us about your organization</label>
+              <textarea id="orgComment" name="comment" class="form-control" placeholder="What does your organization do? How can we help?"></textarea>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="orgNewsletter" name="newsletter" checked />
+              <label for="orgNewsletter">Subscribe to our newsletter for the latest updates, resources, and community events</label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              Join Community <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        // Modal functionality
+        function openModal(type) {
+          const modal = document.getElementById(type + 'Modal');
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(type) {
+          const modal = document.getElementById(type + 'Modal');
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+          if (e.target.classList.contains('modal-overlay')) {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+              modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+          }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            const activeModals = document.querySelectorAll('.modal-overlay.active');
+            activeModals.forEach(modal => {
+              modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+          }
+        });
+
+        // Form submission handling
+        function handleFormSubmit(form, formData) {
+          // In a real application, you would send the form data to a server here
+          console.log('Form submitted:', formData);
+          
+          // Close all modals
+          const modals = document.querySelectorAll('.modal-overlay');
+          modals.forEach(modal => {
+            modal.classList.remove('active');
+          });
+          document.body.style.overflow = 'auto';
+          
+          // Show success message
+          const successMessage = document.getElementById('successMessage');
+          successMessage.classList.add('show');
+          
+          // Reset form
+          form.reset();
+          
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+
+          // Hide success message after 10 seconds
+          setTimeout(() => {
+            successMessage.classList.remove('show');
+          }, 10000);
+        }
+
+        // Individual form submission
+        document.getElementById('individualForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Basic form validation
+          if (!this.checkValidity()) {
+            // Show validation errors
+            const firstInvalidField = this.querySelector(':invalid');
+            if (firstInvalidField) {
+              firstInvalidField.focus();
+              firstInvalidField.style.borderColor = 'var(--error)';
+            }
+            return;
+          }
+          
+          const formData = {
+            type: 'individual',
+            firstName: document.getElementById('indFirstName').value,
+            lastName: document.getElementById('indLastName').value,
+            email: document.getElementById('indEmail').value,
+            phone: document.getElementById('indPhone').value,
+            region: document.getElementById('indRegion').value,
+            comment: document.getElementById('indComment').value,
+            newsletter: document.getElementById('indNewsletter').checked
+          };
+          
+          handleFormSubmit(this, formData);
+        });
+
+        // Organization form submission
+        document.getElementById('organizationForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Basic form validation
+          if (!this.checkValidity()) {
+            // Show validation errors
+            const firstInvalidField = this.querySelector(':invalid');
+            if (firstInvalidField) {
+              firstInvalidField.focus();
+              firstInvalidField.style.borderColor = 'var(--error)';
+            }
+            return;
+          }
+          
+          const formData = {
+            type: 'organization',
+            firstName: document.getElementById('orgFirstName').value,
+            lastName: document.getElementById('orgLastName').value,
+            email: document.getElementById('orgEmail').value,
+            phone: document.getElementById('orgPhone').value,
+            jobTitle: document.getElementById('orgJobTitle').value,
+            organization: document.getElementById('orgOrganization').value,
+            organizationSize: document.getElementById('orgSize').value,
+            region: document.getElementById('orgRegion').value,
+            industry: document.getElementById('orgIndustry').value,
+            comment: document.getElementById('orgComment').value,
+            newsletter: document.getElementById('orgNewsletter').checked
+          };
+          
+          handleFormSubmit(this, formData);
+        });
+
+        // Reset field border color on focus
+        document.querySelectorAll('.form-control').forEach(field => {
+          field.addEventListener('focus', function() {
+            this.style.borderColor = '';
+          });
+        });
+      </script>
+
+
+
+
+    <section class="section" id="resources-section">
+      <div class="section-header">
+        <h2 class="section-title">Resources</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="resources-container">
+        <div class="resources-grid">
+          <!-- Card 1 -->
+          <div class="resource-card">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80" alt="Team Collaboration">
+          </div>
+          <div class="resource-card-content">
+            <h3>Leadership Essentials Guide</h3>
+            <p>Actionable leadership tips to strengthen influence and clarity.</p>
+            <a href="#" class="button" download>Download Free</a>
+          </div>
+        </div>
+
+          <!-- Card 2 -->
+          <div class="resource-card">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Eisenhower Matrix">
+              <span class="subscription-badge premium">Premium</span>
+            </div>
+            <div class="resource-card-content">
+              <h3>Eisenhower Matrix Toolkit</h3>
+              <p>Take control of priorities with proven tools and templates.</p>
+              <a href="#" class="button">Buy Now – $30</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="resource-card">
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Leadership Framework">
+              <span class="subscription-badge premium">Member Only</span>
+            </div>
+            <div class="resource-card-content">
+              <h3>Leadership Framework</h3>
+              <p>Gain access to an executive-level framework with tactical insights for leading transformation confidently.</p>
+              <p class="membership-note"><em>Available exclusively to members</em></p>
+              <div class="resource-actions">
+                <button class="button subscribe-now">Subscribe Now</button>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+        <a href="ResourceLibrary.html" class="see-more-btn">See More</a>
+      </div>
+
+      <style>
+        /* Resources Section */
+        .section-header {
+          text-align: center;
+          margin-bottom: 3rem;
+          position: relative;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          color: #2d3748;
+          margin-bottom: 1rem;
+          font-weight: 700;
+          letter-spacing: -0.5px;
+          position: relative;
+          display: inline-block;
+          padding: 0 2rem;
+        }
+
+        .section-title:after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 3px;
+          background: #cfae3c;
+        }
+
+        .section-divider {
+          height: 1px;
+          background: #e2e8f0;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .resources-container {
+          width: 100%;
+          padding: 0 1rem;
+          box-sizing: border-box;
+          margin-top: 2rem;
+        }
+
+        .resources-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        .resource-card {
+          width: 350px;
+          background: white;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          border: 1px solid #e5e7eb;
+          justify-content: space-between; /* Push content to top and bottom */
+        }
+
+        .resource-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+          position: relative;
+          height: 200px;
+          overflow: hidden;
+          flex-shrink: 0; /* Prevent image container from shrinking */
+        }
+
+        .image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+          display: block; /* Remove any extra space below images */
+        }
+
+        .resource-card:hover .image-container img {
+          transform: scale(1.05);
+        }
+
+        .subscription-badge {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: #cfae3c;
+          color: white;
+          padding: 0.25rem 0.75rem;
+          border-radius: 20px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .resource-card-content {
+          padding: 1.5rem;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
+          width: 100%;
+        }
+
+        .resource-card-content h3 {
+          margin: 0 0 0.75rem;
+          color: #002E4D;
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+
+        .resource-card-content p {
+          color: #4B5563;
+          margin-bottom: 1.25rem;
+          line-height: 1.6;
+        }
+
+        .membership-note {
+          font-size: 0.875rem;
+          color: #6B7280;
+          margin: 1rem 0;
+          font-style: italic;
+        }
+
+        .resource-actions {
+          margin-top: auto; /* Push buttons to bottom of card */
+          padding: 0 1.5rem 1.5rem; /* More padding at bottom */
+          width: 100%;
+          display: flex;
+          justify-content: center; /* Center the button horizontally */
+          align-items: center; /* Center vertically within the actions container */
+        }
+        
+        .resource-actions .button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 0.75rem 1.5rem;
+          margin: 0;
+          min-width: 200px; /* Give the button a minimum width */
+          background-color: #cfae3c;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .resource-actions .button:hover {
+          background-color: #b89832;
+          transform: translateY(-1px);
+        }
+
+        .see-more-btn {
+          display: block;
+          margin: 2rem auto 0;
+          background: #cfae3c;
+          color: white;
+          border: none;
+          padding: 0.75rem 1.5rem;
+          border-radius: 4px;
+          font-weight: 500;
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          max-width: 200px;
+        }
+
+        .see-more-btn:hover {
+          background: #b28e2f;
+          color: white;
+        }
+
+
+
+        /* Resource Filters */
+    .filters-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      align-items: flex-end;
+    }
+    
+    .filter-group {
+      position: relative;
+    }
+    
+    .filter-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+    
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 2.5rem;
+      font-size: 0.9375rem;
+      color: #1f2937;
+      background-color: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      appearance: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    .select-arrow {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #6b7280;
+    }
+    
+    .resource-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .resource-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: calc(33.333% - 1rem);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .image-container img,
+    .image-container video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .resource-card-content {
+      padding: 1rem;
+    }
+
+    .resource-card-content h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .resource-card-content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem auto 0 auto; /* top margin + auto on left/right = center */
+      padding: 0.5rem 1rem;
+      background-color: #cfae3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .button:hover {
+      background-color: #b28e2f;
+      color: white;
+    }
+
+
+    .subscription-badge.premium {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #e91e63;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+
+    .image-container {
+      position: relative;
+    }
+
+
+
+
+      .resource-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+      
+
+      </style>
+    </section>
+
+
+    <footer>
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
+
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
+        </div>
+
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
+        </div>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+    </div>
+
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+          <div class="chatbot-header">
+              <div class="chatbot-avatar">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <div class="chatbot-info">
+                  <h5>Willful Change Assistant</h5>
+                  <p>How can I help you today?</p>
+              </div>
+              <button class="chatbot-close" id="closeChatbot">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <div class="chatbot-message bot">
+                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <div class="chatbot-time">Just now</div>
+              </div>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
+              <button id="sendMessage">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+      <div class="floating-buttons">
+          <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+          <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
+              <i class="fas fa-comment-dots"></i>
+          </button>
+      </div>
+  
+      <!-- Chatbot Styles -->
+      <style>
+          /* Chatbot Styles */
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              z-index: 1000;
+              transform: translateY(100px);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-container.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+  
+          .chatbot-header {
+              background: #002E4D;
+              color: white;
+              padding: 15px 20px;
+              border-radius: 12px 12px 0 0;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              position: relative;
+          }
+  
+          .chatbot-avatar {
+              width: 40px;
+              height: 40px;
+              background: #CFAE3C;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+          }
+  
+          .chatbot-info h5 {
+              margin: 0;
+              font-size: 1rem;
+              font-weight: 600;
+          }
+  
+          .chatbot-info p {
+              margin: 2px 0 0;
+              font-size: 0.8rem;
+              opacity: 0.9;
+          }
+  
+          .chatbot-close {
+              background: none;
+              border: none;
+              color: white;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              opacity: 0.8;
+              transition: opacity 0.2s;
+          }
+  
+          .chatbot-close:hover {
+              opacity: 1;
+          }
+  
+          .chatbot-messages {
+              flex: 1;
+              padding: 15px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          .chatbot-message {
+              max-width: 80%;
+              padding: 10px 15px;
+              border-radius: 15px;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              position: relative;
+          }
+  
+          .chatbot-message.bot {
+              background: #f1f3f5;
+              align-self: flex-start;
+              border-bottom-left-radius: 5px;
+          }
+  
+          .chatbot-message.user {
+              background: #002E4D;
+              color: white;
+              align-self: flex-end;
+              border-bottom-right-radius: 5px;
+          }
+  
+          .chatbot-time {
+              font-size: 0.7rem;
+              opacity: 0.7;
+              margin-top: 5px;
+              text-align: right;
+          }
+  
+          .chatbot-input {
+              padding: 15px;
+              border-top: 1px solid #eee;
+              display: flex;
+              gap: 10px;
+          }
+  
+          .chatbot-input input {
+              flex: 1;
+              padding: 10px 15px;
+              border: 1px solid #ddd;
+              border-radius: 20px;
+              outline: none;
+              font-size: 0.9rem;
+          }
+  
+          .chatbot-input button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #002E4D;
+              color: white;
+              border: none;
+              cursor: pointer;
+              transition: background 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+  
+          .chatbot-input button:hover {
+              background: #001a2d;
+          }
+  
+          .chatbot-toggle {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+              transition: all 0.3s ease;
+          }
+  
+          .floating-buttons {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: center;
+              gap: 15px;
+              z-index: 9999;
+          }
+          
+          .chatbot-toggle {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              transition: all 0.3s ease;
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+          }
+          
+          .chatbot-toggle:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
+          }
+  
+          .toTop {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: #002E4D;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              opacity: 0.7;
+              visibility: visible;
+              transform: translateY(0);
+              margin-bottom: 5px;
+          }
+  
+          .toTop.visible {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+          }
+  
+          /* Responsive adjustments */
+          @media (max-width: 576px) {
+              .chatbot-container {
+                  width: 100%;
+                  height: 100%;
+                  bottom: 0;
+                  right: 0;
+                  border-radius: 0;
+              }
+  
+              .chatbot-toggle {
+                  bottom: 20px;
+                  right: 20px;
+              }
+          }
+      </style>
+  
+      <!-- Chatbot Script -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const chatbotContainer = document.querySelector('.chatbot-container');
+              const toggleChatbot = document.getElementById('toggleChatbot');
+              const closeChatbot = document.getElementById('closeChatbot');
+              const chatInput = document.getElementById('chatbotInput');
+              const sendButton = document.getElementById('sendMessage');
+              const chatMessages = document.getElementById('chatbotMessages');
+  
+              // Toggle chat window
+              toggleChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.toggle('active');
+                  toggleChatbot.classList.add('hidden');
+              });
+  
+              // Close chat window
+              closeChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.remove('active');
+                  setTimeout(() => {
+                      toggleChatbot.classList.remove('hidden');
+                  }, 300);
+              });
+  
+              // Sample responses
+              const responses = [
+                  { 
+                      keywords: ['hello', 'hi', 'hey'],
+                      response: 'Hello! How can I assist you today?'
+                  },
+                  {
+                      keywords: ['service', 'services', 'offer', 'provides'],
+                      response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
+                  },
+                  {
+                      keywords: ['contact', 'email', 'phone', 'number'],
+                      response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
+                  },
+                  {
+                      keywords: ['about', 'who are you', 'company'],
+                      response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
+                  },
+                  {
+                      keywords: ['thank', 'thanks', 'appreciate'],
+                      response: 'You\'re welcome! Is there anything else I can help you with?'
+                  }
+              ];
+  
+              // Default response if no keywords match
+              const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
+  
+              // Function to add a message to the chat
+              function addMessage(message, isUser = false) {
+                  const messageDiv = document.createElement('div');
+                  messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+                  
+                  const messageContent = document.createElement('p');
+                  messageContent.textContent = message;
+                  
+                  const timeDiv = document.createElement('div');
+                  timeDiv.className = 'chatbot-time';
+                  timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
+                  
+                  messageDiv.appendChild(messageContent);
+                  messageDiv.appendChild(timeDiv);
+                  chatMessages.appendChild(messageDiv);
+                  
+                  // Scroll to bottom
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+  
+              // Function to process user input and generate response
+              function processUserInput(input) {
+                  if (!input.trim()) return;
+                  
+                  // Add user message to chat
+                  addMessage(input, true);
+                  
+                  // Convert input to lowercase for easier matching
+                  const lowerInput = input.toLowerCase();
+                  let response = defaultResponse;
+                  
+                  // Check for matching keywords
+                  for (const item of responses) {
+                      if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
+                          response = item.response;
+                          break;
+                      }
+                  }
+                  
+                  // Simulate typing delay
+                  setTimeout(() => {
+                      addMessage(response);
+                  }, 500);
+                  
+                  // Clear input
+                  chatInput.value = '';
+              }
+  
+              // Send message on button click
+              sendButton.addEventListener('click', () => {
+                  processUserInput(chatInput.value);
+              });
+  
+              // Send message on Enter key
+              chatInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      processUserInput(chatInput.value);
+                  }
+              });
+          });
+      </script>
+  
+
+  <script>
+    const testimonials = [
+      { text: "Wilbert came into my life at a very chaotic time. I was just getting out of a toxic relationship and moving to a new state with no family or friends. I didn’t really know what steps to take next, but I knew I needed to make them fast.  Wilbert put a lot of effort into getting to know me and my situation.", image: "https://randomuser.me/api/portraits/women/44.jpg" },
+      { text: "I'm a Regional Vice President for a large Financial Services company and initially became interested in Willful Change to enhance my leadership capabilities. Will has a special talent of asking the appropriate thought provoking questions, to uncover more about yourself and your personal development journey ahead. 10/10.", image: "https://randomuser.me/api/portraits/men/32.jpg" },
+      { text: "The workshWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us", image: "https://randomuser.me/api/portraits/women/63.jpg" },
+      { text: "Working with Willful Change was a game-changer for our organization. Their approach to change management is both innovative and effective.", name: "James Wilson", title: "CEO, TransformCorp", image: "https://randomuser.me/api/portraits/men/45.jpg" },
+      { text: "TheirWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation witWillful Change helped us embrace transformation ", image: "https://randomuser.me/api/portraits/women/52.jpg" },
+      { text: "The team's expertise in organizational development is unmatched. They helped us navigate through complex changes with ease.", name: "Sarah Johnson", title: "HR Director, NextGen Solutions", image: "https://randomuser.me/api/portraits/women/68.jpg" },
+      { text: "Willful Change transformed our company culture. Their strategic approach to change management delivered real, measurable results.", name: "Michael Chen", title: "COO, TechVantage", image: "https://randomuser.me/api/portraits/men/22.jpg" },
+      { text: "The team at Willful Change brought clarity to our vision and helped us align our leadership team like never before.", name: "Robert Taylor", title: "CEO, Summit Enterprises", image: "https://randomuser.me/api/portraits/men/67.jpg" }
+    ];
+
+    const container = document.getElementById('testimonialContainer');
+    const dotsContainer = document.getElementById('sliderDots');
+    const prevBtn = document.querySelector('.prev-slide');
+    const nextBtn = document.querySelector('.next-slide');
+
+    let currentGroup = 0;
+    let groupSize = 3;
+
+    function getGroupSize() {
+      const width = window.innerWidth;
+      if (width < 600) return 1;
+      if (width < 1024) return 2;
+      return 3;
+    }
+
+    function renderTestimonials() {
+      container.innerHTML = '';
+      testimonials.forEach((t) => {
+        const slide = document.createElement('div');
+        slide.className = 'testimonial-slide';
+        slide.innerHTML = `
+          <div class="testimonial-content">
+            <p class="testimonial-text">${t.text}</p>
+            <div class="testimonial-author">
+              <img src="${t.image}" alt="${t.name}" class="author-avatar" />
+              <div class="author-info">
+                <h4>${t.name}</h4>
+                <p>${t.title}</p>
+              </div>
+            </div>
+          </div>`;
+        container.appendChild(slide);
+      });
+    }
+
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      groupSize = getGroupSize();
+      const groupCount = Math.ceil(testimonials.length / groupSize);
+      for (let i = 0; i < groupCount; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => {
+          currentGroup = i;
+          updateSlider();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateSlider() {
+      const offset = currentGroup * container.clientWidth;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+      document.querySelectorAll('.slider-dot').forEach(dot => dot.classList.remove('active'));
+      const activeDot = dotsContainer.querySelector(`[data-index="${currentGroup}"]`);
+      if (activeDot) activeDot.classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const maxGroup = Math.ceil(testimonials.length / groupSize) - 1;
+      currentGroup = currentGroup >= maxGroup ? 0 : currentGroup + 1;
+      updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const maxGroup = Math.ceil(testimonials.length / groupSize) - 1;
+      currentGroup = currentGroup <= 0 ? maxGroup : currentGroup - 1;
+      updateSlider();
+    });
+
+    window.addEventListener('resize', () => {
+      const newGroupSize = getGroupSize();
+      if (newGroupSize !== groupSize) {
+        currentGroup = 0;
+        renderTestimonials();
+        createDots();
+        updateSlider();
+      }
+    });
+
+    // Init
+    renderTestimonials();
+    createDots();
+    updateSlider();
+  </script>
+
+
+
+
+
+</body>
+</html>

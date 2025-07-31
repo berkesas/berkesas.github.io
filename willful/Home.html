@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Willful Change</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS05ivnROqSiJjjW580PkgO-FIxe5gmseCezw&s');
+            opacity: 0.9;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #002E4D;
+            border-bottom: 1px solid #002E4D;
+            color: #f8f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #cfae3c;
+            margin: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            flex-grow: 1;
+            margin: 0 2rem 0 auto;
+            padding-right: 1rem;
+            justify-content: flex-end;
+        }
+
+        .nav-item {
+            position: relative;
+            color: #fbf7f7;
+        }
+
+        .nav-item > button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            font: inherit;
+            color: #fbf9f9;
+            font-size: 1rem;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .auth-button {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .auth-button:hover {
+            background: #b28e2f;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            gap: 1.5rm;
+            border: 2px solid #b28e2f;
+            border-radius: 50%;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            top: 100%;
+            min-width: 160px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            z-index: 1001;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .profile-dropdown a:hover {
+            background: #f3f3f3;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .modal-content {
+            background: #fbfafa;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 350px;
+            position: relative;
+            max-width: 90%;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabs button {
+            flex: 1;
+            background: #eee;
+            border: none;
+            padding: 0.7rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tabs button.active {
+            background: #cfae3c;
+            color: #fff;
+        }
+
+        .tabs button:not(.active):hover {
+            background: #e0e0e0;
+        }
+
+        .modal-form {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-form input[type="text"],
+        .modal-form input[type="password"],
+        .modal-form input[type="email"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .modal-form button[type="submit"],
+        .modal-form button[type="button"] {
+            background: #cfae3c;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .modal-form button:hover {
+            background: #b28e2f;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #555;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1rem;
+                margin-left: 1rem;
+            }
+            
+            .company-name {
+                font-size: 1.3rem;
+            }
+            
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 0.8rem 1rem;
+            }
+            
+            .nav-links {
+                order: 3;
+                width: 100%;
+                margin: 1rem 0 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .auth-section {
+                margin-left: auto;
+            }
+        }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.2;
+            color: var(--dark-text);
+        }
+
+        .toTop {
+            background: #cfae3c;
+            color: #002E4D;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+
+        .toTop:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Footer */
+
+
+    .footer a {
+      color: rgb(251, 250, 250);
+      margin: 0 3px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: left;
+      padding: 1rem 0;
+      background: #002E4D;
+      color: rgb(251, 250, 250);
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.5rem;
+      color: rgb(251, 250, 250)
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfae3c;
+      color: #002E4D;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+        background: #b28e2f;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 5px 15px rgb(178 142 47 / 0.75);
+    }
+    .social-links svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+    }
+
+
+
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('Home1.jpg')
+          no-repeat center center/cover;
+      color: white;
+    }
+
+    .custom-btn-outline {
+      background: #ffffff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgb(0, 0, 0);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .custom-btn-outline:hover {
+      background: #b28e2f;
+      color: white;
+      border-color: #b28e2f;
+    }
+
+    .custom-btn-primary {
+      background: #CFAE3C;
+      color: #002E4D;
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(207, 174, 60, 0.4);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .custom-btn-primary:hover {
+      background: #b28e2f;
+      color: white;
+    }
+
+    .chevron-down {
+      z-index: 10;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn-cta {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+    }
+
+    .btn-cta:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+    }
+
+        /* Clients Section */
+        .clients {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+        }
+
+        .client-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .client-logo {
+            max-width: 250px;
+            height: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+        }
+
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card .card-body {
+            padding: 25px;
+        }
+
+        .service-card .btn {
+            background-color: #cfae3c;
+            color: black;
+            border: none;
+        }
+
+        .service-card .btn:hover {
+            background-color: #b28e2f;
+            color: white
+        }
+
+        /* About Section */
+
+        
+        .about {
+            padding: 100px 0;
+            background-color: var(--light-bg);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--accent-color) !important;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--accent-color) !important;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .client-logos {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .swiper {
+                height: 350px;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="background-overlay"></div>
+        <div class="logo-circle">
+            <img src="Logo.png" alt="Willful Change Logo">
+        </div>
+        <h1 class="company-name">Willful Change</h1>
+
+        <div class="nav-links">
+            <a href="Home.html" style="color: white; text-decoration: none;">Home</a>
+            
+            <div class="nav-item">
+                <button onclick="window.location.href='About.html'">About ▾</button>
+                <div class="dropdown">
+                    <a href="About.html#Company-Story">Company Bio</a>
+                    <a href="About.html#Our-Founder_Story">Founder & Ceo</a>
+                    <a href="About.html#Our-Mission">Our Mission</a>
+                    <a href="About.html#Our-Approach ">Our Approach</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Services.html'">Services ▾</button>
+                <div class="dropdown">
+                    <a href="Services.html#keynote-title">Keynote</a>
+                    <a href="Services.html#training-title">Training</a>
+                    <a href="Coaching.html">Coaching</a>
+                    <a href="Services.html#more-title">More Services</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <button onclick="window.location.href='Explore.html'">Explore ▾</button>
+                <div class="dropdown">
+                    <a href="Explore.html#Testimonials">Testimonials</a>
+                    <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="ResourceLibrary.html">Resource Library</a>
+                </div>
+            </div>
+            
+            <a href="Contact.html" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+
+        <div class="auth-section" id="authSection">
+            <button class="auth-button" onclick="openModal()">Login / Sign Up</button>
+        </div>
+
+        <div class="auth-section" id="userSection" style="display:none;">
+            <div class="icon" onclick="alert('You have 3 new notifications')">🔔<span class="notification-dot"></span></div>
+            <div class="profile-container">
+                <div class="icon" onclick="toggleProfileDropdown()">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#">My Profile</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#" onclick="logout()">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeModal()">×</div>
+            <h3 id="formTitle">Login</h3>
+            <div class="tabs">
+                <button class="active" onclick="switchTab('login')">Login</button>
+                <button onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <form class="modal-form" id="loginForm" style="display: flex;">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="button" onclick="login()">Login</button>
+                <a href="#">Forgot password?</a>
+            </form>
+
+            <form class="modal-form" id="signupForm">
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <label class="checkbox-label">
+                    <input type="checkbox" required>
+                    <span>I agree to the terms and conditions</span>
+                </label>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+        <section class="hero">
+            <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                <h1
+                    class="display-5 fw-bold mb-3"
+                    style="color: rgb(0, 0, 0); text-shadow: 0 2px 4px #002E4D;font-family: 'Playfair Display', serif;"
+                >
+                    Transform Your Life Through Intentional Change
+                </h1>
+                <p
+                    class="lead mb-4"
+                    style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.9);text-shadow: 0 2px 4px #002E4D; max-width: 800px; margin: 0 auto 2rem;"
+                >
+                    "The only way to make sense out of change is to plunge into it, move with it, and join the dance."
+                </p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a
+                    href="About.html"
+                    target="_blank"
+                    class="btn btn-warning btn-lg px-5 py-3 custom-btn-primary" style="font-family: Arial, Helvetica, sans-serif;"
+                    >
+                    Learn More About Us
+                    </a>
+                    <a
+                    href="Services.html"
+                    class="btn btn-warning btn-lg px-5 py-3 custom-btn-outline" style="font-family: Arial, Helvetica, sans-serif;"
+                    >
+                    Our Services
+                    </a>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div
+            class="position-absolute bottom-0 start-50 translate-middle-x mb-3 chevron-down"
+            >
+            <a href="#about" class="text-white">
+                <i class="fas fa-chevron-down fa-lg"></i>
+            </a>
+            </div>
+        </section>
+
+
+    <!-- Stats Section -->
+    <section class="py-5" style="background: none; background-color: transparent;">
+        <div class="container py-4">
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-6" >
+                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                        <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">10+</h2>
+                        <p class="text-muted mb-0">Years Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                        <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">150+</h2>
+                        <p class="text-muted mb-0">Clients Served</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                        <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">95%</h2>
+                        <p class="text-muted mb-0">Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+       <!-- About Section with Our Approach -->
+        <section class="about py-7" id="about" style="background: none; background-color: transparent;">
+        <div class="container">
+            <div class="row align-items-center">
+
+            <!-- Video Column -->
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="position-relative">
+                <iframe width="100%" height="550" src="Willful Change Promo.mp4" title="Video player" frameborder="0" allowfullscreen class="rounded-4 shadow"></iframe>
+
+                <div class="position-absolute top-0 start-0 bg-warning p-4 shadow" style="transform: translate(-20px, -20px); z-index: 1;">
+                    <h3 class="text-white mb-0">10+</h3>
+                    <p class="text-white mb-0">Years Experience</p>
+                </div>
+
+                <div class="position-absolute bottom-0 end-0 m-4">
+                    <a href="#" class="btn btn-warning btn-lg rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                    <i class="fas fa-play" style="font-size: 1.5rem;"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Text Column -->
+            <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                <h2 class="section-heading mb-4" style="color: #002E4D;">The Willful Change Way</h2>
+
+                <p class="lead text-muted mb-4">
+                At Willful Change, transformation isn’t a buzzword; it’s a commitment.We believe meaningful growth comes from intentional choices, strong values, and courageous leadership. That’s why we partner with individuals, teams, and organizations to spark purposeful change from within.</p>
+
+                <p class="text-muted mb-4">
+                Blending strategic insight with evidence-based coaching, we start by understanding what matters most to you: your goals, values, and challenges. From there, we guide a personalized journey that builds clarity, resilience, and lasting momentum.</p>
+
+                <!-- Approach Highlights -->
+                <ul class="list-unstyled mb-5">
+                <li class="d-flex mb-4">
+                    <div class="me-4">
+                    <div class="bg-light-warning p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                        <i class="fas fa-hands-helping text-warning" style="font-size: 1.5rem;"></i>
+                    </div>
+                    </div>
+                    <div>
+                    <h5 class="mb-2">Personalized Support</h5>
+                    <p class="mb-0 text-muted">We listen deeply and co-create strategies tailored to your unique context, goals, and growth style.</p>
+                    </div>
+                </li>
+
+                <li class="d-flex mb-4">
+                    <div class="me-4">
+                    <div class="bg-light-warning p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                        <i class="fas fa-lightbulb text-warning" style="font-size: 1.5rem;"></i>
+                    </div>
+                    </div>
+                    <div>
+                    <h5 class="mb-2">Proven Frameworks</h5>
+                    <p class="mb-0 text-muted">We use tested models and practical tools to drive measurable progress and leadership effectiveness.</p>
+                    </div>
+                </li>
+
+                <li class="d-flex">
+                    <div class="me-4">
+                    <div class="bg-light-warning p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                        <i class="fas fa-rocket text-warning" style="font-size: 1.5rem;"></i>
+                    </div>
+                    </div>
+                    <div>
+                    <h5 class="mb-2">Sustainable Transformation</h5>
+                    <p class="mb-0 text-muted">We equip you with the mindset, tools, and systems to lead confidently long after the engagement ends.</p>
+                    </div>
+                </li>
+                </ul>
+
+                <!-- Founder Info -->
+                <div class="d-flex align-items-center mb-4">
+                <img src="Will Photo.png" alt="Founder" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; border: 3px solid #CFAE3C;">
+                <div>
+                    <h6 class="mb-0">Wilbert Weche</h6>
+                    <p class="text-muted mb-0">Founder & CEO</p>
+                </div>
+                <div class="ms-4 ps-4 border-start">
+                    <div class="d-flex">
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <i class="fas fa-star text-warning me-1"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="small text-muted mb-0">4.9 (120+ Reviews)</p>
+                </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="mt-4">
+                <a href="https://www.linkedin.com/company/willful-change/about/" class="btn custom-about-btn btn-lg px-4 py-2 fw-bold mt-2">See Our Community</a>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <!-- Custom Style -->
+        <style>
+            .custom-about-btn {
+            background-color: #cfae3c;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+            }
+            
+            .custom-about-btn:hover {
+            background-color: #b28e2f;
+            color: #fff;
+            }
+        </style>
+        </section>
+
+
+
+
+
+    <!-- Clients Section -->
+    <section class="logo-carousel-section" style="background: none; background-color: transparent;">
+
+
+
+            <div class="logo-carousel-track">
+            <!-- First set of logos -->
+            <div class="logo-item">
+                <img src="Logo1.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo2.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo3.png">
+            </div>
+
+            <div class="logo-item">
+                <img src="Logo4.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo5.png">
+            </div>
+            <!-- Duplicate logos for seamless looping -->
+            <div class="logo-item">
+                <img src="Logo6.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo7.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo8.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo9.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo10.png">
+            </div>
+            <div class="logo-item">
+                <img src="Logo11.png">
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <style>
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-100% / 2)); }
+            }
+        .testimonials-section {
+        padding: 6rem 0;
+        background-color: var(--light);
+        }
+        
+        .testimonials-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 3rem;
+        font-size: 2.25rem;
+        }
+        
+        .testimonial-carousel {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        padding: 0 2rem;
+        }
+        
+        .testimonial-inner {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        overflow: hidden;
+        }
+        
+        .testimonial {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        }
+        
+        .testimonial-logo {
+        height: 40px;
+        width: auto;
+        margin-bottom: 1.5rem;
+        filter: grayscale(0%) brightness(1);
+        transition: all 0.3s ease;
+        }
+        
+
+        
+        .testimonial p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        flex-grow: 1;
+        }
+        
+        .testimonial-footer {
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        object-fit: cover;
+        border: 2px solid var(--secondary);
+        padding: 2px;
+        }
+        
+        .testimonial-author {
+        text-align: left;
+        }
+        
+        .testimonial-author strong {
+        display: block;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.95rem;
+        }
+        
+        .testimonial-author span {
+        color: var(--gray);
+        font-size: 0.85rem;
+        display: block;
+        }
+        
+        .testimonial-controls {
+        display: none;
+        }
+        
+        @media (max-width: 1024px) {
+        .testimonial-inner {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        
+        @media (max-width: 768px) {
+        .testimonial-inner {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            padding: 1.5rem;
+        }
+        }
+
+
+        /* Logo Carousel Section */
+        .logo-carousel-section {
+        padding: 4rem 0;
+        background-color: white;
+        overflow: hidden;
+        position: relative;
+        }
+        
+        .logo-carousel-section h2 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2.5rem;
+        font-size: 2rem;
+        }
+        
+        .logo-carousel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 2rem 0;
+        }
+        
+        .logo-carousel-track {
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+        animation: scroll 50s linear infinite;
+        width: max-content;
+        }
+        
+        .logo-item {
+        flex: 0 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        }
+        
+        .logo-item img {
+        max-width: 200px;
+        max-height: 120px;
+        width: auto;
+        height: auto;
+        opacity: 0.7;
+        transition: all 0.9s ease;
+        filter: grayscale(100%);
+        }
+        
+        .logo-item:hover img {
+        opacity: 1;
+        filter: grayscale(0%);
+        transform: scale(1.05);
+        }
+        
+        @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-150px * 5 - 4rem * 4)); /* Width of 5 logos + gaps */
+        }
+        }
+        
+        /* Pause animation on hover */
+        .logo-carousel-container:hover .logo-carousel-track {
+        animation-play-state: paused;
+        }
+        
+        /* Gradient fade effect on edges */
+        .logo-carousel-container::before,
+        .logo-carousel-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+        }
+        
+        .logo-carousel-container::before {
+        left: 0;
+        background: linear-gradient(90deg, white, rgba(255, 255, 255, 0));
+        }
+        
+        .logo-carousel-container::after {
+        right: 0;
+        background: linear-gradient(-90deg, white, rgba(255, 255, 255, 0));
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+        .logo-item img {
+            max-width: 120px;
+        }
+        
+        .logo-carousel-track {
+            gap: 3rem;
+        }
+        
+        @keyframes scroll {
+            100% {
+            transform: translateX(calc(-120px * 5 - 3rem * 4));
+            }
+        }
+        }
+        
+        @media (max-width: 768px) {
+        .logo-carousel-section {
+            padding: 3rem 0;
+        }
+        
+        .logo-item img {
+            max-width: 100px;
+            opacity: 0.8;
+        }
+        
+        .logo-carousel-track {
+            gap: 2rem;
+        }
+        
+        @keyframes scroll {
+            100% {
+            transform: translateX(calc(-100px * 5 - 2rem * 4));
+            }
+        }
+        }
+        </style>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Our Services</h2>
+                <p class="lead text-muted">Professional solutions tailored to your needs</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm overflow-hidden service-card" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="position-relative">
+                            <img src="Willful Change Event Images-23.jpg" class="card-img-top service-img" alt="Keynote Speaking" style="height: 220px; object-fit: cover; transition: transform 0.5s ease;">
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                                    <i class="fas fa-bullhorn text-warning" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold mb-0">Keynote Speaking</h3>
+                            </div>
+                            <p class="text-muted mb-4">Inspire and motivate your team with powerful keynotes that drive change, encourage growth, and transform organizational culture.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Customized presentations</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Interactive sessions</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Actionable insights</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="#contact" class="btn btn-warning px-4">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm overflow-hidden service-card" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="position-relative">
+                            <img src="Willful Change Event Images-7.jpg" class="card-img-top service-img" alt="Leadership Training" style="height: 220px; object-fit: cover; transition: transform 0.5s ease;">
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <span class="badge bg-warning text-dark px-3 py-2" style="font-size: 0.9rem; font-weight: 600;">Most Popular</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                                    <i class="fas fa-users-gear text-warning" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold mb-0">Leadership Training</h3>
+                            </div>
+                            <p class="text-muted mb-4">Develop essential leadership skills with our comprehensive training programs designed for both emerging and experienced leaders.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Team building</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Strategic thinking</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Decision making</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="#contact" class="btn btn-outline-warning px-4">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card">
+                        <img src="Willful Change Event Images-15.jpg" class="card-img-top service-img" alt="Team Building" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-light-warning p-3 rounded-circle me-3">
+                                    <i class="fas fa-users text-warning" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold mb-0">Coaching</h3>
+                            </div>
+                            <p class="card-text text-muted mb-4">Professional coaching services, a 1on1 partnership that involves a thought-provoking and creative process that inspires you to maximize your personal & professional potential</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Team building</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Strategic thinking</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Decision making</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <a href="#contact" class="btn btn-outline-warning px-4">Learn More</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Moments of Transformation</h2>
+                <p class="lead">Capturing the journey of change and growth</p>
+            </div>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="Photo1.png" alt="Workshop 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Photo5.png" alt="Team Building">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Photo2.png" alt="Coaching Session">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Photo3.png" alt="Leadership Training">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Photo4.png" alt="Keynote Speech">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-inner">
+            <!-- Testimonial 1 -->
+            <div class="testimonial">
+                <img src="logo1.png" alt="Amazon" class="testimonial-logo" style="max-width: 140px; height: auto;">
+                <p>"This gave me a huge opportunity for growth and for that I am very grateful! After working with you I have found myself in the most centered and positive place I have ever been in my life. I'm excited to continue to work on the things that we talked about and progress that much more in my life and business. Thank you so much!"</p>
+                <div class="testimonial-footer">
+                <div class="testimonial-author">
+                    <strong>Marisa V</strong>
+                    <span>VP of Product, Amazon</span>
+                </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial">
+                <img src="logo2.png" alt="Google" class="testimonial-logo" style="max-width: 140px; height: auto;">
+                <p>"Wilbert put a lot of effort into getting to know me and my situation. I knew I was in the right hands and on the right track within the first session. I have applied to nursing school, became a certified Notary Officer, started saving to purchase my first home, invested in properties and even started working on two of my businesses."</p>
+                <div class="testimonial-footer">
+                <div class="testimonial-author">
+                    <strong>Danielle G</strong>
+                    <span>Director of People Ops, Google</span>
+                </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial">
+                <img src="logo10.png" alt="Microsoft" class="testimonial-logo" style="max-width: 140px; height: auto;">
+
+                <p>"Just wanted to shoot you a quick email thanking you for your training today. It was very well done. Your enthusiasm for the topic made it easy for everyone to be engaged. I strongly STRONGLY recommend Willful Change to any individual looking to raise their level of personal performance, awareness and overall human experience. 10/10"</p>
+                <div class="testimonial-footer">
+                <div class="testimonial-author">
+                    <strong>Dylan Z</strong>
+                    <span>Head of L&D, Microsoft</span>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+      <script>
+        // Logo Carousel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.logo-carousel-track');
+        if (!track) return;
+        
+        // Clone logos for infinite loop effect
+        const logos = track.querySelectorAll('.logo-item');
+        const logosCount = logos.length / 2; // We have duplicate logos
+        const logoWidth = 150; // Base width of each logo
+        const gap = 64; // Gap between logos in pixels (4rem = 64px)
+        
+        // Calculate total width of one set of logos
+        const trackWidth = (logoWidth * logosCount) + (gap * (logosCount - 1));
+        
+        // Set initial position
+        let position = 0;
+        let animationId;
+        
+        function animate() {
+            // Move the track
+            position -= 0.5; // Adjust speed here
+            
+            // Reset position when we've scrolled one full set of logos
+            if (position <= -trackWidth) {
+            position = 0;
+            }
+            
+            track.style.transform = `translateX(${position}px)`;
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Start animation
+        animate();
+        
+        // Pause on hover
+        const container = document.querySelector('.logo-carousel-container');
+        if (container) {
+            container.addEventListener('mouseenter', () => {
+            cancelAnimationFrame(animationId);
+            });
+            
+            container.addEventListener('mouseleave', () => {
+            animationId = requestAnimationFrame(animate);
+            });
+        }
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+            // Recalculate positions and restart animation
+            position = 0;
+            track.style.transform = 'translateX(0)';
+            cancelAnimationFrame(animationId);
+            animate();
+            }, 250);
+        });
+        });
+    
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
+            }
+            });
+        });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for fixed header
+                behavior: 'smooth'
+            });
+            }
+        });
+        });
+        
+        // Testimonial Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dotsContainer = document.querySelector('.testimonial-dots');
+        const prevBtn = document.querySelector('.testimonial-prev');
+        const nextBtn = document.querySelector('.testimonial-next');
+        let currentIndex = 0;
+        
+        // Create dots
+        testimonials.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'testimonial-dot';
+            dot.setAttribute('aria-label', `Show testimonial ${index + 1}`);
+            dot.addEventListener('click', () => goToTestimonial(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.testimonial-dot');
+        
+        // Initialize first testimonial
+        updateTestimonial(0);
+        
+        // Navigation functions
+        function updateTestimonial(index) {
+            // Hide all testimonials
+            testimonials.forEach(testimonial => {
+            testimonial.style.display = 'none';
+            testimonial.setAttribute('aria-hidden', 'true');
+            });
+            
+            // Update dots
+            dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+            dot.setAttribute('aria-pressed', i === index);
+            });
+            
+            // Show current testimonial
+            testimonials[index].style.display = 'block';
+            testimonials[index].setAttribute('aria-hidden', 'false');
+            currentIndex = index;
+        }
+        
+        function goToTestimonial(index) {
+            if (index < 0) index = testimonials.length - 1;
+            if (index >= testimonials.length) index = 0;
+            updateTestimonial(index);
+        }
+        
+        // Event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => goToTestimonial(currentIndex - 1));
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => goToTestimonial(currentIndex + 1));
+        }
+        
+        // Auto-advance testimonials
+        let slideInterval = setInterval(() => {
+            goToTestimonial(currentIndex + 1);
+        }, 8000);
+        
+        // Pause on hover
+        const carousel = document.querySelector('.testimonial-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                goToTestimonial(currentIndex + 1);
+            }, 8000);
+            });
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+            goToTestimonial(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+            goToTestimonial(currentIndex + 1);
+            }
+        });
+        });
+    </script>
+
+    <!-- CTA Section -->
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="ready-to-begin" class="rounded-4 p-5 p-md-5 shadow-lg"
+                    style="background:#cedae2; border: 1px solid rgba(255,255,255,0.1);">
+                    <h2 class="cta-heading mb-4 text-center">
+                        <span style="font-size: 2.5rem; font-weight: 700; line-height: 1.3;">Ready to Begin Your Transformation?</span>
+                    </h2>
+                    <p class="lead mb-5 text-center" style="color: rgba(0, 0, 0, 0.9); max-width: 700px; margin: 0 auto;">
+                        Take the first step toward meaningful change. Our expert coaches are ready to guide you on a journey of growth, purpose, and lasting impact.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="https://www.linkedin.com/in/wilbert-weche-52b141230/" class="btn btn-warning btn-lg px-5 py-3 custom-cta-btn">
+                            Join Our Community
+                        </a>
+
+                        <button class="cta-button primary pulse" onclick="toggleFormPopup('popupForm')">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            Book a Free Consultation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Animated Background Elements -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="opacity: 0.08; z-index: 1;">
+            <div class="position-absolute bg-warning rounded-circle" style="top: 20%; left: 10%; width: 100px; height: 100px; animation: float 8s ease-in-out infinite;"></div>
+            <div class="position-absolute bg-white rounded-circle" style="top: 60%; left: 80%; width: 150px; height: 150px; animation: float 10s ease-in-out infinite;"></div>
+            <div class="position-absolute bg-warning rounded-circle" style="top: 30%; left: 70%; width: 80px; height: 80px; animation: float 12s ease-in-out infinite;"></div>
+        </div>
+
+        <style>
+            .custom-cta-btn {
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease;
+            }
+
+            .custom-cta-btn:hover {
+                background-color: #b28e2f;
+                color: white;
+            }
+
+            .custom-cta-outline {
+                background-color:white;
+                color:black;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                border: 1px solid #043454;
+            }
+
+            .custom-cta-outline:hover {
+                background-color: #b28e2f;
+                border-color: #b28e2f;
+                color: white;
+            }
+
+            @keyframes float {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0); }
+            }
+        /* CTA Section */
+        .cta-section {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            margin: 80px auto;
+            border: 1px solid rgba(203, 213, 225, 0.3);
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        }
+        
+        .cta-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .cta-image {
+                display: none;
+            }
+        }
+        
+        .cta-content {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+
+        
+        .cta-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin: 1rem 0 1.5rem;
+            color: #1e293b;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, #1e293b, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 90%;
+        }
+        
+        .cta-title .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cta-subtext {
+            font-size: 1.2rem;
+            color: #475569;
+            margin: 0 0 2.5rem;
+            line-height: 1.7;
+            max-width: 90%;
+        }
+        
+        /* CTA Buttons */
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+        
+        @media (max-width: 480px) {
+            .cta-actions {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #cfae3c;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        .cta-button.primary {
+            background: #cfae3c;
+            color: white;
+            box-shadow: 0 4px 14px -2px rgba(37, 99, 235, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button.primary:hover {
+            background: #b28e2f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px -5px rgba(37, 99, 235, 0.5);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: #3b82f6;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #f8fafc;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .cta-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+        
+        .cta-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-image img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease 0.3s forwards;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+        
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .trust-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Modal Styles */
+        .modal-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+        
+        .modal-popup.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-popup.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+        
+        .modal-body {
+            padding: 2.5rem;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--text);
+        }
+        
+        /* Form Styles */
+        .form-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.75rem;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 2.75rem 0.9rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            color: #1e293b;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .input-wrapper .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+        
+        .select-wrapper {
+            position: relative;
+        }
+        
+        .select-wrapper::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+        
+        .form-group input::placeholder {
+            color: #94a3b8;
+            opacity: 0.8;
+        }
+        
+        .form-group select:required:invalid {
+            color: #94a3b8;
+        }
+        
+        .form-group select option {
+            color: #1e293b;
+        }
+        
+        .form-group select option[value=""][disabled] {
+            display: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #475569;
+        }
+        
+        .required {
+            color: #ef4444;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .submit-button:hover::before {
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px -1px rgba(59, 130, 246, 0.2);
+        }
+        
+        .submit-button span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .submit-button .button-arrow {
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-button:hover .button-arrow {
+            transform: translateX(3px);
+        }
+        
+        /* Confirmation Message */
+        .confirmation-message {
+            background: #f0fdf4;
+            border: 1px solid #b6e8c9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            color: #065f46;
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .cta-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .cta-content {
+                padding: 2.5rem 2rem;
+            }
+            
+            .cta-image {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .cta-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-subtext {
+                font-size: 1rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cta-title {
+                font-size: 1.75rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    </section>
+
+    <!-- Discovery Call Popup -->
+    <div id="popupForm" class="modal-popup">
+        <div class="modal-content">
+            <div>
+                <h3>Schedule Your Free Discovery Call</h3>
+                <button onclick="toggleFormPopup('popupForm')" class="close-btn" aria-label="Close modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="formContent">
+                    <form id="discoveryForm" class="form-layout">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </span>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </span>
+                                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+            <label for="time">Preferred Time <span class="required">*</span></label>
+            <div class="select-wrapper">
+                <select id="time" name="time" required>
+                    <option value="" disabled selected>Select best time</option>
+                    <option value="morning">Morning (9am - 12pm)</option>
+                    <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                    <option value="evening">Evening (4pm - 7pm)</option>
+                </select>
+            </div>
+        </div>
+                        
+                        <div class="form-group" style="margin-top: -0.5rem; margin-bottom: 0.5rem;">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                <label for="newsletter">Sign me up for monthly insights and inspiration</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span class="button-text">Schedule My Call</span>
+                            <span class="button-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="confirmationMessage" class="confirmation-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle modal function
+        function toggleFormPopup(id) {
+            const popup = document.getElementById(id);
+            const body = document.body;
+            
+            if (popup.classList.contains('active')) {
+                popup.classList.remove('active');
+                body.style.overflow = 'auto';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 300);
+            } else {
+                popup.style.display = 'flex';
+                body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    popup.classList.add('active');
+                }, 10);
+            }
+        }
+        
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('discoveryForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const time = document.getElementById('time').value;
+                    const subscribed = document.getElementById('newsletter').checked;
+                    
+                    // Format time for display
+                    const timeDisplay = document.querySelector(`#time option[value="${time}"]`).textContent;
+                    
+                    // Create confirmation message
+                    const confirmationMessage = `
+                        <div style="text-align: center; padding: 1rem 0;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">✓</div>
+                            <p style="margin-bottom: 1rem; line-height: 1.6;">
+                                We've received your contact info: <strong>${email}</strong><br>
+                                and our team will contact you in the <strong>${timeDisplay}</strong> within 24–48 hours.
+                            </p>
+                            ${subscribed ? '<p style="color: #059669; font-size: 0.9rem; margin-top: 0.5rem;">✓ Subscribed to monthly insights</p>' : ''}
+                        </div>
+                    `;
+                    
+                    // Hide form and show confirmation
+                    document.getElementById('formContent').style.display = 'none';
+                    const confirmationBox = document.getElementById('confirmationMessage');
+                    confirmationBox.innerHTML = confirmationMessage;
+                    confirmationBox.style.display = 'block';
+                    
+                    // In a real application, you would send the form data to your server here
+                    console.log('Form submitted:', { name, email, phone, time, subscribed });
+                    
+                    // Reset form after submission
+                    setTimeout(() => {
+                        form.reset();
+                    }, 1000);
+                });
+            }
+            
+            // Close modal when clicking outside content
+            const modals = document.querySelectorAll('.modal-popup');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        toggleFormPopup(modal.id);
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModal = document.querySelector('.modal-popup.active');
+                    if (activeModal) {
+                        toggleFormPopup(activeModal.id);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+    <footer>
+    <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
+
+    <!-- Top Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+
+        <!-- Useful Links -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Useful Links</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+        </ul>
+        </div>
+
+        <!-- Services -->
+        <div style="flex: 1; min-width: 200px;">
+        <h3 style="margin-bottom: 1rem;">Services</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+        </ul>
+        </div>
+
+        <!-- Company Info Column (reordered) -->
+        <div style="flex: 1.5; min-width: 250px;">
+        <!-- Social Icons First -->
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br>
+        <!-- Aspiration Text -->
+        <p style="margin: 0 0 0.5rem 0;">Let’s grow together: Empowering change through conversation, connection, and courage. We believe in purposeful transformation, grounded in empathy, and driven by action.</p>
+    <br>
+        <!-- Phone -->
+        <p style="margin: 0.5rem 0;"><strong>Phone:</strong> 413-306-4309</p>
+
+        <!-- Copyright -->
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #fcfafa;">
+        &copy; 2025 Willful Change. All rights reserved.
+        </p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Row -->
+    <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
+        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+    </div>
+
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+          <div class="chatbot-header">
+              <div class="chatbot-avatar">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <div class="chatbot-info">
+                  <h5>Willful Change Assistant</h5>
+                  <p>How can I help you today?</p>
+              </div>
+              <button class="chatbot-close" id="closeChatbot">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <div class="chatbot-message bot">
+                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <div class="chatbot-time">Just now</div>
+              </div>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Type your message">
+              <button id="sendMessage">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+      <div class="floating-buttons">
+          <a href="#" id="toTop" class="toTop fa fa-angle-up" aria-label="Back to top"></a>
+          <button class="chatbot-toggle" id="toggleChatbot" aria-label="Open chat">
+              <i class="fas fa-comment-dots"></i>
+          </button>
+      </div>
+  
+      <!-- Chatbot Styles -->
+      <style>
+          /* Chatbot Styles */
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              z-index: 1000;
+              transform: translateY(100px);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+          }
+  
+          .chatbot-container.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+  
+          .chatbot-header {
+              background: #002E4D;
+              color: white;
+              padding: 15px 20px;
+              border-radius: 12px 12px 0 0;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              position: relative;
+          }
+  
+          .chatbot-avatar {
+              width: 40px;
+              height: 40px;
+              background: #CFAE3C;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+          }
+  
+          .chatbot-info h5 {
+              margin: 0;
+              font-size: 1rem;
+              font-weight: 600;
+          }
+  
+          .chatbot-info p {
+              margin: 2px 0 0;
+              font-size: 0.8rem;
+              opacity: 0.9;
+          }
+  
+          .chatbot-close {
+              background: none;
+              border: none;
+              color: white;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              opacity: 0.8;
+              transition: opacity 0.2s;
+          }
+  
+          .chatbot-close:hover {
+              opacity: 1;
+          }
+  
+          .chatbot-messages {
+              flex: 1;
+              padding: 15px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          }
+  
+          .chatbot-message {
+              max-width: 80%;
+              padding: 10px 15px;
+              border-radius: 15px;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              position: relative;
+          }
+  
+          .chatbot-message.bot {
+              background: #f1f3f5;
+              align-self: flex-start;
+              border-bottom-left-radius: 5px;
+          }
+  
+          .chatbot-message.user {
+              background: #002E4D;
+              color: white;
+              align-self: flex-end;
+              border-bottom-right-radius: 5px;
+          }
+  
+          .chatbot-time {
+              font-size: 0.7rem;
+              opacity: 0.7;
+              margin-top: 5px;
+              text-align: right;
+          }
+  
+          .chatbot-input {
+              padding: 15px;
+              border-top: 1px solid #eee;
+              display: flex;
+              gap: 10px;
+          }
+  
+          .chatbot-input input {
+              flex: 1;
+              padding: 10px 15px;
+              border: 1px solid #ddd;
+              border-radius: 20px;
+              outline: none;
+              font-size: 0.9rem;
+          }
+  
+          .chatbot-input button {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: #002E4D;
+              color: white;
+              border: none;
+              cursor: pointer;
+              transition: background 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+  
+          .chatbot-input button:hover {
+              background: #001a2d;
+          }
+  
+          .chatbot-toggle {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2rem;
+              transition: all 0.3s ease;
+          }
+  
+          .floating-buttons {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              display: flex;
+              flex-direction: row-reverse;
+              align-items: center;
+              gap: 15px;
+              z-index: 9999;
+          }
+          
+          .chatbot-toggle {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: #cfae3c;
+              color: white;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              transition: all 0.3s ease;
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+          }
+          
+          .chatbot-toggle:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .toTop:hover {
+              background: #b28e2f;
+              transform: scale(1.1);
+          }
+          
+          .chatbot-toggle.hidden {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(20px);
+          }
+  
+          .toTop {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #ffffff;
+              color: #002E4D;
+              border: none;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              opacity: 0.7;
+              visibility: visible;
+              transform: translateY(0);
+              margin-bottom: 5px;
+          }
+  
+          .toTop.visible {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+          }
+  
+          /* Responsive adjustments */
+          @media (max-width: 576px) {
+              .chatbot-container {
+                  width: 100%;
+                  height: 100%;
+                  bottom: 0;
+                  right: 0;
+                  border-radius: 0;
+              }
+  
+              .chatbot-toggle {
+                  bottom: 20px;
+                  right: 20px;
+              }
+          }
+      </style>
+  
+      <!-- Chatbot Script -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const chatbotContainer = document.querySelector('.chatbot-container');
+              const toggleChatbot = document.getElementById('toggleChatbot');
+              const closeChatbot = document.getElementById('closeChatbot');
+              const chatInput = document.getElementById('chatbotInput');
+              const sendButton = document.getElementById('sendMessage');
+              const chatMessages = document.getElementById('chatbotMessages');
+  
+              // Toggle chat window
+              toggleChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.toggle('active');
+                  toggleChatbot.classList.add('hidden');
+              });
+  
+              // Close chat window
+              closeChatbot.addEventListener('click', () => {
+                  chatbotContainer.classList.remove('active');
+                  setTimeout(() => {
+                      toggleChatbot.classList.remove('hidden');
+                  }, 300);
+              });
+  
+              // Sample responses
+              const responses = [
+                  { 
+                      keywords: ['hello', 'hi', 'hey'],
+                      response: 'Hello! How can I assist you today?'
+                  },
+                  {
+                      keywords: ['service', 'services', 'offer', 'provides'],
+                      response: 'We offer leadership development, team building, and organizational transformation services. Would you like to know more about any specific service?'
+                  },
+                  {
+                      keywords: ['contact', 'email', 'phone', 'number'],
+                      response: 'You can reach us at info@willfulchange.com or call us at (413) 306-4309. Our team is available Monday to Friday, 9 AM to 5 PM EST.'
+                  },
+                  {
+                      keywords: ['about', 'who are you', 'company'],
+                      response: 'Willful Change is a leadership and organizational development firm dedicated to helping businesses and individuals achieve meaningful transformation through intentional change.'
+                  },
+                  {
+                      keywords: ['thank', 'thanks', 'appreciate'],
+                      response: 'You\'re welcome! Is there anything else I can help you with?'
+                  }
+              ];
+  
+              // Default response if no keywords match
+              const defaultResponse = 'I\'m not sure how to respond to that. Could you provide more details? You can also contact us directly for assistance.';
+  
+              // Function to add a message to the chat
+              function addMessage(message, isUser = false) {
+                  const messageDiv = document.createElement('div');
+                  messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+                  
+                  const messageContent = document.createElement('p');
+                  messageContent.textContent = message;
+                  
+                  const timeDiv = document.createElement('div');
+                  timeDiv.className = 'chatbot-time';
+                  timeDiv.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', 'minute': '2-digit' });
+                  
+                  messageDiv.appendChild(messageContent);
+                  messageDiv.appendChild(timeDiv);
+                  chatMessages.appendChild(messageDiv);
+                  
+                  // Scroll to bottom
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+  
+              // Function to process user input and generate response
+              function processUserInput(input) {
+                  if (!input.trim()) return;
+                  
+                  // Add user message to chat
+                  addMessage(input, true);
+                  
+                  // Convert input to lowercase for easier matching
+                  const lowerInput = input.toLowerCase();
+                  let response = defaultResponse;
+                  
+                  // Check for matching keywords
+                  for (const item of responses) {
+                      if (item.keywords.some(keyword => lowerInput.includes(keyword))) {
+                          response = item.response;
+                          break;
+                      }
+                  }
+                  
+                  // Simulate typing delay
+                  setTimeout(() => {
+                      addMessage(response);
+                  }, 500);
+                  
+                  // Clear input
+                  chatInput.value = '';
+              }
+  
+              // Send message on button click
+              sendButton.addEventListener('click', () => {
+                  processUserInput(chatInput.value);
+              });
+  
+              // Send message on Enter key
+              chatInput.addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') {
+                      processUserInput(chatInput.value);
+                  }
+              });
+          });
+      </script>
+
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    
+    <!-- Navigation and Auth Scripts -->
+    <script>
+        // Auth Modal Functions
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            switchTab('login');
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function switchTab(tab) {
+            document.getElementById('loginForm').style.display = (tab === 'login') ? 'flex' : 'none';
+            document.getElementById('signupForm').style.display = (tab === 'signup') ? 'flex' : 'none';
+            document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tabs button')[tab === 'login' ? 0 : 1].classList.add('active');
+            document.getElementById('formTitle').textContent = tab === 'login' ? 'Login' : 'Sign Up';
+        }
+
+        function login() {
+            closeModal();
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('userSection').style.display = 'flex';
+        }
+
+        function logout() {
+            document.getElementById('authSection').style.display = 'flex';
+            document.getElementById('userSection').style.display = 'none';
+            toggleProfileDropdown(true);
+        }
+
+        function toggleProfileDropdown(forceClose = false) {
+            const dropdown = document.getElementById('profileDropdown');
+            if (forceClose) {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-container') && !event.target.closest('.modal-content')) {
+                toggleProfileDropdown(true);
+            }
+        }
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const toTop = document.getElementById('toTop');
+            if (window.scrollY > 400) {
+                toTop.style.display = 'block';
+            } else {
+                toTop.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to top
+        document.getElementById('toTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Initialize AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && document.querySelector(targetId)) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
