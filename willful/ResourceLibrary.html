@@ -456,7 +456,6 @@
 
     
     .hero {
-      background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
       padding: 8rem 2rem 6rem;
       text-align: center;
       position: relative;
@@ -472,9 +471,6 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 25%);
       z-index: 0;
     }
     
@@ -927,7 +923,7 @@
     body {
       line-height: 1.6;
       color: var(--dark);
-      background-color: var(--light);
+      background: url('data:image/jpeg;base64,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');
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
@@ -1776,10 +1772,14 @@
       background:
                   url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1950&q=80') no-repeat center center;
       background-size: cover;
-      color: #000000;
+      color: #002E4D;
       padding: 100px 20px;
       text-align: center;
       position: relative;
+      width: 100%;
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 8rem 2rem;
     }
 
     .hero-content {
@@ -1855,8 +1855,8 @@
             <div class="nav-item">
                 <button onclick="window.location.href='Explore.html'">Explore ▾</button>
                 <div class="dropdown">
-                    <a href="Explore.html#Testimonials">Testimonials</a>
                     <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="Explore.html#Testimonials">Testimonials</a>
                     <a href="ResourceLibrary.html">Resource Library</a>
                 </div>
             </div>
@@ -1914,17 +1914,18 @@
 
     <section class="resource-hero">
       <div class="hero-content">
-        <h1>Resource Library</h1>
-        <p>
-          Discover the tools, insights, and strategies you need to lead with confidence.
-          The <strong>Willful Change Member Resource Library</strong> offers curated
-          how-to guides, articles, and toolkits to help you excel in implementing standards,
-          best practices, and transformational change.
-        </p>
-        <p>
-          Whether you're just getting started or scaling impact, our resources are designed to meet you where you are, and help you go further.
-        </p>
-        <a href="#📂 Free Resources" class="cta-button">Explore the Library</a>
+        <h1 style="color: #b28e2f !important; text-shadow: 0 3px 6px #002E4D !important; font-family: 'Playfair Display', serif !important; -webkit-text-fill-color: #cfae3c !important; background: none !important;">Resource Library</h1>
+        <br>
+<br>     
+<br>
+
+    
+    
+        
+        <p>Discover the tools, insights, and strategies you need to lead with confidence. The Willful Change Member Resource Library offers curated how-to guides, articles, and toolkits to help you excel in implementing standards, best practices, and transformational change.
+
+Whether you're just getting started or scaling impact, our resources are designed to meet you where you are, and help you go further.</p>
+        <a href="#Free Resources" class="cta-button">Explore the Library</a>
       </div>
     </section>
 
@@ -2001,7 +2002,7 @@
 </section>
 
   <!-- Free Resources Section -->
-  <section class="section">
+  <section class="section" id="Free Resources">
     <h2 class="section-title free-title">
     <i class="fas fa-folder-open"></i>
     <span>Free Resources</span>
@@ -2253,6 +2254,7 @@
 
 
 
+
     <footer>
     <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
 
@@ -2263,10 +2265,10 @@
         <div style="flex: 1; min-width: 200px;">
         <h3 style="margin-bottom: 1rem;">Useful Links</h3>
         <ul style="list-style: none; padding: 0; line-height: 1.8;">
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+            <li><a href="About.html#Frequently-Asked-Questions" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="About.html#Chat-team" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="Contact.html#contact-form-title" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="Home.html#Ready-to-begin" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
         </ul>
         </div>
 
@@ -2274,10 +2276,10 @@
         <div style="flex: 1; min-width: 200px;">
         <h3 style="margin-bottom: 1rem;">Services</h3>
         <ul style="list-style: none; padding: 0; line-height: 1.8;">
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+            <li><a href="Services.html#keynote-title" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="Services.html#training-title" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="Coaching.html" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="Services.html#more-title" style="color:#fcfafa; text-decoration:none;">More Services</a></li>
         </ul>
         </div>
 
@@ -2285,9 +2287,9 @@
         <div style="flex: 1.5; min-width: 250px;">
         <!-- Social Icons First -->
         <div class="social-links">
-            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/company/willful-change/about/" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:wweche@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <br>
         <!-- Aspiration Text -->
@@ -2305,13 +2307,12 @@
 
     <!-- Bottom Navigation Row -->
     <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+        <a href="Home.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="About.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="Services.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="Explore.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Explore</a>
+        <a href="Contact.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
     </div>
-
 
     <!-- Chatbot Widget -->
     <div class="chatbot-container">
@@ -2329,7 +2330,7 @@
           </div>
           <div class="chatbot-messages" id="chatbotMessages">
               <div class="chatbot-message bot">
-                  <p>Hello! I'm your Willful Change assistant. How can I help you today?</p>
+                  <p style="color: black;">Hello! I'm your Willful Change assistant. How can I help you today?</p>
                   <div class="chatbot-time">Just now</div>
               </div>
           </div>

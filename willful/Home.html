@@ -361,7 +361,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
@@ -372,6 +372,13 @@
             visibility: hidden;
             transition: all 0.3s ease;
             border: none;
+            padding: 0;
+            position: relative;
+        }
+        
+        .toTop i {
+            position: relative;
+            top: -1px;
         }
 
 
@@ -443,15 +450,13 @@
     /* Hero Section */
     .hero {
       padding: 80px 0;
-      min-height: 80vh;
+      min-height: 95vh;
       display: flex;
-      align-items: center;
       justify-content: center;
       position: relative;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      background:
         url('Home1.jpg')
           no-repeat center center/cover;
-      color: white;
     }
 
     .custom-btn-outline {
@@ -470,11 +475,10 @@
 
     .custom-btn-primary {
       background: #CFAE3C;
-      color: #002E4D;
+      color: #000000;
       border: none;
       font-weight: 600;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 15px rgba(207, 174, 60, 0.4);
       transition: background 0.3s, color 0.3s;
     }
 
@@ -757,8 +761,8 @@
             <div class="nav-item">
                 <button onclick="window.location.href='Explore.html'">Explore ▾</button>
                 <div class="dropdown">
-                    <a href="Explore.html#Testimonials">Testimonials</a>
                     <a href="Explore.html#Hero-container">Join Us</a>
+                    <a href="Explore.html#Testimonials">Testimonials</a>
                     <a href="ResourceLibrary.html">Resource Library</a>
                 </div>
             </div>
@@ -820,29 +824,54 @@
             <div class="container hero-content">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 <h1
                     class="display-5 fw-bold mb-3"
-                    style="color: rgb(0, 0, 0); text-shadow: 0 2px 4px #002E4D;font-family: 'Playfair Display', serif;"
+                    style="color: #cfae3c; text-shadow: 0 3px 5px #002E4D;font-family: 'Playfair Display', serif;"
                 >
                     Transform Your Life Through Intentional Change
                 </h1>
+                 <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    
                 <p
                     class="lead mb-4"
-                    style="font-size: 1.2rem; color: rgba(0, 0, 0, 0.9);text-shadow: 0 2px 4px #002E4D; max-width: 800px; margin: 0 auto 2rem;"
+                    style="font-size: 1.6rem; color: #fafafa; text-shadow: 0 3px 5px #002E4D; max-width: 800px; margin: 0 auto 2rem;"
                 >
-                    "The only way to make sense out of change is to plunge into it, move with it, and join the dance."
+                    "The only way to make sense out of change is to plunge into it,</p>
+                <p
+                    class="lead mb-4"
+                    style="font-size: 1.6rem; color: #fafafa; text-shadow: 0 3px 5px #002E4D; max-width: 800px; margin: 0 auto 2rem;"
+                >
+                    "move with it, and join the dance."</p>
+                     
                 </p>
-                <div class="d-flex gap-3 justify-content-center">
+                <br>
+                <br>
+                <div class="d-flex gap-3 justify-content-center" style="align-items: center;">
                     <a
                     href="About.html"
                     target="_blank"
-                    class="btn btn-warning btn-lg px-5 py-3 custom-btn-primary" style="font-family: Arial, Helvetica, sans-serif;"
+                    class="btn btn-warning btn-lg custom-btn-primary" 
+                    style="font-family: Arial, Helvetica, sans-serif; width: 240px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0;"
                     >
                     Learn More About Us
                     </a>
                     <a
                     href="Services.html"
-                    class="btn btn-warning btn-lg px-5 py-3 custom-btn-outline" style="font-family: Arial, Helvetica, sans-serif;"
+                    class="btn btn-warning btn-lg custom-btn-outline" 
+                    style="font-family: Arial, Helvetica, sans-serif; width: 240px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0;"
                     >
                     Our Services
                     </a>
@@ -861,26 +890,26 @@
         </section>
 
 
-    <!-- Stats Section -->
+<!-- Stats Section -->
     <section class="py-5" style="background: none; background-color: transparent;">
         <div class="container py-4">
-            <div class="row g-4 text-center">
+            <div class="row g-4 text-center justify-content-center">
                 <div class="col-md-3 col-6" >
-                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                    <div class="counter-box p-4 bg-white rounded-3 shadow">
                         <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">10+</h2>
                         <p class="text-muted mb-0">Years Experience</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                    <div class="counter-box p-4 bg-white rounded-3 shadow">
                         <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">150+</h2>
                         <p class="text-muted mb-0">Clients Served</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="counter-box p-4 bg-white rounded-3 shadow-sm">
+                    <div class="counter-box p-4 bg-white rounded-3 shadow">
                         <h2 class="display-4 fw-bold mb-1" style="color: #b28e2f;">95%</h2>
-                        <p class="text-muted mb-0">Success Rate</p>
+                        <p class="text-muted mb-0">Satisfaction Rate</p>
                     </div>
                 </div>
             </div>
@@ -1366,7 +1395,7 @@
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card">
-                        <img src="Willful Change Event Images-15.jpg" class="card-img-top service-img" alt="Team Building" style="height: 220px; object-fit: cover;">
+                        <img src="Willful Change Event Images-54.jpg" class="card-img-top service-img" alt="Team Building" style="height: 220px; object-fit: cover;">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="bg-light-warning p-3 rounded-circle me-3">
@@ -1663,7 +1692,7 @@
 
     <!-- CTA Section -->
     <section>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" id="Ready-to-begin">
             <div class="col-lg-10">
                 <div id="ready-to-begin" class="rounded-4 p-5 p-md-5 shadow-lg"
                     style="background:#cedae2; border: 1px solid rgba(255,255,255,0.1);">
@@ -1674,7 +1703,7 @@
                         Take the first step toward meaningful change. Our expert coaches are ready to guide you on a journey of growth, purpose, and lasting impact.
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
-                        <a href="https://www.linkedin.com/in/wilbert-weche-52b141230/" class="btn btn-warning btn-lg px-5 py-3 custom-cta-btn">
+                        <a href="https://www.linkedin.com/company/willful-change/about/" class="btn btn-warning btn-lg px-5 py-3 custom-cta-btn">
                             Join Our Community
                         </a>
 
@@ -2509,7 +2538,8 @@
 
 
 
-    <footer>
+
+<footer>
     <hr style="border: none; border-top: 4px solid #ddd; margin: 4rem auto 2rem auto; width: 90%; max-width: 1200px;">
 
     <!-- Top Section -->
@@ -2519,10 +2549,10 @@
         <div style="flex: 1; min-width: 200px;">
         <h3 style="margin-bottom: 1rem;">Useful Links</h3>
         <ul style="list-style: none; padding: 0; line-height: 1.8;">
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
+            <li><a href="About.html#Frequently-Asked-Questions" style="color:#fcfafa; text-decoration:none;">FAQs</a></li>
+            <li><a href="About.html#Chat-team" style="color:#fcfafa; text-decoration:none;">Talk to the Team</a></li>
+            <li><a href="Contact.html#contact-form-title" style="color:#fcfafa; text-decoration:none;">Contact Us</a></li>
+            <li><a href="Home.html#Ready-to-begin" style="color:#fcfafa; text-decoration:none;">Join Us</a></li>
         </ul>
         </div>
 
@@ -2530,10 +2560,10 @@
         <div style="flex: 1; min-width: 200px;">
         <h3 style="margin-bottom: 1rem;">Services</h3>
         <ul style="list-style: none; padding: 0; line-height: 1.8;">
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Training</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
-            <li><a href="#" style="color:#fcfafa; text-decoration:none;">And More</a></li>
+            <li><a href="Services.html#keynote-title" style="color:#fcfafa; text-decoration:none;">Keynote</a></li>
+            <li><a href="Services.html#training-title" style="color:#fcfafa; text-decoration:none;">Training</a></li>
+            <li><a href="Coaching.html" style="color:#fcfafa; text-decoration:none;">Coaching</a></li>
+            <li><a href="Services.html#more-title" style="color:#fcfafa; text-decoration:none;">More Services</a></li>
         </ul>
         </div>
 
@@ -2541,9 +2571,9 @@
         <div style="flex: 1.5; min-width: 250px;">
         <!-- Social Icons First -->
         <div class="social-links">
-            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/company/willful-change/about/" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:hello@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:wweche@willfulchange.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <br>
         <!-- Aspiration Text -->
@@ -2561,13 +2591,12 @@
 
     <!-- Bottom Navigation Row -->
     <div style="border-top: 1px solid #ddd; margin-top: 2rem; padding-top: 1rem; text-align: center; font-size: 0.95rem;">
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">More</a>
-        <a href="#" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
+        <a href="Home.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Home</a>
+        <a href="About.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">About</a>
+        <a href="Services.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Services</a>
+        <a href="Explore.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Explore</a>
+        <a href="Contact.html" style="margin: 0 1rem; text-decoration: none; color: #fcfafa;">Contact</a>
     </div>
-
 
     <!-- Chatbot Widget -->
     <div class="chatbot-container">
