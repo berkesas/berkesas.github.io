@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkpicolms_docs=globalThis.webpackChunkpicolms_docs||[]).push([[472],{5513(s){s.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Introducing Pico","permalink":"/picolms-docs/blog/introducing-pico","unlisted":false,"date":"2025-12-20T00:00:00.000Z"}]}')}}]);

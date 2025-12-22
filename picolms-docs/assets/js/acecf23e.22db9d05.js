@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkpicolms_docs=globalThis.webpackChunkpicolms_docs||[]).push([[903],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/picolms-docs/blog","blogTitle":"Blog","authorsListPath":"/picolms-docs/blog/authors"}')}}]);
