@@ -4,10 +4,25 @@
         <title>Pico LMS Blog</title>
         <link>https://berkesas.github.io/picolms-docs/blog</link>
         <description>Pico LMS Blog</description>
-        <lastBuildDate>Sat, 20 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 15 Feb 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Version 0.2.1 released]]></title>
+            <link>https://berkesas.github.io/picolms-docs/blog/version-021</link>
+            <guid>https://berkesas.github.io/picolms-docs/blog/version-021</guid>
+            <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 0.2.1 released]]></description>
+            <content:encoded><![CDATA[<p>Version 0.2.1 released</p>
+<p>This release includes the following fixes and features:</p>
+<ul>
+<li class="">Now you can pass host application translate functions to question components by using <code>&lt;Question translate={t}/&gt;</code> like syntax.</li>
+<li class="">There were many inconsistencies in rendering of feedback those were fixed.</li>
+</ul>]]></content:encoded>
+            <category>About</category>
+            <category>Update</category>
+        </item>
         <item>
             <title><![CDATA[Introducing Pico]]></title>
             <link>https://berkesas.github.io/picolms-docs/blog/introducing-pico</link>
@@ -24,7 +39,7 @@
 <li class="">More question types</li>
 <li class="">React Native components</li>
 </ul>]]></content:encoded>
-            <category>Hello</category>
+            <category>About</category>
         </item>
     </channel>
 </rss>

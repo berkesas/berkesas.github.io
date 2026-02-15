@@ -2,11 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://berkesas.github.io/picolms-docs/blog</id>
     <title>Pico LMS Blog</title>
-    <updated>2025-12-20T00:00:00.000Z</updated>
+    <updated>2026-02-15T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://berkesas.github.io/picolms-docs/blog"/>
     <subtitle>Pico LMS Blog</subtitle>
     <icon>https://berkesas.github.io/picolms-docs/img/pico-logo32.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 0.2.1 released]]></title>
+        <id>https://berkesas.github.io/picolms-docs/blog/version-021</id>
+        <link href="https://berkesas.github.io/picolms-docs/blog/version-021"/>
+        <updated>2026-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Version 0.2.1 released]]></summary>
+        <content type="html"><![CDATA[<p>Version 0.2.1 released</p>
+<p>This release includes the following fixes and features:</p>
+<ul>
+<li class="">Now you can pass host application translate functions to question components by using <code>&lt;Question translate={t}/&gt;</code> like syntax.</li>
+<li class="">There were many inconsistencies in rendering of feedback those were fixed.</li>
+</ul>]]></content>
+        <author>
+            <name>Nazar Mammedov</name>
+            <uri>https://linkedin.com/in/nazar-mammedov</uri>
+        </author>
+        <category label="About" term="About"/>
+        <category label="Update" term="Update"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Introducing Pico]]></title>
         <id>https://berkesas.github.io/picolms-docs/blog/introducing-pico</id>
@@ -27,6 +46,6 @@
             <name>Nazar Mammedov</name>
             <uri>https://linkedin.com/in/nazar-mammedov</uri>
         </author>
-        <category label="Hello" term="Hello"/>
+        <category label="About" term="About"/>
     </entry>
 </feed>

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkpicolms_docs=globalThis.webpackChunkpicolms_docs||[]).push([[6949],{3093(o){o.exports=JSON.parse('{"tags":[{"label":"About","permalink":"/picolms-docs/blog/tags/about","description":"About the library","count":2},{"label":"Update","permalink":"/picolms-docs/blog/tags/update","description":"Updates about the library","count":1}]}')}}]);
