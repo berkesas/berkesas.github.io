@@ -20,6 +20,9 @@
     --white:#FFFFFF;
     --radius:14px;
     --shadow: 0 4px 18px rgba(0,46,77,0.08);
+    --ease-standard: cubic-bezier(.4,0,.2,1);
+    --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    --ease-smooth: cubic-bezier(.22,1,.36,1);
   }
 
   *{box-sizing:border-box;}
@@ -63,7 +66,7 @@
     letter-spacing:.01em;
     color:var(--navy);
     opacity:0;
-    animation: headerIn .6s ease forwards;
+    animation: headerIn .6s var(--ease-standard) forwards;
   }
   .lesson-header p{
     margin:8px 0 0;
@@ -71,7 +74,7 @@
     color:var(--slate);
     max-width:560px;
     opacity:0;
-    animation: headerIn .6s ease .12s forwards;
+    animation: headerIn .6s var(--ease-standard) .12s forwards;
   }
   @keyframes headerIn{
     from{opacity:0; transform:translateY(6px);}
@@ -106,7 +109,7 @@
     font-family:'Cambria',serif;
     font-weight:700;
     font-size:13px;
-    transition:background .3s ease, border-color .3s ease, color .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+    transition:background .3s var(--ease-standard), border-color .3s var(--ease-standard), color .3s var(--ease-standard), transform .3s var(--ease-spring);
     cursor:pointer;
   }
   .rail-step .label{
@@ -132,7 +135,7 @@
     background:var(--gold);
     transform:scaleX(0);
     transform-origin:left;
-    transition:transform .5s ease;
+    transition:transform .5s var(--ease-standard);
   }
   .rail-step.done .connector::after{transform:scaleX(1);}
   .rail-step:last-child .connector{display:none;}
@@ -170,7 +173,8 @@
     visibility:hidden;
     pointer-events:none;
     transform:translateX(24px);
-    transition: opacity .35s ease, transform .4s cubic-bezier(.22,1,.36,1);
+    transition: opacity .35s var(--ease-standard), transform .4s var(--ease-smooth);
+    will-change:transform, opacity;
   }
   .panel.active{
     opacity:1;
@@ -232,14 +236,14 @@
     margin-bottom:9px;
     cursor:pointer;
     border:1px solid transparent;
-    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    transition: border-color .2s var(--ease-standard), background .2s var(--ease-standard), transform .2s var(--ease-standard);
     opacity:0;
     transform:translateY(10px);
-    animation: itemIn .45s ease forwards;
+    animation: itemIn .45s var(--ease-standard) forwards;
   }
-  .flip-item:nth-child(2){animation-delay:.05s;}
-  .flip-item:nth-child(3){animation-delay:.1s;}
-  .flip-item:nth-child(4){animation-delay:.15s;}
+  .flip-item:nth-child(2){animation-delay:.08s;}
+  .flip-item:nth-child(3){animation-delay:.14s;}
+  .flip-item:nth-child(4){animation-delay:.2s;}
   @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
 
   .flip-item:hover{
@@ -263,22 +267,27 @@
     width:18px;height:18px;
     flex:none;
     color:var(--slate);
-    transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+    transition:transform .3s var(--ease-spring);
   }
   .flip-item.open .chev{transform:rotate(180deg);}
 
   .flip-item .detail{
-    max-height:0;
+    display:grid;
+    grid-template-rows:0fr;
     overflow:hidden;
-    transition:max-height .35s ease, opacity .3s ease, margin-top .35s ease;
     opacity:0;
-    font-size:13px;
-    color:var(--slate);
+    transition:grid-template-rows .35s var(--ease-smooth), opacity .25s var(--ease-standard);
   }
   .flip-item.open .detail{
-    max-height:120px;
+    grid-template-rows:1fr;
     opacity:1;
-    margin-top:7px;
+  }
+  .flip-item .detail-inner{
+    min-height:0;
+    overflow:hidden;
+    font-size:13px;
+    color:var(--slate);
+    padding-top:7px;
   }
 
   .intro-line{
@@ -296,16 +305,16 @@
     display:flex;
     align-items:center;
     gap:14px;
-    margin-top:14px;
+    margin-bottom:18px;
     padding:13px 16px;
     background:var(--panel);
     border-radius:var(--radius);
     text-decoration:none;
     border:1px solid transparent;
-    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    transition: border-color .2s var(--ease-standard), background .2s var(--ease-standard), transform .2s var(--ease-standard);
     opacity:0;
     transform:translateY(10px);
-    animation: itemIn .45s ease .2s forwards;
+    animation: itemIn .45s var(--ease-standard) forwards;
   }
   .video-card:hover{
     border-color:var(--gold);
@@ -321,7 +330,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+    transition:transform .25s var(--ease-spring);
   }
   .video-play svg{width:16px; height:16px;}
   .video-card:hover .video-play{transform:scale(1.1);}
@@ -348,6 +357,50 @@
     line-height:1.45;
   }
 
+  /* ---------- VIDEO CARD: large variant (dedicated video step) ---------- */
+  .video-card-lg{
+    align-items:flex-start;
+    gap:24px;
+    padding:32px 34px;
+    margin-bottom:0;
+    border-radius:18px;
+    background:linear-gradient(160deg, var(--panel) 0%, #E4EAEF 100%);
+  }
+  .video-card-lg:hover{
+    border-color:var(--gold);
+    background:linear-gradient(160deg, #E9EEF2 0%, #DEE6EC 100%);
+    transform:translateY(-3px);
+  }
+  .video-play-lg{
+    width:68px; height:68px;
+    min-width:68px;
+    margin-top:2px;
+  }
+  .video-play-lg svg{width:28px; height:28px;}
+  .video-title-lg{
+    font-size:20px;
+    margin:0 0 10px;
+  }
+  .video-title-lg .video-time{
+    font-size:14px;
+    margin-left:10px;
+  }
+  .video-cue-lg{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--navy-soft);
+    margin:0 0 10px;
+  }
+  .video-points{
+    margin:0;
+    padding-left:20px;
+    font-size:14px;
+    color:var(--slate);
+    line-height:1.7;
+  }
+  .video-points li{margin-bottom:4px;}
+  .video-points li::marker{color:var(--gold-deep); font-weight:700;}
+
   /* ---------- STEP 2: Real world example ---------- */
   .example-layout{
     display:grid;
@@ -371,19 +424,17 @@
     position:relative;
     overflow:hidden;
   }
-  .example-photo .frame-cube{
+  .example-photo img{
     position:absolute;
-    bottom:-22px; right:-22px;
-    width:90px;height:90px;
-    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
-    opacity:.25;
-    border-radius:8px;
-    transform:rotate(20deg);
-    animation: floatCubeSmall 6s ease-in-out infinite;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
   }
-  @keyframes floatCubeSmall{
-    0%,100%{transform:rotate(20deg) translateY(0);}
-    50%{transform:rotate(26deg) translateY(8px);}
+  .example-photo .placeholder-text{
+    position:relative;
+    z-index:1;
   }
   .example-name{
     font-family:'Cambria',serif;
@@ -406,7 +457,7 @@
     background:var(--panel);
     opacity:0;
     transform:translateX(14px);
-    animation: cardSlideIn .45s ease forwards;
+    animation: cardSlideIn .45s var(--ease-standard) forwards;
   }
   .info-card:nth-child(1){animation-delay:.05s;}
   .info-card:nth-child(2){animation-delay:.15s;}
@@ -443,11 +494,11 @@
     padding:16px 13px;
     cursor:pointer;
     border:2px solid transparent;
-    transition: border-color .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1), background .2s ease, box-shadow .25s ease;
+    transition: border-color .2s var(--ease-standard), transform .25s var(--ease-spring), background .2s var(--ease-standard), box-shadow .25s var(--ease-standard);
     text-align:left;
     opacity:0;
     transform:translateY(14px) scale(.96);
-    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) forwards;
+    animation: popIn .45s var(--ease-spring) forwards;
   }
   .success-card:nth-child(1){animation-delay:.04s;}
   .success-card:nth-child(2){animation-delay:.1s;}
@@ -460,11 +511,12 @@
     transform:translateY(-4px) scale(1.02);
     border-color:var(--gold);
     box-shadow:0 10px 22px rgba(0,46,77,0.12);
+    will-change:transform;
   }
   .success-card.checked{
     background:var(--sage-bg);
     border-color:var(--sage-text);
-    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) forwards, checkPulse .4s ease;
+    animation: popIn .45s var(--ease-spring) forwards, checkPulse .4s var(--ease-standard);
   }
   @keyframes checkPulse{
     0%{transform:scale(1);}
@@ -477,7 +529,7 @@
     font-weight:700;
     color:var(--gold);
     margin:0 0 9px;
-    transition:color .2s ease;
+    transition:color .2s var(--ease-standard);
   }
   .success-card.checked .success-num{color:var(--sage-text);}
   .success-card p{
@@ -496,7 +548,7 @@
   }
   .success-card.checked .success-check{
     display:block;
-    animation: fadeIn .25s ease forwards;
+    animation: fadeIn .25s var(--ease-standard) forwards;
   }
   @keyframes fadeIn{ to{opacity:1;} }
 
@@ -526,7 +578,7 @@
     width:0%;
     background:linear-gradient(90deg, var(--gold-deep), var(--gold));
     border-radius:6px;
-    transition:width .5s cubic-bezier(.22,1,.36,1);
+    transition:width .5s var(--ease-smooth);
     position:relative;
   }
   .bar-fill.celebrate::after{
@@ -534,7 +586,7 @@
     position:absolute;
     inset:0;
     background:rgba(255,255,255,.5);
-    animation: shimmer .6s ease;
+    animation: shimmer .6s var(--ease-standard);
   }
   @keyframes shimmer{
     from{opacity:1;}
@@ -546,7 +598,7 @@
     color:var(--gold);
     opacity:0;
     transform:scale(.8);
-    transition: opacity .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+    transition: opacity .3s var(--ease-standard), transform .3s var(--ease-spring);
   }
   .complete-badge.show{opacity:1; transform:scale(1);}
 
@@ -568,7 +620,7 @@
     background:var(--white);
     color:var(--navy);
     cursor:pointer;
-    transition: background .2s ease, color .2s ease, opacity .2s ease, transform .15s ease;
+    transition: background .2s var(--ease-standard), color .2s var(--ease-standard), opacity .2s var(--ease-standard), transform .15s var(--ease-standard);
   }
   .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
   .btn:active:not(:disabled){transform:translateY(0);}
@@ -604,6 +656,10 @@
     .lesson-header{padding:18px 18px;}
     .nav-controls{padding:18px 18px 4px;}
     .tracker{flex-direction:column; align-items:flex-start;}
+    .video-card-lg{flex-direction:column; padding:22px;}
+    .video-play-lg{width:54px; height:54px;}
+    .video-play-lg svg{width:22px; height:22px;}
+    .video-title-lg{font-size:17px;}
   }
   @media (max-width:480px){
     .success-grid{grid-template-columns:1fr 1fr;}
@@ -622,24 +678,50 @@
   <nav class="progress-rail" id="progressRail">
     <div class="rail-step active" data-step="0">
       <div class="dot">1</div>
-      <div class="label">Strengths &amp; Weaknesses</div>
+      <div class="label">Watch the Video</div>
       <div class="connector"></div>
     </div>
     <div class="rail-step" data-step="1">
       <div class="dot">2</div>
-      <div class="label">Real-World Example</div>
+      <div class="label">Strengths &amp; Weaknesses</div>
       <div class="connector"></div>
     </div>
     <div class="rail-step" data-step="2">
       <div class="dot">3</div>
+      <div class="label">Real-World Example</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="3">
+      <div class="dot">4</div>
       <div class="label">How to Succeed</div>
     </div>
   </nav>
 
   <main class="stage" id="stage">
 
-    <!-- STEP 1 -->
+    <!-- STEP 0: WATCH THE VIDEO -->
     <section class="panel active" data-panel="0">
+      <h2 class="panel-title">Watch the Video</h2>
+      <p class="panel-sub">Watch this short video before moving on, then take note of what you observe.</p>
+
+      <a class="video-card video-card-lg" href="https://youtu.be/KT4r7rGMlck" target="_blank" rel="noopener">
+        <div class="video-play video-play-lg">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        </div>
+        <div class="video-body">
+          <p class="video-title video-title-lg">Autocratic Leadership Style <span class="video-time">3:06 min</span></p>
+          <p class="video-cue video-cue-lg">As you watch, take note of:</p>
+          <ul class="video-points">
+            <li>The leader's communication style</li>
+            <li>How decisions get made</li>
+            <li>The pros and cons you observe in how the team responds</li>
+          </ul>
+        </div>
+      </a>
+    </section>
+
+    <!-- STEP 1 -->
+    <section class="panel" data-panel="1">
       <h2 class="panel-title">Strengths &amp; Weaknesses</h2>
       <p class="panel-sub">Tap any point below to see what it looks like in practice.</p>
 
@@ -652,7 +734,7 @@
               <strong>Rapid decision-making</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">Makes decisions quickly without delay, which is critical in crisis management.</div>
+            <div class="detail"><div class="detail-inner">Makes decisions quickly without delay, which is critical in crisis management.</div></div>
           </div>
 
           <div class="flip-item">
@@ -660,7 +742,7 @@
               <strong>Clear command structure</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">Provides clear, direct instructions, reducing confusion among team members.</div>
+            <div class="detail"><div class="detail-inner">Provides clear, direct instructions, reducing confusion among team members.</div></div>
           </div>
 
           <div class="flip-item">
@@ -668,7 +750,7 @@
               <strong>Control and authority</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">Centralized control allows enforcement of rules and order in volatile situations.</div>
+            <div class="detail"><div class="detail-inner">Centralized control allows enforcement of rules and order in volatile situations.</div></div>
           </div>
         </div>
 
@@ -680,7 +762,7 @@
               <strong>Limited input</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">Rarely seeks team perspectives, which can create blind spots.</div>
+            <div class="detail"><div class="detail-inner">Rarely seeks team perspectives, which can create blind spots.</div></div>
           </div>
 
           <div class="flip-item">
@@ -688,7 +770,7 @@
               <strong>Employee disengagement</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">Team members may feel demoralized with no voice in decisions.</div>
+            <div class="detail"><div class="detail-inner">Team members may feel demoralized with no voice in decisions.</div></div>
           </div>
 
           <div class="flip-item">
@@ -696,32 +778,27 @@
               <strong>Over-reliance on one perspective</strong>
               <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="detail">May miss critical insights from subject matter experts.</div>
+            <div class="detail"><div class="detail-inner">May miss critical insights from subject matter experts.</div></div>
           </div>
         </div>
       </div>
-
-      <a class="video-card" href="#" target="_blank" rel="noopener">
-        <div class="video-play">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
-        </div>
-        <div class="video-body">
-          <p class="video-title">Watch the video <span class="video-time">Autocratic Leadership Style &middot; 3:06 min</span></p>
-          <p class="video-cue">As you watch, take note of: leader's communication style &middot; how decisions get made &middot; the pros and cons in how the team responds</p>
-        </div>
-      </a>
     </section>
 
     <!-- STEP 2 -->
-    <section class="panel" data-panel="1">
+    <section class="panel" data-panel="2">
       <h2 class="panel-title">Real-World Example</h2>
       <p class="panel-sub">See how this style plays out for an actual leader, including where it falls short.</p>
 
       <div class="example-layout">
         <div>
           <div class="example-photo">
-            <div class="frame-cube"></div>
-            <span>Photo placeholder<br>(add licensed image of Rudy Giuliani here)</span>
+            <img
+              src="example-autocratic.jpg"
+              alt="Rudy Giuliani"
+              onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+            <span class="placeholder-text">Photo placeholder<br>(add licensed image of Rudy Giuliani here)</span>
           </div>
           <div class="example-name">Rudy Giuliani</div>
           <div class="example-role">Mayor of New York City &middot; 9/11 Crisis Response</div>
@@ -745,7 +822,7 @@
     </section>
 
     <!-- STEP 3 -->
-    <section class="panel" data-panel="2">
+    <section class="panel" data-panel="3">
       <h2 class="panel-title">How to Be Successful</h2>
       <p class="panel-sub"><em>Practical strategies for applying the Autocratic style effectively.</em> Click each card as you commit to it.</p>
 
@@ -797,7 +874,7 @@
 <script>
 (function(){
   var currentStep = 0;
-  var totalSteps = 3;
+  var totalSteps = 4;
   var panels = document.querySelectorAll('.panel');
   var railSteps = document.querySelectorAll('.rail-step');
   var backBtn = document.getElementById('backBtn');
@@ -805,12 +882,14 @@
   var stepCounter = document.getElementById('stepCounter');
 
   function replayEntranceAnimations(panel){
-    var animated = panel.querySelectorAll('.flip-item, .info-card, .success-card');
-    animated.forEach(function(el){
-      el.style.animation = 'none';
-      void el.offsetWidth; // reflow to restart animation
-      el.style.animation = '';
-    });
+    var animated = panel.querySelectorAll('.flip-item, .info-card, .success-card, .video-card');
+    if(!animated.length) return;
+
+    // Batch all writes, then force a single reflow, then batch the restore.
+    // Avoids one forced synchronous layout per element.
+    animated.forEach(function(el){ el.style.animation = 'none'; });
+    void panel.offsetWidth; // single reflow for the whole panel
+    animated.forEach(function(el){ el.style.animation = ''; });
   }
 
   function renderStep(prevStep){
