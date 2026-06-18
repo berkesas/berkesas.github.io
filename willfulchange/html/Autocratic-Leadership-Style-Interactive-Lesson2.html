@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autocratic Leadership Style | Willful Change Leadership Academy</title>
+<style>
+  :root{
+    --navy:#002E4D;
+    --navy-soft:#002F4D;
+    --slate:#4A6070;
+    --ice:#A8C5CD;
+    --gold:#CFAE3C;
+    --gold-deep:#B6962C;
+    --panel:#EEF2F5;
+    --sage-bg:#E8F0E9;
+    --sage-text:#2D6A4F;
+    --peach-bg:#F9EDE8;
+    --peach-text:#7B3A2A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,46,77,0.08);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:'Calibri','Segoe UI',Arial,sans-serif;
+    color:var(--slate);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cambria','Times New Roman',Georgia,serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 0 28px;
+  }
+
+  /* ---------- HEADER (light theme) ---------- */
+  .lesson-header{
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--panel) 100%);
+    color:var(--navy);
+    padding:24px 28px 22px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #E2E8ED;
+  }
+  .lesson-header h1{
+    margin:0;
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--navy);
+    opacity:0;
+    animation: headerIn .6s ease forwards;
+  }
+  .lesson-header p{
+    margin:8px 0 0;
+    font-size:14px;
+    color:var(--slate);
+    max-width:560px;
+    opacity:0;
+    animation: headerIn .6s ease .12s forwards;
+  }
+  @keyframes headerIn{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- PROGRESS RAIL ---------- */
+  .progress-rail{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:18px 28px 0;
+    background:var(--white);
+  }
+  .rail-step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+    position:relative;
+  }
+  .rail-step .dot{
+    width:32px; height:32px;
+    min-width:32px;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--slate);
+    border:2px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:13px;
+    transition:background .3s ease, border-color .3s ease, color .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+    cursor:pointer;
+  }
+  .rail-step .label{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .rail-step .connector{
+    flex:1;
+    height:2px;
+    background:var(--panel);
+    margin:0 6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rail-step .connector::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s ease;
+  }
+  .rail-step.done .connector::after{transform:scaleX(1);}
+  .rail-step:last-child .connector{display:none;}
+
+  .rail-step.active .dot{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+    transform:scale(1.12);
+    box-shadow:0 0 0 5px rgba(0,46,77,0.1);
+  }
+  .rail-step.active .label{color:var(--navy);}
+  .rail-step.done .dot{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--navy);
+  }
+  .rail-step:not(.active):not(.done) .label{color:var(--ice);}
+
+  .rail-step .dot:hover{transform:scale(1.08);}
+
+  /* ---------- FIXED-HEIGHT STAGE ---------- */
+  .stage{
+    position:relative;
+    height:495px;
+    padding:26px 28px 0;
+    overflow:hidden;
+  }
+  .panel{
+    position:absolute;
+    top:26px; left:28px; right:28px; bottom:0;
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(24px);
+    transition: opacity .35s ease, transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .panel.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
+  }
+  .panel.leaving{
+    opacity:0;
+    transform:translateX(-24px);
+  }
+
+  .panel-title{
+    font-size:22px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .panel-sub{
+    font-size:14.5px;
+    color:var(--slate);
+    margin:0 0 20px;
+    max-width:680px;
+  }
+
+  /* ---------- STEP 1: Strengths / Weaknesses ---------- */
+  .sw-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .sw-card{
+    background:var(--sage-bg);
+    border-radius:var(--radius);
+    padding:16px 16px 14px;
+    display:flex;
+    flex-direction:column;
+    max-height:280px;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:var(--ice) transparent;
+  }
+  .sw-card::-webkit-scrollbar{width:6px;}
+  .sw-card::-webkit-scrollbar-thumb{background:var(--ice); border-radius:6px;}
+  .sw-card::-webkit-scrollbar-track{background:transparent;}
+  .sw-card.weak{background:var(--peach-bg);}
+  .sw-card h3{
+    margin:0 0 12px;
+    font-size:16px;
+    color:var(--sage-text);
+  }
+  .sw-card.weak h3{color:var(--peach-text);}
+
+  .flip-item{
+    background:rgba(255,255,255,.55);
+    border-radius:10px;
+    padding:10px 13px;
+    margin-bottom:9px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s ease forwards;
+  }
+  .flip-item:nth-child(2){animation-delay:.05s;}
+  .flip-item:nth-child(3){animation-delay:.1s;}
+  .flip-item:nth-child(4){animation-delay:.15s;}
+  @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
+
+  .flip-item:hover{
+    border-color:rgba(0,46,77,0.14);
+    background:rgba(255,255,255,.9);
+    transform:translateX(3px);
+  }
+  .flip-item .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .flip-item .row strong{
+    font-family:'Cambria',serif;
+    font-size:14px;
+    color:var(--navy);
+    font-weight:700;
+  }
+  .chev{
+    width:18px;height:18px;
+    flex:none;
+    color:var(--slate);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .flip-item.open .chev{transform:rotate(180deg);}
+
+  .flip-item .detail{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease, opacity .3s ease, margin-top .35s ease;
+    opacity:0;
+    font-size:13px;
+    color:var(--slate);
+  }
+  .flip-item.open .detail{
+    max-height:120px;
+    opacity:1;
+    margin-top:7px;
+  }
+
+  .intro-line{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:14px 18px;
+    font-size:14px;
+    color:var(--navy-soft);
+    margin-bottom:16px;
+    font-style:italic;
+  }
+
+  /* ---------- VIDEO CARD (step 1) ---------- */
+  .video-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:14px;
+    padding:13px 16px;
+    background:var(--panel);
+    border-radius:var(--radius);
+    text-decoration:none;
+    border:1px solid transparent;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s ease .2s forwards;
+  }
+  .video-card:hover{
+    border-color:var(--gold);
+    background:#E9EEF2;
+    transform:translateY(-2px);
+  }
+  .video-play{
+    width:38px; height:38px;
+    min-width:38px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+  }
+  .video-play svg{width:16px; height:16px;}
+  .video-card:hover .video-play{transform:scale(1.1);}
+  .video-body{flex:1; min-width:0;}
+  .video-title{
+    margin:0 0 3px;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--navy);
+  }
+  .video-time{
+    font-family:'Calibri',Arial,sans-serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:12.5px;
+    color:var(--slate);
+    margin-left:6px;
+  }
+  .video-cue{
+    margin:0;
+    font-size:12.5px;
+    color:var(--slate);
+    line-height:1.45;
+  }
+
+  /* ---------- STEP 2: Real world example ---------- */
+  .example-layout{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:22px;
+    align-items:start;
+  }
+  .example-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    border-radius:var(--radius);
+    background:
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 60%, #013352 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ice);
+    text-align:center;
+    font-size:12px;
+    padding:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .example-photo .frame-cube{
+    position:absolute;
+    bottom:-22px; right:-22px;
+    width:90px;height:90px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    opacity:.25;
+    border-radius:8px;
+    transform:rotate(20deg);
+    animation: floatCubeSmall 6s ease-in-out infinite;
+  }
+  @keyframes floatCubeSmall{
+    0%,100%{transform:rotate(20deg) translateY(0);}
+    50%{transform:rotate(26deg) translateY(8px);}
+  }
+  .example-name{
+    font-family:'Cambria',serif;
+    font-size:20px;
+    color:var(--navy);
+    margin:13px 0 2px;
+    font-weight:700;
+  }
+  .example-role{
+    font-size:12.5px;
+    color:var(--slate);
+    font-style:italic;
+    margin:0;
+  }
+
+  .info-stack{display:flex; flex-direction:column; gap:11px;}
+  .info-card{
+    border-radius:12px;
+    padding:13px 17px;
+    background:var(--panel);
+    opacity:0;
+    transform:translateX(14px);
+    animation: cardSlideIn .45s ease forwards;
+  }
+  .info-card:nth-child(1){animation-delay:.05s;}
+  .info-card:nth-child(2){animation-delay:.15s;}
+  .info-card:nth-child(3){animation-delay:.25s;}
+  @keyframes cardSlideIn{ to{opacity:1; transform:translateX(0);} }
+
+  .info-card.effect{background:var(--sage-bg);}
+  .info-card.limit{background:var(--peach-bg);}
+  .info-card .tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin:0 0 5px;
+  }
+  .info-card.effect .tag{color:var(--sage-text);}
+  .info-card.limit .tag{color:var(--peach-text);}
+  .info-card p{
+    margin:0;
+    font-size:13.5px;
+    color:var(--navy-soft);
+  }
+
+  /* ---------- STEP 3: How to succeed ---------- */
+  .success-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+  }
+  .success-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:16px 13px;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition: border-color .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1), background .2s ease, box-shadow .25s ease;
+    text-align:left;
+    opacity:0;
+    transform:translateY(14px) scale(.96);
+    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  .success-card:nth-child(1){animation-delay:.04s;}
+  .success-card:nth-child(2){animation-delay:.1s;}
+  .success-card:nth-child(3){animation-delay:.16s;}
+  .success-card:nth-child(4){animation-delay:.22s;}
+  .success-card:nth-child(5){animation-delay:.28s;}
+  @keyframes popIn{ to{opacity:1; transform:translateY(0) scale(1);} }
+
+  .success-card:hover{
+    transform:translateY(-4px) scale(1.02);
+    border-color:var(--gold);
+    box-shadow:0 10px 22px rgba(0,46,77,0.12);
+  }
+  .success-card.checked{
+    background:var(--sage-bg);
+    border-color:var(--sage-text);
+    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) forwards, checkPulse .4s ease;
+  }
+  @keyframes checkPulse{
+    0%{transform:scale(1);}
+    40%{transform:scale(1.06);}
+    100%{transform:scale(1);}
+  }
+  .success-num{
+    font-family:'Cambria',serif;
+    font-size:25px;
+    font-weight:700;
+    color:var(--gold);
+    margin:0 0 9px;
+    transition:color .2s ease;
+  }
+  .success-card.checked .success-num{color:var(--sage-text);}
+  .success-card p{
+    margin:0;
+    font-size:12.5px;
+    color:var(--navy-soft);
+    font-weight:600;
+  }
+  .success-check{
+    display:none;
+    font-size:11px;
+    color:var(--sage-text);
+    font-weight:700;
+    margin-top:7px;
+    opacity:0;
+  }
+  .success-card.checked .success-check{
+    display:block;
+    animation: fadeIn .25s ease forwards;
+  }
+  @keyframes fadeIn{ to{opacity:1;} }
+
+  .tracker{
+    margin-top:20px;
+    background:var(--navy);
+    border-radius:var(--radius);
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--white);
+    gap:16px;
+  }
+  .tracker-text{font-size:13px;}
+  .tracker-text strong{color:var(--gold); font-size:15px;}
+  .bar-track{
+    flex:1;
+    max-width:220px;
+    height:8px;
+    background:rgba(255,255,255,.18);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, var(--gold-deep), var(--gold));
+    border-radius:6px;
+    transition:width .5s cubic-bezier(.22,1,.36,1);
+    position:relative;
+  }
+  .bar-fill.celebrate::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.5);
+    animation: shimmer .6s ease;
+  }
+  @keyframes shimmer{
+    from{opacity:1;}
+    to{opacity:0;}
+  }
+  .complete-badge{
+    font-size:12px;
+    font-weight:700;
+    color:var(--gold);
+    opacity:0;
+    transform:scale(.8);
+    transition: opacity .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .complete-badge.show{opacity:1; transform:scale(1);}
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 28px 4px;
+    border-top:1px solid var(--panel);
+  }
+  .btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:14px;
+    font-weight:700;
+    padding:11px 22px;
+    border-radius:9px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    transition: background .2s ease, color .2s ease, opacity .2s ease, transform .15s ease;
+  }
+  .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
+  .btn:active:not(:disabled){transform:translateY(0);}
+  .btn.primary{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn.primary:hover{background:var(--navy-soft);}
+  .btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+  }
+  .step-counter{
+    font-size:12.5px;
+    color:var(--ice);
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .stage{height:auto; min-height:0; overflow:visible;}
+    .panel{position:static; top:auto; left:auto; right:auto; bottom:auto; transform:none !important;}
+    .panel:not(.active){display:none;}
+    .sw-card{max-height:none; overflow-y:visible;}
+    .sw-grid{grid-template-columns:1fr; gap:14px;}
+    .example-layout{grid-template-columns:1fr;}
+    .example-photo{aspect-ratio:16/9; max-width:280px;}
+    .success-grid{grid-template-columns:repeat(2,1fr);}
+    .rail-step .label{display:none;}
+    .lesson-header h1{font-size:22px;}
+    .stage{padding:20px 18px 0;}
+    .lesson-header{padding:18px 18px;}
+    .nav-controls{padding:18px 18px 4px;}
+    .tracker{flex-direction:column; align-items:flex-start;}
+  }
+  @media (max-width:480px){
+    .success-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="lesson-header">
+    <h1>Autocratic Leadership Style</h1>
+    <p>A strong directive leadership style that often provides clear structure and expects strict adherence to instructions.</p>
+  </header>
+
+  <nav class="progress-rail" id="progressRail">
+    <div class="rail-step active" data-step="0">
+      <div class="dot">1</div>
+      <div class="label">Strengths &amp; Weaknesses</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="1">
+      <div class="dot">2</div>
+      <div class="label">Real-World Example</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="2">
+      <div class="dot">3</div>
+      <div class="label">How to Succeed</div>
+    </div>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- STEP 1 -->
+    <section class="panel active" data-panel="0">
+      <h2 class="panel-title">Strengths &amp; Weaknesses</h2>
+      <p class="panel-sub">Tap any point below to see what it looks like in practice.</p>
+
+      <div class="sw-grid">
+        <div class="sw-card">
+          <h3>Strengths</h3>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Rapid decision-making</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">Makes decisions quickly without delay, which is critical in crisis management.</div>
+          </div>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Clear command structure</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">Provides clear, direct instructions, reducing confusion among team members.</div>
+          </div>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Control and authority</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">Centralized control allows enforcement of rules and order in volatile situations.</div>
+          </div>
+        </div>
+
+        <div class="sw-card weak">
+          <h3>Weaknesses</h3>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Limited input</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">Rarely seeks team perspectives, which can create blind spots.</div>
+          </div>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Employee disengagement</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">Team members may feel demoralized with no voice in decisions.</div>
+          </div>
+
+          <div class="flip-item">
+            <div class="row">
+              <strong>Over-reliance on one perspective</strong>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="detail">May miss critical insights from subject matter experts.</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="video-card" href="#" target="_blank" rel="noopener">
+        <div class="video-play">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        </div>
+        <div class="video-body">
+          <p class="video-title">Watch the video <span class="video-time">Autocratic Leadership Style &middot; 3:06 min</span></p>
+          <p class="video-cue">As you watch, take note of: leader's communication style &middot; how decisions get made &middot; the pros and cons in how the team responds</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel" data-panel="1">
+      <h2 class="panel-title">Real-World Example</h2>
+      <p class="panel-sub">See how this style plays out for an actual leader, including where it falls short.</p>
+
+      <div class="example-layout">
+        <div>
+          <div class="example-photo">
+            <div class="frame-cube"></div>
+            <span>Photo placeholder<br>(add licensed image of Rudy Giuliani here)</span>
+          </div>
+          <div class="example-name">Rudy Giuliani</div>
+          <div class="example-role">Mayor of New York City &middot; 9/11 Crisis Response</div>
+        </div>
+
+        <div class="info-stack">
+          <div class="info-card">
+            <p class="tag">Context</p>
+            <p>During the 9/11 attacks, Giuliani used an autocratic approach to provide immediate direction and maintain order amid the crisis.</p>
+          </div>
+          <div class="info-card effect">
+            <p class="tag">Effectiveness</p>
+            <p>His decisive coordination of emergency response, clear public instructions, and visible leadership presence were widely praised.</p>
+          </div>
+          <div class="info-card limit">
+            <p class="tag">Limitation</p>
+            <p>The autocratic approach suited the immediate crisis but created challenges in later collaborative recovery efforts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel" data-panel="2">
+      <h2 class="panel-title">How to Be Successful</h2>
+      <p class="panel-sub"><em>Practical strategies for applying the Autocratic style effectively.</em> Click each card as you commit to it.</p>
+
+      <div class="success-grid" id="successGrid">
+        <div class="success-card" data-idx="1">
+          <div class="success-num">01</div>
+          <p>Listen to team members</p>
+          <div class="success-check">&#10003; Committed</div>
+        </div>
+        <div class="success-card" data-idx="2">
+          <div class="success-num">02</div>
+          <p>Establish clear rules</p>
+          <div class="success-check">&#10003; Committed</div>
+        </div>
+        <div class="success-card" data-idx="3">
+          <div class="success-num">03</div>
+          <p>Provide the right tools</p>
+          <div class="success-check">&#10003; Committed</div>
+        </div>
+        <div class="success-card" data-idx="4">
+          <div class="success-num">04</div>
+          <p>Be reliable and consistent</p>
+          <div class="success-check">&#10003; Committed</div>
+        </div>
+        <div class="success-card" data-idx="5">
+          <div class="success-num">05</div>
+          <p>Recognize and celebrate success</p>
+          <div class="success-check">&#10003; Committed</div>
+        </div>
+      </div>
+
+      <div class="tracker">
+        <div class="tracker-text"><strong id="trackerCount">0</strong> of 5 strategies selected</div>
+        <div class="bar-track"><div class="bar-fill" id="trackerBar"></div></div>
+        <div class="complete-badge" id="completeBadge">All set &#9733;</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" disabled>&larr; Back</button>
+    <span class="step-counter" id="stepCounter">STEP 1 OF 3</span>
+    <button class="btn primary" id="nextBtn">Next &rarr;</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var currentStep = 0;
+  var totalSteps = 3;
+  var panels = document.querySelectorAll('.panel');
+  var railSteps = document.querySelectorAll('.rail-step');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepCounter = document.getElementById('stepCounter');
+
+  function replayEntranceAnimations(panel){
+    var animated = panel.querySelectorAll('.flip-item, .info-card, .success-card');
+    animated.forEach(function(el){
+      el.style.animation = 'none';
+      void el.offsetWidth; // reflow to restart animation
+      el.style.animation = '';
+    });
+  }
+
+  function renderStep(prevStep){
+    panels.forEach(function(p, i){
+      p.classList.toggle('active', i === currentStep);
+    });
+    railSteps.forEach(function(r, i){
+      r.classList.toggle('active', i === currentStep);
+      r.classList.toggle('done', i < currentStep);
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finish' : 'Next \u2192';
+    stepCounter.textContent = 'STEP ' + (currentStep + 1) + ' OF ' + totalSteps;
+
+    var activePanel = panels[currentStep];
+    if(activePanel) replayEntranceAnimations(activePanel);
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(currentStep > 0){ var prev = currentStep; currentStep--; renderStep(prev); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(currentStep < totalSteps - 1){
+      var prev = currentStep;
+      currentStep++;
+      renderStep(prev);
+    } else {
+      nextBtn.textContent = 'Lesson complete \u2713';
+    }
+  });
+
+  railSteps.forEach(function(r, i){
+    r.querySelector('.dot').addEventListener('click', function(){
+      var prev = currentStep;
+      currentStep = i;
+      renderStep(prev);
+    });
+  });
+
+  document.querySelectorAll('.flip-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+
+  var successCards = document.querySelectorAll('.success-card');
+  var trackerCount = document.getElementById('trackerCount');
+  var trackerBar = document.getElementById('trackerBar');
+  var completeBadge = document.getElementById('completeBadge');
+
+  successCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      card.classList.toggle('checked');
+      var checked = document.querySelectorAll('.success-card.checked').length;
+      trackerCount.textContent = checked;
+      trackerBar.style.width = (checked / successCards.length * 100) + '%';
+
+      trackerBar.classList.remove('celebrate');
+      void trackerBar.offsetWidth;
+      trackerBar.classList.add('celebrate');
+
+      completeBadge.classList.toggle('show', checked === successCards.length);
+    });
+  });
+
+  renderStep(0);
+})();
+</script>
+
+</body>
+</html>
