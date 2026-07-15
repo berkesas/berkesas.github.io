@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Leadership Style | Willful Change Leadership Academy</title>
+<style>
+  :root{
+    --navy:#002E4D;
+    --navy-soft:#002F4D;
+    --slate:#4A6070;
+    --ice:#A8C5CD;
+    --gold:#CFAE3C;
+    --gold-deep:#B6962C;
+    --gold-text:#7C6119; /* WCAG AA-safe gold for text/icons/borders on light backgrounds (5.2:1 on panel, 5.9:1 on white) */
+    --panel:#EEF2F5;
+    --sage-bg:#E8F0E9;
+    --sage-text:#2D6A4F;
+    --peach-bg:#F9EDE8;
+    --peach-text:#7B3A2A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,46,77,0.08);
+    --ease-standard: cubic-bezier(.4,0,.2,1);
+    --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    --ease-smooth: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:'Calibri','Segoe UI',Arial,sans-serif;
+    font-size:17px;
+    color:var(--slate);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  /* Screen-reader-only utility text (for context not needed visually) */
+  .sr-only{
+    position:absolute;
+    width:1px; height:1px;
+    padding:0; margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  /* Visible, high-contrast focus indicator for all interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible{
+    outline:3px solid var(--gold-text);
+    outline-offset:2px;
+    border-radius:6px;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cambria','Times New Roman',Georgia,serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 0 28px;
+  }
+
+  /* ---------- HEADER (light theme) ---------- */
+  .lesson-header{
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--panel) 100%);
+    color:var(--navy);
+    padding:12px 28px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #E2E8ED;
+  }
+  .lesson-header h1{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--navy);
+    opacity:0;
+    animation: headerIn .6s var(--ease-standard) forwards;
+  }
+  @keyframes headerIn{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- PROGRESS RAIL ---------- */
+  .progress-rail{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:18px 28px 0;
+    background:var(--white);
+  }
+  .rail-step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+    position:relative;
+  }
+  /* Native <button> reset so these behave like the original clickable cards but are keyboard-operable */
+  .rail-step .dot,
+  .flip-item .row,
+  .success-card{
+    -webkit-appearance:none;
+    appearance:none;
+    font-family:inherit;
+    color:inherit;
+  }
+
+  .rail-step .dot{
+    width:32px; height:32px;
+    min-width:32px;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--slate);
+    border:2px solid var(--gold-text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:14px;
+    padding:0;
+    transition:background .3s var(--ease-standard), border-color .3s var(--ease-standard), color .3s var(--ease-standard), transform .3s var(--ease-spring);
+    cursor:pointer;
+  }
+  .rail-step .label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .rail-step .connector{
+    flex:1;
+    height:2px;
+    background:var(--panel);
+    margin:0 6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rail-step .connector::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--gold-text);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s var(--ease-standard);
+  }
+  .rail-step.done .connector::after{transform:scaleX(1);}
+  .rail-step:last-child .connector{display:none;}
+
+  .rail-step.active .dot{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+    transform:scale(1.12);
+    box-shadow:0 0 0 5px rgba(0,46,77,0.1);
+  }
+  .rail-step.active .label{color:var(--navy);}
+  .rail-step.done .dot{
+    background:var(--gold-text);
+    border-color:var(--gold-text);
+    color:var(--white);
+  }
+  .rail-step:not(.active):not(.done) .label{color:var(--slate);}
+
+  .rail-step .dot:hover{transform:scale(1.08);}
+
+  /* ---------- FIXED-HEIGHT STAGE ---------- */
+  .stage{
+    position:relative;
+    height:555px;
+    padding:26px 28px 0;
+    overflow:hidden;
+  }
+  .panel{
+    position:absolute;
+    top:26px; left:28px; right:28px; bottom:0;
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(24px);
+    transition: opacity .35s var(--ease-standard), transform .4s var(--ease-smooth);
+    will-change:transform, opacity;
+  }
+  .panel.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
+  }
+  .panel.leaving{
+    opacity:0;
+    transform:translateX(-24px);
+  }
+
+  .panel-title{
+    font-size:24px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .panel-sub{
+    font-size:17px;
+    color:var(--slate);
+    margin:0 0 20px;
+    max-width:680px;
+  }
+
+  /* ---------- STEP 1: Strengths / Weaknesses ---------- */
+  .sw-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .sw-card{
+    background:var(--sage-bg);
+    border-radius:var(--radius);
+    padding:16px 16px 14px;
+    display:flex;
+    flex-direction:column;
+  }
+  .sw-card.weak{background:var(--peach-bg);}
+  .sw-card h3{
+    margin:0 0 12px;
+    font-size:17px;
+    color:var(--sage-text);
+  }
+  .sw-card.weak h3{color:var(--peach-text);}
+
+  .flip-item{
+    background:rgba(255,255,255,.55);
+    border-radius:10px;
+    padding:10px 13px;
+    margin-bottom:9px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition: border-color .2s var(--ease-standard), background .2s var(--ease-standard), transform .2s var(--ease-standard);
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .flip-item:nth-child(2){animation-delay:.08s;}
+  .flip-item:nth-child(3){animation-delay:.14s;}
+  .flip-item:nth-child(4){animation-delay:.2s;}
+  @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
+
+  .flip-item:hover{
+    border-color:rgba(0,46,77,0.14);
+    background:rgba(255,255,255,.9);
+    transform:translateX(3px);
+  }
+  .flip-item .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    width:100%;
+    border:none;
+    background:transparent;
+    padding:0;
+    margin:0;
+    text-align:left;
+    cursor:pointer;
+  }
+  .flip-item .row strong{
+    font-family:'Cambria',serif;
+    font-size:16px;
+    color:var(--navy);
+    font-weight:700;
+  }
+  .chev{
+    width:18px;height:18px;
+    flex:none;
+    color:var(--slate);
+    transition:transform .3s var(--ease-spring);
+  }
+  .flip-item.open .chev{transform:rotate(180deg);}
+
+  .flip-item .detail{
+    display:grid;
+    grid-template-rows:0fr;
+    overflow:hidden;
+    opacity:0;
+    transition:grid-template-rows .35s var(--ease-smooth), opacity .25s var(--ease-standard);
+  }
+  .flip-item.open .detail{
+    grid-template-rows:1fr;
+    opacity:1;
+  }
+  .flip-item .detail-inner{
+    min-height:0;
+    overflow:hidden;
+    font-size:15px;
+    color:var(--slate);
+    padding-top:7px;
+  }
+
+  .intro-line{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:14px 18px;
+    font-size:16px;
+    color:var(--navy-soft);
+    margin-bottom:16px;
+    font-style:italic;
+  }
+
+  /* ---------- VIDEO CARD (step 1) ---------- */
+  .video-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+    padding:13px 16px;
+    background:var(--panel);
+    border-radius:var(--radius);
+    text-decoration:none;
+    border:1px solid transparent;
+    transition: border-color .2s var(--ease-standard), background .2s var(--ease-standard), transform .2s var(--ease-standard);
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .video-card:hover{
+    border-color:var(--gold-text);
+    background:#E9EEF2;
+    transform:translateY(-2px);
+  }
+  .video-play{
+    width:38px; height:38px;
+    min-width:38px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .25s var(--ease-spring);
+  }
+  .video-play svg{width:16px; height:16px;}
+  .video-card:hover .video-play{transform:scale(1.1);}
+  .video-body{flex:1; min-width:0;}
+  .video-title{
+    margin:0 0 3px;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+  }
+  .video-time{
+    font-family:'Calibri',Arial,sans-serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:14px;
+    color:var(--slate);
+    margin-left:6px;
+  }
+  .video-cue{
+    margin:0;
+    font-size:14.5px;
+    color:var(--slate);
+    line-height:1.45;
+  }
+
+  /* ---------- VIDEO CARD: large variant (dedicated video step) ---------- */
+  .video-card-lg{
+    align-items:flex-start;
+    gap:24px;
+    padding:32px 34px;
+    margin-bottom:0;
+    border-radius:18px;
+    background:linear-gradient(160deg, var(--panel) 0%, #E4EAEF 100%);
+  }
+  .video-card-lg:hover{
+    border-color:var(--gold-text);
+    background:linear-gradient(160deg, #E9EEF2 0%, #DEE6EC 100%);
+    transform:translateY(-3px);
+  }
+  .video-play-lg{
+    width:68px; height:68px;
+    min-width:68px;
+    margin-top:2px;
+  }
+  .video-play-lg svg{width:28px; height:28px;}
+  .video-title-lg{
+    font-size:22px;
+    margin:0 0 10px;
+  }
+  .video-title-lg .video-time{
+    font-size:15px;
+    margin-left:10px;
+  }
+  .video-cue-lg{
+    font-size:16px;
+    font-weight:700;
+    color:var(--navy-soft);
+    margin:0 0 10px;
+  }
+  .video-points{
+    margin:0;
+    padding-left:20px;
+    font-size:16px;
+    color:var(--slate);
+    line-height:1.7;
+  }
+  .video-points li{margin-bottom:4px;}
+  .video-points li::marker{color:var(--gold-text); font-weight:700;}
+
+  /* ---------- STEP 2: Real world example ---------- */
+  .example-layout{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:22px;
+    align-items:start;
+  }
+  .example-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    border-radius:var(--radius);
+    background:
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 60%, #013352 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ice);
+    text-align:center;
+    font-size:13px;
+    padding:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .example-photo img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .example-photo .placeholder-text{
+    position:relative;
+    z-index:1;
+  }
+  .example-name{
+    font-family:'Cambria',serif;
+    font-size:22px;
+    color:var(--navy);
+    margin:13px 0 2px;
+    font-weight:700;
+  }
+  .example-role{
+    font-size:14.5px;
+    color:var(--slate);
+    font-style:italic;
+    margin:0;
+  }
+
+  .info-stack{display:flex; flex-direction:column; gap:11px;}
+  .info-card{
+    border-radius:12px;
+    padding:13px 17px;
+    background:var(--panel);
+    opacity:0;
+    transform:translateX(14px);
+    animation: cardSlideIn .45s var(--ease-standard) forwards;
+  }
+  .info-card:nth-child(1){animation-delay:.05s;}
+  .info-card:nth-child(2){animation-delay:.15s;}
+  .info-card:nth-child(3){animation-delay:.25s;}
+  @keyframes cardSlideIn{ to{opacity:1; transform:translateX(0);} }
+
+  .info-card.effect{background:var(--sage-bg);}
+  .info-card.limit{background:var(--peach-bg);}
+  .info-card .tag{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin:0 0 5px;
+  }
+  .info-card.effect .tag{color:var(--sage-text);}
+  .info-card.limit .tag{color:var(--peach-text);}
+  .info-card p{
+    margin:0;
+    font-size:15.5px;
+    color:var(--navy-soft);
+  }
+
+  /* ---------- STEP 3: How to succeed ---------- */
+  .success-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+  }
+  .success-card{
+    display:block;
+    width:100%;
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:16px 13px;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition: border-color .2s var(--ease-standard), transform .25s var(--ease-spring), background .2s var(--ease-standard), box-shadow .25s var(--ease-standard);
+    text-align:left;
+    opacity:0;
+    transform:translateY(14px) scale(.96);
+    animation: popIn .45s var(--ease-spring) forwards;
+  }
+  .success-card:nth-child(1){animation-delay:.04s;}
+  .success-card:nth-child(2){animation-delay:.1s;}
+  .success-card:nth-child(3){animation-delay:.16s;}
+  .success-card:nth-child(4){animation-delay:.22s;}
+  .success-card:nth-child(5){animation-delay:.28s;}
+  @keyframes popIn{ to{opacity:1; transform:translateY(0) scale(1);} }
+
+  .success-card:hover{
+    transform:translateY(-4px) scale(1.02);
+    border-color:var(--gold-text);
+    box-shadow:0 10px 22px rgba(0,46,77,0.12);
+    will-change:transform;
+  }
+  .success-card.checked{
+    background:var(--sage-bg);
+    border-color:var(--sage-text);
+    animation: popIn .45s var(--ease-spring) forwards, checkPulse .4s var(--ease-standard);
+  }
+  @keyframes checkPulse{
+    0%{transform:scale(1);}
+    40%{transform:scale(1.06);}
+    100%{transform:scale(1);}
+  }
+  .success-num{
+    font-family:'Cambria',serif;
+    font-size:26px;
+    font-weight:700;
+    color:var(--gold-text);
+    margin:0 0 9px;
+    transition:color .2s var(--ease-standard);
+  }
+  .success-card.checked .success-num{color:var(--sage-text);}
+  .success-card p{
+    margin:0;
+    font-size:15px;
+    color:var(--navy-soft);
+    font-weight:600;
+  }
+  .success-check{
+    display:none;
+    font-size:13.5px;
+    color:var(--sage-text);
+    font-weight:700;
+    margin-top:7px;
+    opacity:0;
+  }
+  .success-card.checked .success-check{
+    display:block;
+    animation: fadeIn .25s var(--ease-standard) forwards;
+  }
+  @keyframes fadeIn{ to{opacity:1;} }
+
+  .tracker{
+    margin-top:20px;
+    background:var(--panel);
+    border:1px solid #D8E1E7;
+    border-radius:var(--radius);
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--navy-soft);
+    gap:16px;
+  }
+  .tracker-text{font-size:15px;}
+  .tracker-text strong{color:var(--gold-text); font-size:16px;}
+  .bar-track{
+    flex:1;
+    max-width:220px;
+    height:8px;
+    background:#DCE3E8;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, #6E5514, var(--gold-text));
+    border-radius:6px;
+    transition:width .5s var(--ease-smooth);
+    position:relative;
+  }
+  .bar-fill.celebrate::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.5);
+    animation: shimmer .6s var(--ease-standard);
+  }
+  @keyframes shimmer{
+    from{opacity:1;}
+    to{opacity:0;}
+  }
+  .complete-badge{
+    font-size:14px;
+    font-weight:700;
+    color:var(--gold-text);
+    opacity:0;
+    transform:scale(.8);
+    transition: opacity .3s var(--ease-standard), transform .3s var(--ease-spring);
+  }
+  .complete-badge.show{opacity:1; transform:scale(1);}
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 28px 4px;
+    border-top:1px solid var(--panel);
+  }
+  .btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    padding:11px 22px;
+    border-radius:9px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    transition: background .2s var(--ease-standard), color .2s var(--ease-standard), opacity .2s var(--ease-standard), transform .15s var(--ease-standard);
+  }
+  .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
+  .btn:active:not(:disabled){transform:translateY(0);}
+  .btn.primary{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn.primary:hover{background:var(--navy-soft);}
+  .btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+  }
+  .step-counter{
+    font-size:14px;
+    color:var(--slate);
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .stage{height:auto; min-height:0; overflow:visible;}
+    .panel{position:static; top:auto; left:auto; right:auto; bottom:auto; transform:none !important;}
+    .panel:not(.active){display:none;}
+    .sw-card{max-height:none; overflow-y:visible;}
+    .sw-grid{grid-template-columns:1fr; gap:14px;}
+    .example-layout{grid-template-columns:1fr;}
+    .example-photo{aspect-ratio:16/9; max-width:280px;}
+    .success-grid{grid-template-columns:repeat(2,1fr);}
+    .rail-step .label{display:none;}
+    .lesson-header h1{font-size:15px;}
+    .stage{padding:20px 18px 0;}
+    .lesson-header{padding:10px 18px;}
+    .nav-controls{padding:18px 18px 4px;}
+    .tracker{flex-direction:column; align-items:flex-start;}
+    .video-card-lg{flex-direction:column; padding:22px;}
+    .video-play-lg{width:54px; height:54px;}
+    .video-play-lg svg{width:22px; height:22px;}
+    .video-title-lg{font-size:18px;}
+  }
+  @media (max-width:480px){
+    .success-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="lesson-header">
+    <h1>Coaching Leadership Style</h1>
+  </header>
+
+  <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+    <div class="rail-step active" data-step="0">
+      <button type="button" class="dot" aria-current="step" aria-label="Step 1: Watch the Video">1</button>
+      <div class="label" aria-hidden="true">Watch the Video</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="1">
+      <button type="button" class="dot" aria-label="Step 2: Strengths and Weaknesses">2</button>
+      <div class="label" aria-hidden="true">Strengths &amp; Weaknesses</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="2">
+      <button type="button" class="dot" aria-label="Step 3: Real-World Example">3</button>
+      <div class="label" aria-hidden="true">Real-World Example</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="3">
+      <button type="button" class="dot" aria-label="Step 4: How to Succeed">4</button>
+      <div class="label" aria-hidden="true">How to Succeed</div>
+    </div>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- STEP 0: WATCH THE VIDEO -->
+    <section class="panel active" data-panel="0">
+      <h2 class="panel-title">Watch the Video</h2>
+      <p class="panel-sub">Watch this short video before moving on, then take note of what you observe.</p>
+
+      <p class="intro-line">Coaching leadership is less about directing tasks and more about developing people, helping team members grow, build skills, and find their own solutions to challenges. A coaching leader's real focus is on understanding what each individual is working toward, and helping them get there.</p>
+
+      <a class="video-card video-card-lg" href="https://youtu.be/xWyZb4idaq0" target="_blank" rel="noopener">
+        <div class="video-play video-play-lg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        </div>
+        <div class="video-body">
+          <p class="video-title video-title-lg">Coaching Leadership Style <span class="video-time">3:02 min</span><span class="sr-only"> (opens in a new tab)</span></p>
+          <p class="video-cue video-cue-lg">As you watch, take note of:</p>
+          <ul class="video-points">
+            <li>The leader's communication style (developmental)</li>
+            <li>How decisions get made (supportive and empowering)</li>
+            <li>The pros and cons you observe in how the team responds</li>
+          </ul>
+        </div>
+      </a>
+    </section>
+
+    <!-- STEP 1 -->
+    <section class="panel" data-panel="1">
+      <h2 class="panel-title">Strengths &amp; Weaknesses</h2>
+      <p class="panel-sub">Tap any point below to see what it looks like in practice.</p>
+
+      <div class="sw-grid">
+        <div class="sw-card">
+          <h3>Strengths</h3>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-s1">
+              <strong>Employee development</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-s1"><div class="detail-inner">Coaching leaders treat uncertain or difficult times as opportunities for growth and skill-building, not just obstacles to get through.</div></div>
+          </div>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-s2">
+              <strong>Empowerment</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-s2"><div class="detail-inner">Rather than handing over answers, they help team members work through challenges and find solutions on their own.</div></div>
+          </div>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-s3">
+              <strong>Strong relationships</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-s3"><div class="detail-inner">This style is built on trust and open, ongoing communication.</div></div>
+          </div>
+        </div>
+
+        <div class="sw-card weak">
+          <h3>Weaknesses</h3>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-w1">
+              <strong>Time-intensive</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-w1"><div class="detail-inner">Coaching takes real time and effort, which can be difficult to prioritize in urgent situations.</div></div>
+          </div>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-w2">
+              <strong>Inconsistent results</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-w2"><div class="detail-inner">This style depends heavily on the individual. It may not be effective with someone who isn't receptive to feedback.</div></div>
+          </div>
+
+          <div class="flip-item">
+            <button type="button" class="row" aria-expanded="false" aria-controls="detail-w3">
+              <strong>Not a fit for every team member</strong>
+              <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="detail" id="detail-w3"><div class="detail-inner">This style is least effective when team members are resistant, unmotivated, or simply prefer a more hands-off leader.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel" data-panel="2">
+      <h2 class="panel-title">Real-World Example</h2>
+      <p class="panel-sub">See how this style plays out in practice, including where the balance matters most.</p>
+
+      <div class="example-layout">
+        <div>
+          <div class="example-photo">
+            <img
+              src="slide-coaching.jpg"
+              alt="Illustrative leadership scenario"
+              onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+            <span class="placeholder-text">Photo placeholder</span>
+          </div>
+          <div class="example-name">Bill Campbell</div>
+          <div class="example-role">Helping a High-Performer Navigate a Complex Challenge</div>
+        </div>
+
+        <div class="info-stack">
+          <div class="info-card">
+            <p class="tag">Context</p>
+            <p>A high-performing team member is stuck navigating a complex challenge and turns to their leader for direction.</p>
+          </div>
+          <div class="info-card effect">
+            <p class="tag">Approach</p>
+            <p>Instead of giving answers, the leader asks the right questions and helps the person think more clearly about their own situation.</p>
+          </div>
+          <div class="info-card limit">
+            <p class="tag">Takeaway</p>
+            <p>The focus on personal growth pays off over time, though the tradeoff is speed: in a high-pressure crisis, there often isn't time for this kind of conversation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel" data-panel="3">
+      <h2 class="panel-title">How to Be Successful</h2>
+      <p class="panel-sub"><em>Practical strategies for applying the Coaching style effectively.</em> Select each card as you commit to it.</p>
+
+      <div class="success-grid" id="successGrid" role="group" aria-label="Commitment strategies, select the ones you commit to">
+        <button type="button" class="success-card" data-idx="1" aria-pressed="false">
+          <div class="success-num" aria-hidden="true">01</div>
+          <p>Ask open-ended questions</p>
+          <div class="success-check">&#10003; Committed</div>
+        </button>
+        <button type="button" class="success-card" data-idx="2" aria-pressed="false">
+          <div class="success-num" aria-hidden="true">02</div>
+          <p>Give frequent, specific feedback</p>
+          <div class="success-check">&#10003; Committed</div>
+        </button>
+        <button type="button" class="success-card" data-idx="3" aria-pressed="false">
+          <div class="success-num" aria-hidden="true">03</div>
+          <p>Build your emotional intelligence</p>
+          <div class="success-check">&#10003; Committed</div>
+        </button>
+        <button type="button" class="success-card" data-idx="4" aria-pressed="false">
+          <div class="success-num" aria-hidden="true">04</div>
+          <p>Create real development opportunities</p>
+          <div class="success-check">&#10003; Committed</div>
+        </button>
+        <button type="button" class="success-card" data-idx="5" aria-pressed="false">
+          <div class="success-num" aria-hidden="true">05</div>
+          <p>Set meaningful goals together</p>
+          <div class="success-check">&#10003; Committed</div>
+        </button>
+      </div>
+
+      <div class="tracker">
+        <div class="tracker-text" aria-live="polite"><strong id="trackerCount">0</strong> of 5 strategies selected</div>
+        <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-label="Strategies selected" id="trackerBarTrack"><div class="bar-fill" id="trackerBar"></div></div>
+        <div class="complete-badge" id="completeBadge">All set &#9733;</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" disabled>&larr; Back</button>
+    <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span>
+    <button class="btn primary" id="nextBtn">Next &rarr;</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var currentStep = 0;
+  var totalSteps = 4;
+  var panels = document.querySelectorAll('.panel');
+  var railSteps = document.querySelectorAll('.rail-step');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepCounter = document.getElementById('stepCounter');
+
+  function replayEntranceAnimations(panel){
+    var animated = panel.querySelectorAll('.flip-item, .info-card, .success-card, .video-card');
+    if(!animated.length) return;
+
+    // Batch all writes, then force a single reflow, then batch the restore.
+    // Avoids one forced synchronous layout per element.
+    animated.forEach(function(el){ el.style.animation = 'none'; });
+    void panel.offsetWidth; // single reflow for the whole panel
+    animated.forEach(function(el){ el.style.animation = ''; });
+  }
+
+  function renderStep(prevStep, opts){
+    opts = opts || {};
+    panels.forEach(function(p, i){
+      p.classList.toggle('active', i === currentStep);
+    });
+    railSteps.forEach(function(r, i){
+      r.classList.toggle('active', i === currentStep);
+      r.classList.toggle('done', i < currentStep);
+      var dot = r.querySelector('.dot');
+      if(i === currentStep){
+        dot.setAttribute('aria-current', 'step');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finish' : 'Next \u2192';
+    stepCounter.textContent = 'STEP ' + (currentStep + 1) + ' OF ' + totalSteps;
+
+    var activePanel = panels[currentStep];
+    if(activePanel){
+      replayEntranceAnimations(activePanel);
+      // Move focus to the new panel's heading so keyboard and screen-reader
+      // users land on the new content instead of losing their place.
+      if(opts.moveFocus){
+        var heading = activePanel.querySelector('.panel-title');
+        if(heading){
+          heading.setAttribute('tabindex', '-1');
+          heading.focus();
+        }
+      }
+    }
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(currentStep > 0){ var prev = currentStep; currentStep--; renderStep(prev, {moveFocus:true}); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(currentStep < totalSteps - 1){
+      var prev = currentStep;
+      currentStep++;
+      renderStep(prev, {moveFocus:true});
+    } else {
+      nextBtn.textContent = 'Lesson complete \u2713';
+    }
+  });
+
+  railSteps.forEach(function(r, i){
+    r.querySelector('.dot').addEventListener('click', function(){
+      var prev = currentStep;
+      currentStep = i;
+      renderStep(prev, {moveFocus:true});
+    });
+  });
+
+  document.querySelectorAll('.flip-item .row').forEach(function(trigger){
+    trigger.addEventListener('click', function(){
+      var item = trigger.closest('.flip-item');
+      var isOpen = item.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  var successCards = document.querySelectorAll('.success-card');
+  var trackerCount = document.getElementById('trackerCount');
+  var trackerBar = document.getElementById('trackerBar');
+  var trackerBarTrack = document.getElementById('trackerBarTrack');
+  var completeBadge = document.getElementById('completeBadge');
+
+  successCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var isChecked = card.classList.toggle('checked');
+      card.setAttribute('aria-pressed', isChecked ? 'true' : 'false');
+      var checked = document.querySelectorAll('.success-card.checked').length;
+      trackerCount.textContent = checked;
+      trackerBar.style.width = (checked / successCards.length * 100) + '%';
+      trackerBarTrack.setAttribute('aria-valuenow', checked);
+
+      trackerBar.classList.remove('celebrate');
+      void trackerBar.offsetWidth;
+      trackerBar.classList.add('celebrate');
+
+      completeBadge.classList.toggle('show', checked === successCards.length);
+    });
+  });
+
+  renderStep(0);
+})();
+</script>
+
+</body>
+</html>
