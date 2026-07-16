@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Leadership Style | Willful Change Leadership Academy</title>
+<style>
+  :root{
+    --navy:#002E4D;
+    --navy-soft:#002F4D;
+    --slate:#4A6070;
+    --ice:#A8C5CD;
+    --gold:#CFAE3C;
+    --gold-deep:#B6962C;
+    --gold-text:#7D6218;
+    --panel:#EEF2F5;
+    --sage-bg:#E8F0E9;
+    --sage-text:#2D6A4F;
+    --peach-bg:#F9EDE8;
+    --peach-text:#7B3A2A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,46,77,0.08);
+    --ease-standard: cubic-bezier(.4,0,.2,1);
+    --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    --ease-smooth: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:'Calibri','Segoe UI',Arial,sans-serif;
+    color:var(--slate);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cambria','Times New Roman',Georgia,serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .lesson-header{
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--panel) 100%);
+    color:var(--navy);
+    padding:12px 28px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #E2E8ED;
+  }
+  .lesson-header h1{
+    margin:0;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--navy);
+    opacity:0;
+    animation: headerIn .6s var(--ease-standard) forwards;
+  }
+  @keyframes headerIn{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- PROGRESS RAIL ---------- */
+  .progress-rail{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:18px 28px 0;
+    background:var(--white);
+  }
+  .rail-step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+    position:relative;
+  }
+  .rail-step .dot{
+    width:32px; height:32px;
+    min-width:32px;
+    padding:0;
+    margin:0;
+    appearance:none;
+    -webkit-appearance:none;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--slate);
+    border:2px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    transition:background .3s var(--ease-standard), border-color .3s var(--ease-standard), color .3s var(--ease-standard), transform .3s var(--ease-spring);
+    cursor:pointer;
+  }
+  .rail-step .dot:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .rail-step .label{
+    font-size:16px;
+    font-weight:700;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .rail-step .connector{
+    flex:1;
+    height:2px;
+    background:var(--panel);
+    margin:0 6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rail-step .connector::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s var(--ease-standard);
+  }
+  .rail-step.done .connector::after{transform:scaleX(1);}
+  .rail-step:last-child .connector{display:none;}
+
+  .rail-step.active .dot{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+    transform:scale(1.12);
+    box-shadow:0 0 0 5px rgba(0,46,77,0.1);
+  }
+  .rail-step.active .label{color:var(--navy);}
+  .rail-step.done .dot{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--navy);
+  }
+  .rail-step:not(.active):not(.done) .label{color:var(--slate);}
+  .rail-step .dot:hover{transform:scale(1.08);}
+
+  /* ---------- STAGE ---------- */
+  .stage{
+    position:relative;
+    height:420px;
+    padding:22px 28px 16px;
+    overflow:hidden;
+  }
+  .panel{
+    position:absolute;
+    top:22px; left:28px; right:28px; bottom:16px;
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition: opacity .3s var(--ease-standard), visibility .3s var(--ease-standard);
+  }
+  .panel.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .panel-title{
+    font-size:22px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .panel-sub{
+    font-size:15px;
+    color:var(--slate);
+    margin:0 0 14px;
+    max-width:680px;
+    line-height:1.4;
+  }
+
+  /* ---------- STEP 1: Communication Style ---------- */
+  .style-stage{
+    flex:1;
+    min-height:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:stretch;
+  }
+  .style-image-slot{
+    width:100%;
+    height:100%;
+    border-radius:var(--radius);
+    border:1px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+    opacity:0;
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .style-image-slot img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:none;
+  }
+  .placeholder-text{
+    position:relative;
+    z-index:1;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--slate);
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .style-reveal{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background: linear-gradient(160deg, var(--panel) 0%, #FFFFFF 100%);
+    border:1px solid #E2E8ED;
+    border-radius:18px;
+    padding:28px 34px;
+    color:var(--navy);
+    opacity:0;
+    transform:scale(.92);
+    animation: stylePop .55s var(--ease-spring) forwards;
+    box-shadow:0 14px 30px rgba(0,46,77,.10);
+  }
+  @keyframes stylePop{ to{opacity:1; transform:scale(1);} }
+  .style-eyebrow{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    margin:0 0 8px;
+  }
+  .style-word{
+    font-family:'Cambria',serif;
+    font-size:32px;
+    font-weight:700;
+    margin:0;
+    opacity:0;
+    animation: wordIn .5s var(--ease-standard) .25s forwards;
+  }
+  @keyframes wordIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .style-caption{
+    font-size:15px;
+    color:var(--slate);
+    margin:12px 0 0;
+    max-width:420px;
+    line-height:1.5;
+    opacity:0;
+    animation: wordIn .5s var(--ease-standard) .45s forwards;
+  }
+
+  /* ---------- STEP 2: Impact on Collaboration ---------- */
+  .impact-stage{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    justify-content:center;
+  }
+  .status-card{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    background:var(--sage-bg);
+    border-radius:var(--radius);
+    padding:16px 24px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
+  .status-card p{
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--sage-text);
+    margin:0;
+  }
+  .impact-explain{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:20px 26px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) .15s forwards;
+  }
+  .impact-explain p{
+    margin:0;
+    font-size:15px;
+    line-height:1.55;
+    color:var(--navy-soft);
+  }
+
+  /* ---------- STEP 3: Strengthening Collaboration ---------- */
+  .tip-list{
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    justify-content:center;
+  }
+  .tip-card{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:var(--panel);
+    border-radius:12px;
+    padding:12px 18px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) forwards;
+  }
+  .tip-card:nth-child(1){animation-delay:.05s;}
+  .tip-card:nth-child(2){animation-delay:.15s;}
+  .tip-card:nth-child(3){animation-delay:.25s;}
+  .tip-number{
+    flex:none;
+    width:28px; height:28px;
+    border-radius:50%;
+    background:var(--gold-deep);
+    color:var(--white);
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tip-body p{
+    margin:0;
+  }
+  .tip-body .tip-lead{
+    font-weight:700;
+    font-size:15px;
+    color:var(--navy);
+  }
+  .tip-body .tip-desc{
+    color:var(--navy-soft);
+    font-size:14px;
+    line-height:1.45;
+    margin-top:3px;
+  }
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 28px 4px;
+    border-top:1px solid var(--panel);
+  }
+  .btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    padding:11px 22px;
+    border-radius:9px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    transition: background .2s var(--ease-standard), color .2s var(--ease-standard), opacity .2s var(--ease-standard), transform .15s var(--ease-standard);
+  }
+  .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
+  .btn:active:not(:disabled){transform:translateY(0);}
+  .btn.primary{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn.primary:hover{background:var(--navy-soft);}
+  .btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+  }
+  .btn:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .step-counter{
+    font-size:16px;
+    color:var(--slate);
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .stage{height:auto; min-height:0; overflow:visible; padding:20px 18px 20px;}
+    .panel{position:static; top:auto; left:auto; right:auto; bottom:auto;}
+    .panel:not(.active){display:none; opacity:0; visibility:hidden;}
+    .rail-step .label{display:none;}
+    .lesson-header{padding:10px 18px;}
+    .nav-controls{padding:18px 18px 4px;}
+    .style-stage{grid-template-columns:1fr; gap:16px;}
+    .style-image-slot{aspect-ratio:16/9;}
+    .style-reveal{padding:30px 28px;}
+    .style-word{font-size:24px;}
+    .status-card{flex-direction:column; align-items:flex-start; gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="lesson-header">
+    <h1>Coaching Leadership Style</h1>
+  </header>
+
+  <nav class="progress-rail" id="progressRail">
+    <div class="rail-step active" data-step="0">
+      <button type="button" class="dot" aria-label="Go to step 1: Communication Style" aria-current="step">1</button>
+      <div class="label">Communication Style</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="1">
+      <button type="button" class="dot" aria-label="Go to step 2: Impact on Collaboration">2</button>
+      <div class="label">Impact on Collaboration</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="2">
+      <button type="button" class="dot" aria-label="Go to step 3: Strengthening Collaboration">3</button>
+      <div class="label">Strengthen It</div>
+    </div>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- STEP 0: COMMUNICATION STYLE -->
+    <section class="panel active" data-panel="0">
+      <h2 class="panel-title">Developmental Communication</h2>
+      <p class="panel-sub">Every leadership style produces a distinct way of communicating. Here is how the Coaching style comes across.</p>
+
+      <div class="style-stage">
+        <div class="style-image-slot" id="imageSlot">
+          <img
+            src="module3-coaching.jpg"
+            alt="Coaching leadership style"
+            onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <span class="placeholder-text">Add image URL to src</span>
+        </div>
+        <div class="style-reveal">
+          <p class="style-eyebrow">Communication Style</p>
+          <p class="style-word">Developmental</p>
+          <p class="style-caption">The focus is on growth, not just getting a task done, but helping the person doing it become more capable along the way. Conversations tend to feel less like instructions and more like investment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 1: IMPACT ON COLLABORATION -->
+    <section class="panel" data-panel="1">
+      <h2 class="panel-title">Impact on Team Collaboration</h2>
+      <p class="panel-sub">This style tends to strengthen collaboration over time, building loyalty along with capability.</p>
+
+      <div class="impact-stage">
+        <div class="status-card">
+          <p>Impact on Team Collaboration: Positive</p>
+        </div>
+        <div class="impact-explain">
+          <p>This style tends to strengthen collaboration over time. When people feel genuinely supported in their growth, motivation and engagement rise, and that support builds loyalty &mdash; people are more likely to stay and grow with the organization rather than look elsewhere.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: STRENGTHENING COLLABORATION -->
+    <section class="panel" data-panel="2">
+      <h2 class="panel-title">How to Strengthen Collaboration with This Style</h2>
+      <p class="panel-sub">Ways to make growth feel personal, useful, and owned by the person doing it.</p>
+
+      <div class="tip-list">
+        <div class="tip-card">
+          <div class="tip-number">1</div>
+          <div class="tip-body">
+            <p class="tip-lead">Know each person's strengths, weaknesses, and interests.</p>
+            <p class="tip-desc">Use that understanding to help individuals set goals and action plans that are realistic and genuinely attainable for them, not generic targets applied to everyone.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">2</div>
+          <div class="tip-body">
+            <p class="tip-lead">Make feedback specific and useful.</p>
+            <p class="tip-desc">Provide constructive, specific feedback, and pair it with advice or resources that help people actually achieve their goals.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-number">3</div>
+          <div class="tip-body">
+            <p class="tip-lead">Let people own their growth.</p>
+            <p class="tip-desc">Encourage team members to learn from both mistakes and successes, and give them real autonomy and responsibility for managing their own work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" disabled>&larr; Back</button>
+    <span class="step-counter" id="stepCounter">STEP 1 OF 3</span>
+    <button class="btn primary" id="nextBtn">Next &rarr;</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var currentStep = 0;
+  var totalSteps = 3;
+  var panels = document.querySelectorAll('.panel');
+  var railSteps = document.querySelectorAll('.rail-step');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepCounter = document.getElementById('stepCounter');
+
+  function replayEntranceAnimations(panel){
+    var animated = panel.querySelectorAll('.style-reveal, .style-word, .style-caption, .status-card, .impact-explain, .tip-card');
+    // (status-card is a single merged element now; selector unchanged, still valid)
+    if(!animated.length) return;
+    animated.forEach(function(el){ el.style.animation = 'none'; });
+    void panel.offsetWidth;
+    animated.forEach(function(el){ el.style.animation = ''; });
+  }
+
+  function renderStep(){
+    panels.forEach(function(p, i){
+      p.classList.toggle('active', i === currentStep);
+    });
+    railSteps.forEach(function(r, i){
+      r.classList.toggle('active', i === currentStep);
+      r.classList.toggle('done', i < currentStep);
+      var dot = r.querySelector('.dot');
+      if(i === currentStep){ dot.setAttribute('aria-current', 'step'); }
+      else{ dot.removeAttribute('aria-current'); }
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finish' : 'Next \u2192';
+    stepCounter.textContent = 'STEP ' + (currentStep + 1) + ' OF ' + totalSteps;
+
+    var activePanel = panels[currentStep];
+    if(activePanel) replayEntranceAnimations(activePanel);
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(currentStep > 0){ currentStep--; renderStep(); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(currentStep < totalSteps - 1){
+      currentStep++;
+      renderStep();
+    } else {
+      nextBtn.textContent = 'Lesson complete \u2713';
+    }
+  });
+
+  railSteps.forEach(function(r, i){
+    r.querySelector('.dot').addEventListener('click', function(){
+      currentStep = i;
+      renderStep();
+    });
+  });
+
+  renderStep();
+})();
+</script>
+
+</body>
+</html>
