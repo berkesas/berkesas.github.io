@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autocratic Leadership Style | Willful Change Leadership Academy</title>
+<style>
+  :root{
+    --navy:#002E4D;
+    --navy-soft:#002F4D;
+    --slate:#4A6070;
+    --ice:#A8C5CD;
+    --gold:#CFAE3C;
+    --gold-deep:#B6962C;
+    --gold-text:#7D6218; /* darker, WCAG AA-safe (~5.1:1) variant of gold-deep for small text on light bg */
+    --panel:#EEF2F5;
+    --sage-bg:#E8F0E9;
+    --sage-text:#2D6A4F;
+    --peach-bg:#F9EDE8;
+    --peach-text:#7B3A2A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,46,77,0.08);
+    --ease-standard: cubic-bezier(.4,0,.2,1);
+    --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    --ease-smooth: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:'Calibri','Segoe UI',Arial,sans-serif;
+    color:var(--slate);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cambria','Times New Roman',Georgia,serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .lesson-header{
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--panel) 100%);
+    color:var(--navy);
+    padding:12px 28px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #E2E8ED;
+  }
+  .lesson-header h1{
+    margin:0;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--navy);
+    opacity:0;
+    animation: headerIn .6s var(--ease-standard) forwards;
+  }
+  .lesson-header .eyebrow{
+    display:block;
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    margin-bottom:2px;
+  }
+  @keyframes headerIn{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- PROGRESS RAIL ---------- */
+  .progress-rail{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:18px 28px 0;
+    background:var(--white);
+  }
+  .rail-step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+    position:relative;
+  }
+  .rail-step .dot{
+    width:32px; height:32px;
+    min-width:32px;
+    padding:0;
+    margin:0;
+    appearance:none;
+    -webkit-appearance:none;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--slate);
+    border:2px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    transition:background .3s var(--ease-standard), border-color .3s var(--ease-standard), color .3s var(--ease-standard), transform .3s var(--ease-spring);
+    cursor:pointer;
+  }
+  .rail-step .dot:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .rail-step .label{
+    font-size:16px;
+    font-weight:700;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .rail-step .connector{
+    flex:1;
+    height:2px;
+    background:var(--panel);
+    margin:0 6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rail-step .connector::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s var(--ease-standard);
+  }
+  .rail-step.done .connector::after{transform:scaleX(1);}
+  .rail-step:last-child .connector{display:none;}
+
+  .rail-step.active .dot{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+    transform:scale(1.12);
+    box-shadow:0 0 0 5px rgba(0,46,77,0.1);
+  }
+  .rail-step.active .label{color:var(--navy);}
+  .rail-step.done .dot{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--navy);
+  }
+  .rail-step:not(.active):not(.done) .label{color:var(--slate);}
+  .rail-step .dot:hover{transform:scale(1.08);}
+
+  /* ---------- STAGE ---------- */
+  .stage{
+    position:relative;
+    height:460px;
+    padding:26px 28px 20px;
+    overflow:hidden;
+  }
+  .panel{
+    position:absolute;
+    top:26px; left:28px; right:28px; bottom:20px;
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition: opacity .3s var(--ease-standard), visibility .3s var(--ease-standard);
+    will-change:opacity;
+  }
+  .panel.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .panel.leaving{
+    opacity:0;
+    visibility:hidden;
+  }
+
+  .panel-title{
+    font-size:24px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .panel-sub{
+    font-size:16px;
+    color:var(--slate);
+    margin:0 0 20px;
+    max-width:680px;
+  }
+
+  /* ---------- STEP 1: Decision-Making Style ---------- */
+  .style-stage{
+    flex:1;
+    min-height:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:stretch;
+  }
+  .style-image-slot{
+    width:100%;
+    height:100%;
+    border-radius:var(--radius);
+    border:1px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+    opacity:0;
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .style-image-slot img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    display:none;
+  }
+  .placeholder-text{
+    position:relative;
+    z-index:1;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--slate);
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .style-right{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .style-reveal{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background: linear-gradient(160deg, var(--panel) 0%, #FFFFFF 100%);
+    border:1px solid #E2E8ED;
+    border-radius:18px;
+    padding:38px 60px;
+    color:var(--navy);
+    opacity:0;
+    transform:scale(.92);
+    animation: stylePop .55s var(--ease-spring) forwards;
+    box-shadow:0 14px 30px rgba(0,46,77,.10);
+  }
+  @keyframes stylePop{ to{opacity:1; transform:scale(1);} }
+  .style-eyebrow{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    margin:0 0 10px;
+  }
+  .style-word{
+    font-family:'Cambria',serif;
+    font-size:36px;
+    font-weight:700;
+    margin:0;
+    opacity:0;
+    animation: wordIn .5s var(--ease-standard) .25s forwards;
+  }
+  @keyframes wordIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .style-caption{
+    font-size:16px;
+    color:var(--slate);
+    margin:14px 0 0;
+    max-width:380px;
+    opacity:0;
+    animation: wordIn .5s var(--ease-standard) .45s forwards;
+  }
+  .style-hint{
+    margin-top:22px;
+    font-size:16px;
+    color:var(--slate);
+    opacity:0;
+    animation: wordIn .5s var(--ease-standard) .6s forwards;
+  }
+
+  /* ---------- STEP 2: Decision-making in practice (quote) ---------- */
+  .quote-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:34px 38px;
+    margin-bottom:18px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
+  .quote-mark{
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:36px;
+    color:var(--gold);
+    line-height:1;
+    margin:0 0 6px;
+  }
+  .quote-text{
+    font-family:'Cambria',serif;
+    font-style:italic;
+    font-size:24px;
+    color:var(--navy);
+    margin:0;
+    line-height:1.45;
+  }
+  .practice-note{
+    background:var(--sage-bg);
+    border-radius:12px;
+    padding:15px 18px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) .15s forwards;
+  }
+  .practice-note .tag{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--sage-text);
+    margin:0 0 5px;
+  }
+  .practice-note p{
+    margin:0;
+    font-size:16px;
+    color:var(--navy-soft);
+  }
+
+  /* ---------- STEP 3: Ripple Effect ---------- */
+  .ripple-layout{
+    display:grid;
+    grid-template-columns:210px 1fr;
+    gap:28px;
+    align-items:start;
+    flex:1;
+  }
+  .ripple-left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .ripple-visual{
+    position:relative;
+    width:100%;
+    padding:26px 18px;
+    border-radius:12px;
+    border:1px solid #E2E8ED;
+    background:linear-gradient(160deg, var(--panel) 0%, #FFFFFF 100%);
+    box-shadow:0 8px 18px rgba(0,46,77,.10);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .ripple-core{
+    color:var(--navy);
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    text-align:center;
+    line-height:1.3;
+    margin:0;
+  }
+  .ripple-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:var(--peach-bg);
+    color:var(--peach-text);
+    font-weight:700;
+    font-size:16px;
+    padding:8px 16px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  .ripple-badge::before{
+    content:"";
+    width:8px; height:8px;
+    border-radius:2px;
+    background:var(--peach-text);
+  }
+  .ripple-right{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .impact-card{
+    background:var(--panel);
+    border-radius:12px;
+    padding:13px 16px;
+    opacity:0;
+    transform:translateX(12px);
+    animation: cardSlideIn .4s var(--ease-standard) forwards;
+  }
+  .impact-card:nth-child(1){animation-delay:.1s;}
+  .impact-card:nth-child(2){animation-delay:.2s;}
+  .impact-card:nth-child(3){animation-delay:.3s;}
+  @keyframes cardSlideIn{ to{opacity:1; transform:translateX(0);} }
+  .impact-card .impact-label{
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    margin:0 0 3px;
+  }
+  .impact-card .impact-desc{
+    font-size:16px;
+    color:var(--slate);
+    margin:0;
+    line-height:1.4;
+  }
+
+  /* ---------- STEP 4: Reflection ---------- */
+  .reflect-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:24px 26px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .reflect-card .tag{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin:0 0 9px;
+  }
+  .reflect-card p.question{
+    margin:0;
+    font-size:18px;
+    color:var(--navy-soft);
+    line-height:1.55;
+  }
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 28px 4px;
+    border-top:1px solid var(--panel);
+  }
+  .btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    padding:11px 22px;
+    border-radius:9px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    transition: background .2s var(--ease-standard), color .2s var(--ease-standard), opacity .2s var(--ease-standard), transform .15s var(--ease-standard);
+  }
+  .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
+  .btn:active:not(:disabled){transform:translateY(0);}
+  .btn.primary{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn.primary:hover{background:var(--navy-soft);}
+  .btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+  }
+  .btn:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .step-counter{
+    font-size:16px;
+    color:var(--slate);
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .stage{height:auto; min-height:0; overflow:visible; padding:20px 18px 20px;}
+    .panel{position:static; top:auto; left:auto; right:auto; bottom:auto;}
+    .panel:not(.active){display:none; opacity:0; visibility:hidden;}
+    .rail-step .label{display:none;}
+    .lesson-header{padding:10px 18px;}
+    .nav-controls{padding:18px 18px 4px;}
+    .style-stage{grid-template-columns:1fr; gap:16px;}
+    .style-image-slot{aspect-ratio:16/9;}
+    .style-reveal{padding:30px 28px;}
+    .style-word{font-size:24px;}
+    .ripple-layout{grid-template-columns:1fr; gap:18px;}
+    .ripple-left{flex-direction:row; justify-content:flex-start; align-items:center;}
+    .ripple-visual{width:auto; flex:1;}
+    .quote-card{padding:24px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="lesson-header">
+    <h1>Autocratic Leadership Style</h1>
+  </header>
+
+  <nav class="progress-rail" id="progressRail">
+    <div class="rail-step active" data-step="0">
+      <button type="button" class="dot" aria-label="Go to step 1: Decision-Making Style" aria-current="step">1</button>
+      <div class="label">Decision-Making Style</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="1">
+      <button type="button" class="dot" aria-label="Go to step 2: In Practice">2</button>
+      <div class="label">In Practice</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="2">
+      <button type="button" class="dot" aria-label="Go to step 3: Ripple Effect">3</button>
+      <div class="label">Ripple Effect</div>
+      <div class="connector"></div>
+    </div>
+    <div class="rail-step" data-step="3">
+      <button type="button" class="dot" aria-label="Go to step 4: Reflection">4</button>
+      <div class="label">Reflection</div>
+    </div>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- STEP 0: DECISION-MAKING STYLE -->
+    <section class="panel active" data-panel="0">
+      <h2 class="panel-title">Decision-Making Style</h2>
+      <p class="panel-sub">Every leadership style produces a distinct way of making decisions. Here is how the Autocratic style decides.</p>
+
+      <div class="style-stage">
+        <div class="style-image-slot" id="imageSlot">
+          <img
+            src="module2-autocratic.jpg"
+            alt="Autocratic leadership style"
+            onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <span class="placeholder-text">Add image URL to src</span>
+        </div>
+        <div class="style-right">
+          <div class="style-reveal">
+            <p class="style-eyebrow">Decision-Making Style</p>
+            <p class="style-caption">One person decides, alone, without seeking input before acting.</p>
+          </div>
+          <p class="style-hint">Next: see what this sounds like in a real moment &rarr;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 1: DECISION-MAKING IN PRACTICE -->
+    <section class="panel" data-panel="1">
+      <h2 class="panel-title">Decision-Making in Practice</h2>
+      <p class="panel-sub">What a Unilateral decision actually sounds like when it lands on a team.</p>
+
+      <div class="quote-card">
+        <p class="quote-mark" aria-hidden="true">&ldquo;</p>
+        <p class="quote-text">"I've decided this is the course of action we'll take. No further discussion is necessary."</p>
+      </div>
+
+      <div class="practice-note">
+        <p class="tag">Listen for</p>
+        <p>Notice there is no question in this statement. The decision and the directive arrive at the same time, with no room left for input.</p>
+      </div>
+    </section>
+
+    <!-- STEP 2: RIPPLE EFFECT -->
+    <section class="panel" data-panel="2">
+      <h2 class="panel-title">The Ripple Effect</h2>
+      <p class="panel-sub">Every decision sends a signal. Here is how the Autocratic style ripples out across the team.</p>
+
+      <div class="ripple-layout">
+        <div class="ripple-left">
+          <div class="ripple-visual">
+            <p class="ripple-core">One decision</p>
+          </div>
+          <span class="ripple-badge">Negative</span>
+        </div>
+        <div class="ripple-right">
+          <div class="impact-card">
+            <p class="impact-label">Morale</p>
+            <p class="impact-desc">Team members feel their opinions don't matter.</p>
+          </div>
+          <div class="impact-card">
+            <p class="impact-label">Engagement</p>
+            <p class="impact-desc">Leads to demotivation and quiet disengagement.</p>
+          </div>
+          <div class="impact-card">
+            <p class="impact-label">Trade-off</p>
+            <p class="impact-desc">Effective in a crisis, costly outside of one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: REFLECTION -->
+    <section class="panel" data-panel="3">
+      <h2 class="panel-title">Reflection &amp; Discussion</h2>
+      <p class="panel-sub">Take a moment with this before moving on.</p>
+
+      <div class="reflect-card">
+        <p class="tag">Discuss</p>
+        <p class="question">Think about a time when you experienced or needed to take on an autocratic decision-making style. What influenced that approach, and what impact did it have on the people around you?</p>
+      </div>
+
+
+    </section>
+
+  </main>
+
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" disabled>&larr; Back</button>
+    <span class="step-counter" id="stepCounter">STEP 1 OF 4</span>
+    <button class="btn primary" id="nextBtn">Next &rarr;</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var currentStep = 0;
+  var totalSteps = 4;
+  var panels = document.querySelectorAll('.panel');
+  var railSteps = document.querySelectorAll('.rail-step');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepCounter = document.getElementById('stepCounter');
+
+  function replayEntranceAnimations(panel){
+    var animated = panel.querySelectorAll('.style-reveal, .style-word, .style-caption, .style-hint, .quote-card, .practice-note, .impact-card, .reflect-card');
+    if(!animated.length) return;
+    animated.forEach(function(el){ el.style.animation = 'none'; });
+    void panel.offsetWidth;
+    animated.forEach(function(el){ el.style.animation = ''; });
+  }
+
+  function renderStep(){
+    panels.forEach(function(p, i){
+      p.classList.toggle('active', i === currentStep);
+    });
+    railSteps.forEach(function(r, i){
+      r.classList.toggle('active', i === currentStep);
+      r.classList.toggle('done', i < currentStep);
+      var dot = r.querySelector('.dot');
+      if(i === currentStep){ dot.setAttribute('aria-current', 'step'); }
+      else{ dot.removeAttribute('aria-current'); }
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finish' : 'Next \u2192';
+    stepCounter.textContent = 'STEP ' + (currentStep + 1) + ' OF ' + totalSteps;
+
+    var activePanel = panels[currentStep];
+    if(activePanel) replayEntranceAnimations(activePanel);
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(currentStep > 0){ currentStep--; renderStep(); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(currentStep < totalSteps - 1){
+      currentStep++;
+      renderStep();
+    } else {
+      nextBtn.textContent = 'Lesson complete \u2713';
+    }
+  });
+
+  railSteps.forEach(function(r, i){
+    r.querySelector('.dot').addEventListener('click', function(){
+      currentStep = i;
+      renderStep();
+    });
+  });
+
+  renderStep();
+})();
+</script>
+
+</body>
+</html>
