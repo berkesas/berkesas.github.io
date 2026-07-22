@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shift: Leadership Case Studies | Willful Change Leadership Academy</title>
+<style>
+  :root{
+    --navy:#002E4D;
+    --navy-soft:#002F4D;
+    --slate:#4A6070;
+    --ice:#A8C5CD;
+    --gold:#CFAE3C;
+    --gold-deep:#B6962C;
+    --gold-text:#7D6218;
+    --panel:#EEF2F5;
+    --sage-bg:#E8F0E9;
+    --sage-text:#2D6A4F;
+    --peach-bg:#F9EDE8;
+    --peach-text:#7B3A2A;
+    --rose-bg:#FBEAEA;
+    --rose-text:#8A3A3A;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,46,77,0.08);
+    --ease-standard: cubic-bezier(.4,0,.2,1);
+    --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    --ease-smooth: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:'Calibri','Segoe UI',Arial,sans-serif;
+    color:var(--slate);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cambria','Times New Roman',Georgia,serif;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .lesson-header{
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--panel) 100%);
+    color:var(--navy);
+    padding:12px 28px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #E2E8ED;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .lesson-header h1{
+    margin:0;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--navy);
+  }
+  .home-btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    border-radius:8px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    white-space:nowrap;
+    transition: background .2s var(--ease-standard), transform .15s var(--ease-standard);
+  }
+  .home-btn:hover{background:var(--panel); transform:translateY(-1px);}
+  .home-btn[hidden]{display:none;}
+
+  /* ---------- MENU SCREEN ---------- */
+  .menu-screen{padding:22px 28px 8px;}
+  .menu-screen[hidden]{display:none;}
+  .menu-intro{
+    font-size:16px;
+    color:var(--slate);
+    max-width:680px;
+    margin:0 0 10px;
+    line-height:1.55;
+  }
+  .menu-progress{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 20px;
+  }
+  .menu-progress-track{
+    flex:1;
+    height:8px;
+    border-radius:6px;
+    background:var(--panel);
+    overflow:hidden;
+  }
+  .menu-progress-fill{
+    height:100%;
+    background:var(--gold);
+    width:0%;
+    transition:width .4s var(--ease-standard);
+  }
+  .menu-progress-label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+
+  .case-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .case-card{
+    text-align:left;
+    background:var(--white);
+    border:1px solid #E2E8ED;
+    border-radius:var(--radius);
+    padding:18px 20px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition: transform .18s var(--ease-standard), box-shadow .18s var(--ease-standard), border-color .18s var(--ease-standard);
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) forwards;
+    position:relative;
+  }
+  .case-card:hover{transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,46,77,.14); border-color:var(--ice);}
+  .case-card:focus-visible{outline:3px solid var(--navy); outline-offset:2px;}
+  @keyframes itemIn{ to{opacity:1; transform:translateY(0);} }
+  .case-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--navy);
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:8px;
+  }
+  .case-card h3{
+    margin:0 0 6px;
+    font-size:20px;
+    color:var(--navy);
+  }
+  .case-card p{
+    margin:0;
+    font-size:14px;
+    color:var(--slate);
+    line-height:1.45;
+  }
+  .case-status{
+    margin-top:12px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .case-status.not-started{color:var(--gold-text);}
+  .case-status.done{color:var(--sage-text);}
+
+  .menu-reset{
+    margin-top:22px;
+    font-size:12px;
+    color:var(--slate);
+    background:none;
+    border:none;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+  }
+
+  /* ---------- CASE SCREEN ---------- */
+  .case-screen[hidden]{display:none;}
+
+  .progress-rail{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:18px 28px 0;
+    background:var(--white);
+  }
+  .rail-step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+    position:relative;
+  }
+  .rail-step .dot{
+    width:32px; height:32px;
+    min-width:32px;
+    padding:0;
+    margin:0;
+    appearance:none;
+    -webkit-appearance:none;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--slate);
+    border:2px solid var(--ice);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:14px;
+    transition:background .3s var(--ease-standard), border-color .3s var(--ease-standard), color .3s var(--ease-standard), transform .3s var(--ease-spring);
+    cursor:pointer;
+  }
+  .rail-step .dot:disabled{cursor:not-allowed; opacity:.55;}
+  .rail-step .dot:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .rail-step .label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .rail-step .connector{
+    flex:1;
+    height:2px;
+    background:var(--panel);
+    margin:0 6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rail-step .connector::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .5s var(--ease-standard);
+  }
+  .rail-step.done .connector::after{transform:scaleX(1);}
+  .rail-step:last-child .connector{display:none;}
+
+  .rail-step.active .dot{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+    transform:scale(1.12);
+    box-shadow:0 0 0 5px rgba(0,46,77,0.1);
+  }
+  .rail-step.active .label{color:var(--navy);}
+  .rail-step.done .dot{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--navy);
+  }
+  .rail-step:not(.active):not(.done) .label{color:var(--slate);}
+  .rail-step .dot:hover:not(:disabled){transform:scale(1.08);}
+
+  /* ---------- STAGE ---------- */
+  .stage{
+    position:relative;
+    padding:22px 28px 16px;
+  }
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .panel-title{
+    font-size:20px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .panel-sub{
+    font-size:16px;
+    color:var(--slate);
+    margin:0 0 16px;
+    max-width:680px;
+    line-height:1.4;
+  }
+  .case-tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    background:#FBF6E7;
+    border-radius:6px;
+    padding:3px 9px;
+    margin-bottom:8px;
+  }
+
+  /* ---------- SCENARIO NARRATIVE ---------- */
+  .scenario-layout{
+    display:grid;
+    grid-template-columns:1fr 240px;
+    gap:24px;
+    align-items:start;
+  }
+  .scenario-text{
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
+  .scenario-text p{
+    font-size:16px;
+    color:var(--navy-soft);
+    line-height:1;
+    margin:0 0 16px;
+  }
+  .scenario-text ul{
+    margin:0 0 16px;
+    padding-left:22px;
+  }
+  .scenario-text li{
+    font-size:16px;
+    color:var(--navy-soft);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .scenario-text p:last-child,
+  .scenario-text ul:last-child{
+    margin-bottom:0;
+  }
+  .scenario-image{
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) .1s forwards;
+  }
+  .image-placeholder{
+    border:2px dashed var(--ice);
+    border-radius:var(--radius);
+    background:var(--panel);
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:var(--slate);
+    text-align:center;
+    padding:16px;
+  }
+  .image-placeholder svg{
+    width:34px;
+    height:34px;
+    stroke:var(--slate);
+  }
+  .image-placeholder span{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .scenario-image img{
+    width:100%;
+    height:auto;
+    border-radius:var(--radius);
+    display:block;
+    box-shadow:var(--shadow);
+  }
+
+  /* ---------- QUIZ ---------- */
+  .quiz-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+  }
+  .quiz-tally{
+    font-size:14px;
+    font-weight:700;
+    color:var(--slate);
+    background:var(--panel);
+    border-radius:20px;
+    padding:5px 12px;
+  }
+  .question-card{
+    background:var(--white);
+    border:1px solid #E2E8ED;
+    border-radius:var(--radius);
+    padding:16px 20px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) forwards;
+  }
+  .question-card:nth-child(2){animation-delay:.05s;}
+  .question-card:nth-child(3){animation-delay:.1s;}
+  .question-card:nth-child(4){animation-delay:.15s;}
+  .question-card:nth-child(5){animation-delay:.2s;}
+  .q-prompt{
+    font-size:16px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  .q-options{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .q-option{
+    text-align:left;
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:14px;
+    color:var(--navy-soft);
+    background:var(--panel);
+    border:1.5px solid transparent;
+    border-radius:9px;
+    padding:9px 14px;
+    cursor:pointer;
+    transition: background .18s var(--ease-standard), border-color .18s var(--ease-standard), transform .12s var(--ease-standard);
+  }
+  .q-option:hover:not(:disabled){transform:translateX(2px); border-color:var(--ice);}
+  .q-option:disabled{cursor:default;}
+  .q-option.correct{
+    background:var(--sage-bg);
+    border-color:var(--sage-text);
+    color:var(--sage-text);
+    font-weight:700;
+  }
+  .q-option.incorrect{
+    background:var(--rose-bg);
+    border-color:var(--rose-text);
+    color:var(--rose-text);
+    font-weight:700;
+  }
+  .q-option.muted{opacity:.65;}
+  .q-feedback{
+    margin:10px 0 0;
+    font-size:14px;
+    line-height:1.5;
+    color:var(--navy-soft);
+    background:var(--panel);
+    border-left:3px solid var(--gold-deep);
+    padding:8px 12px;
+    border-radius:0 8px 8px 0;
+    opacity:0;
+    animation: itemIn .3s var(--ease-standard) forwards;
+  }
+
+  /* ---------- DEBRIEF ---------- */
+  .debrief-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .pattern-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) forwards;
+  }
+  .pattern-card .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    margin:0 0 4px;
+  }
+  .pattern-card .pattern-name{
+    font-family:'Cambria',serif;
+    font-size:20px;
+    font-weight:700;
+    color:var(--navy);
+    margin:0;
+  }
+
+  .shift-card{
+    background: linear-gradient(160deg, var(--panel) 0%, #FFFFFF 100%);
+    border:1px solid #E2E8ED;
+    border-radius:var(--radius);
+    padding:18px 20px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) .1s forwards;
+  }
+  .shift-card .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold-text);
+    margin:0 0 10px;
+  }
+  .shift-chain{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .shift-chip{
+    font-family:'Cambria',serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    background:var(--white);
+    border:1.5px solid var(--navy);
+    border-radius:20px;
+    padding:7px 16px;
+  }
+  .shift-chip.to{
+    background:#FBF6E7;
+    color:var(--navy);
+    border-color:var(--gold-text);
+  }
+  .shift-arrow{
+    font-size:16px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .impact-card{
+    background:var(--peach-bg);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) .2s forwards;
+  }
+  .impact-card .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--peach-text);
+    margin:0 0 8px;
+  }
+  .impact-card ul{
+    margin:0;
+    padding-left:20px;
+  }
+  .impact-card li{
+    font-size:14px;
+    color:var(--peach-text);
+    line-height:1.5;
+    margin-bottom:3px;
+  }
+
+  .score-recap{
+    font-size:14px;
+    color:var(--slate);
+    background:var(--white);
+    border:1px dashed var(--ice);
+    border-radius:var(--radius);
+    padding:12px 18px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .4s var(--ease-standard) .3s forwards;
+  }
+  .score-recap strong{color:var(--navy);}
+
+  .debrief-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:4px;
+  }
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 28px 4px;
+    border-top:1px solid var(--panel);
+  }
+  .btn{
+    font-family:'Calibri',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    padding:11px 22px;
+    border-radius:9px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    cursor:pointer;
+    transition: background .2s var(--ease-standard), color .2s var(--ease-standard), opacity .2s var(--ease-standard), transform .15s var(--ease-standard);
+  }
+  .btn:hover:not(:disabled){background:var(--panel); transform:translateY(-1px);}
+  .btn:active:not(:disabled){transform:translateY(0);}
+  .btn.primary{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn.primary:hover:not(:disabled){background:var(--navy-soft);}
+  .btn.small{
+    font-size:14px;
+    padding:8px 16px;
+  }
+  .btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+  }
+  .btn:focus-visible{
+    outline:3px solid var(--navy);
+    outline-offset:2px;
+  }
+  .step-counter{
+    font-size:16px;
+    color:var(--slate);
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .lesson-header{padding:10px 18px;}
+    .lesson-header h1{font-size:16px;}
+    .menu-screen{padding:18px 18px 8px;}
+    .case-grid{grid-template-columns:1fr;}
+    .progress-rail{padding:16px 18px 0;}
+    .rail-step .label{display:none;}
+    .stage{padding:18px 18px 14px;}
+    .nav-controls{padding:16px 18px 4px;}
+    .scenario-layout{grid-template-columns:1fr;}
+    .image-placeholder{min-height:160px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="lesson-header">
+    <h1 id="lessonTitle">The Shift: Leadership Case Studies</h1>
+    <button type="button" class="home-btn" id="homeBtn" hidden>&#8962; Menu</button>
+  </header>
+
+  <!-- MENU SCREEN -->
+  <section class="menu-screen" id="menuScreen">
+    <p class="menu-intro">Five scenarios, five drifting leadership patterns. Pick a case, sit with what's happening, make your call on the four questions, then compare your read with the answer key.</p>
+    <div class="menu-progress">
+      <div class="menu-progress-track"><div class="menu-progress-fill" id="menuProgressFill"></div></div>
+      <div class="menu-progress-label" id="menuProgressLabel">0 of 5 explored</div>
+    </div>
+    <div class="case-grid" id="caseGrid"></div>
+    <button type="button" class="menu-reset" id="resetBtn">Reset my progress</button>
+  </section>
+
+  <!-- CASE SCREEN -->
+  <section class="case-screen" id="caseScreen" hidden>
+
+    <nav class="progress-rail" id="progressRail">
+      <div class="rail-step active" data-step="0">
+        <button type="button" class="dot" aria-label="Go to Scenario" aria-current="step">1</button>
+        <div class="label">Scenario</div>
+        <div class="connector"></div>
+      </div>
+      <div class="rail-step" data-step="1">
+        <button type="button" class="dot" aria-label="Go to Diagnose it">2</button>
+        <div class="label">Diagnose It</div>
+        <div class="connector"></div>
+      </div>
+      <div class="rail-step" data-step="2">
+        <button type="button" class="dot" aria-label="Go to Debrief">3</button>
+        <div class="label">Debrief</div>
+      </div>
+    </nav>
+
+    <main class="stage" id="stage">
+
+      <!-- STEP 0: SCENARIO -->
+      <section class="panel active" data-panel="0">
+        <div class="case-tag" id="caseTag"></div>
+        <h2 class="panel-title" id="scenarioTitle"></h2>
+        <div class="scenario-layout">
+          <div class="scenario-text" id="scenarioText"></div>
+          <div class="scenario-image" id="scenarioImage">
+            <div class="image-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+              <span>Case photo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 1: DIAGNOSE IT -->
+      <section class="panel" data-panel="1">
+        <h2 class="panel-title">Diagnose It</h2>
+        <p class="panel-sub">Answer based on your own instinct. There’s no penalty for a wrong guess — the goal is simply to compare your response with the answer key afterward.</p>
+        <div class="quiz-meta">
+          <span class="quiz-tally" id="quizTally">0 of 4 answered</span>
+        </div>
+        <div id="quizList"></div>
+      </section>
+
+      <!-- STEP 2: DEBRIEF -->
+      <section class="panel" data-panel="2">
+        <h2 class="panel-title">Case Debrief</h2>
+        <p class="panel-sub">Here's how this case reads through a leadership-style lens.</p>
+        <div class="debrief-wrap" id="debriefWrap"></div>
+      </section>
+
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn">&larr; Back</button>
+      <span class="step-counter" id="stepCounter">STEP 1 OF 3</span>
+      <button class="btn primary" id="nextBtn">Next &rarr;</button>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+(function(){
+
+  var STORAGE_KEY = 'shift-case-studies-progress-v1';
+
+  var CASES = [
+    {
+      id: 'c1',
+      title: 'The Quiet Drift',
+      hook: 'Small process differences quietly compound into a system-wide breakdown.',
+      sub: 'Over several months, small inconsistencies begin appearing across a program area as staff interpret the same procedures differently.',
+      image: 'Module3-x-case1.jpg',
+      imageAlt: 'Case 1: The Quiet Drift',
+      scenario: [
+        { p: 'Over several months, small inconsistencies begin appearing across a program area. Staff are completing required tasks, but each person is interpreting procedures slightly differently based on experience, training background, or shift norms.' },
+        { p: 'At first, these differences are subtle:' },
+        { ul: [
+          'Documentation is completed but not standardized',
+          'Follow-up steps vary depending on staff member',
+          'Informal &ldquo;this is how I was shown&rdquo; practices begin replacing written expectations'
+        ]},
+        { p: 'Leadership is aware of minor variation but assumes it is manageable and that teams are &ldquo;getting it done.&rdquo; No formal correction or clarification is made, and no single standard is reinforced consistently.' },
+        { p: 'As new staff are onboarded, they learn different versions of the process depending on who trains them. Over time, inconsistencies compound:' },
+        { ul: [
+          'Errors begin increasing in documentation and follow-up',
+          'Staff spend time correcting or redoing work',
+          'Teams begin questioning what the &ldquo;correct&rdquo; process actually is',
+          'Frustration grows between shifts or program areas'
+        ]},
+        { p: 'Eventually, a larger issue emerges that reveals system-wide inconsistency, creating urgency to &ldquo;fix the process&rdquo; after patterns are already embedded.' }
+      ],
+      questions: [
+        {
+          prompt: '1. What is happening over time, and what early signs were missed?',
+          options: [
+            'Minor, unaddressed variation was allowed to become the norm, so it compounded as new staff learned different versions of the same process.',
+            'A single staff member is underperforming and simply needs individual coaching.',
+            'Leadership is deliberately testing a decentralized process to boost autonomy.',
+            'A one-time system outage temporarily disrupted normal documentation.'
+          ],
+          correct: 0,
+          explain: 'The early signs (unstandardized documentation, varied follow-up, informal workarounds) were treated as manageable rather than corrected, so they became the default training model for every new hire.'
+        },
+        {
+          prompt: '2. What leadership approach is currently showing up?',
+          options: [
+            'Transactional &mdash; clear rules with consistent enforcement',
+            'Laissez-faire / passive oversight &mdash; awareness without correction',
+            'Coaching &mdash; hands-on skill development with individuals',
+            'Delegative &mdash; full ownership handed to the team'
+          ],
+          correct: 1,
+          explain: 'Leadership notices the variation but does not intervene or reinforce a single standard &mdash; that hands-off awareness is passive, laissez-faire oversight, even if unintentional.'
+        },
+        {
+          prompt: '3. What leadership shift is needed now?',
+          options: [
+            'Coaching &rarr; Delegative',
+            'Transformational &rarr; Democratic',
+            'Authoritative &rarr; Transactional',
+            'Democratic &rarr; Laissez-faire'
+          ],
+          correct: 2,
+          explain: 'Authoritative clarity comes first (set and communicate the standard), then Transactional follow-through reinforces it consistently until it holds.'
+        },
+        {
+          prompt: '4. What happens if no shift is made?',
+          options: [
+            'Staff naturally self-correct once enough time passes, with no leadership input needed',
+            'Continued inconsistency, increased errors and rework, and a loss of trust in both the process and leadership clarity',
+            'Only new hires are affected; tenured staff already know the &ldquo;real&rdquo; process',
+            'The issue resolves itself the next time policies are updated'
+          ],
+          correct: 1,
+          explain: 'Without a shift, the inconsistency keeps compounding &mdash; more rework, more confusion about what &ldquo;correct&rdquo; even means, and eroding confidence in leadership.'
+        }
+      ],
+      answerKey: {
+        pattern: 'Laissez-faire / passive oversight',
+        chain: ['Authoritative', 'Transactional'],
+        chainNote: 'Clarify standards (Authoritative), then reinforce consistency and accountability (Transactional).',
+        impacts: [
+          'Continued inconsistency across teams',
+          'Increased errors and rework',
+          'Loss of trust in processes and leadership clarity'
+        ]
+      }
+    },
+    {
+      id: 'c2',
+      title: 'The Helpful Bottleneck',
+      hook: 'A trusted leader becomes the only person who can make a decision.',
+      sub: 'A leader is widely respected for being reliable, supportive, and responsive &mdash; and that trust quietly becomes a dependency.',
+      image: 'Module3-x-case2.jpg',
+      imageAlt: 'Case 2: The Helpful Bottleneck',
+      scenario: [
+        { p: 'A leader is widely respected for being reliable, supportive, and responsive. Staff frequently go to them for answers because they trust their judgment and feel confident they will get help quickly.' },
+        { p: 'Over time, this creates a dependency cycle:' },
+        { ul: [
+          'Staff begin bringing even routine decisions upward',
+          'Team members hesitate to act without approval',
+          'Work slows when the leader is unavailable (meetings, time off, competing priorities)',
+          'The leader becomes the central point for solving most problems'
+        ]},
+        { p: 'Although quality is consistent, the workload becomes unsustainable for the leader. Strategic responsibilities are delayed because the leader spends most of their time responding, troubleshooting, and approving day-to-day tasks.' },
+        { p: 'Some staff begin to feel frustrated, noting they are not trusted to make decisions. Others prefer the structure but lack confidence in independent problem-solving.' }
+      ],
+      questions: [
+        {
+          prompt: '1. What is happening over time, and what early signs were missed?',
+          options: [
+            'The team is intentionally under-resourced and needs more headcount',
+            'A trusted, responsive leader has become the default problem-solver, so staff increasingly escalate even routine decisions instead of deciding independently',
+            'Staff are simply less capable than in previous years',
+            'The workload is unusually high this particular month'
+          ],
+          correct: 1,
+          explain: 'Being reliable and responsive is a strength &mdash; but without a deliberate push to build staff independence, it quietly trains the team to escalate everything upward.'
+        },
+        {
+          prompt: '2. What leadership approach is currently showing up?',
+          options: [
+            'Overused authoritative / centralized decision-making',
+            'Laissez-faire &mdash; minimal involvement in team decisions',
+            'Delegative &mdash; ownership already handed to the team',
+            'Transactional &mdash; rules enforced through consequences'
+          ],
+          correct: 0,
+          explain: 'Even without meaning to, the leader has centralized decision-making around themselves &mdash; every routine choice funnels back to one person.'
+        },
+        {
+          prompt: '3. What leadership shift is needed now?',
+          options: [
+            'Authoritative &rarr; Transactional',
+            'Coaching &rarr; Delegative',
+            'Transformational &rarr; Coaching',
+            'Democratic &rarr; Authoritative'
+          ],
+          correct: 1,
+          explain: 'Coaching builds staff decision-making confidence first; Delegative then gradually releases ownership of routine tasks so the team can act without approval.'
+        },
+        {
+          prompt: '4. What happens if no shift is made?',
+          options: [
+            'Team morale keeps improving because someone always has the answer',
+            'It only affects the leader&rsquo;s calendar, with no real impact on the team',
+            'The bottleneck naturally clears once workload eventually balances out',
+            'Leader burnout, staff dependency and stalled growth, and ongoing bottlenecks with delayed decisions'
+          ],
+          correct: 3,
+          explain: 'The strain compounds: the leader burns out carrying strategic work they never get to, and staff never build the independent judgment they need to grow.'
+        }
+      ],
+      answerKey: {
+        pattern: 'Overused authoritative / centralized decision-making',
+        chain: ['Coaching', 'Delegative'],
+        chainNote: 'Build staff decision-making confidence (Coaching), then gradually release ownership of routine tasks (Delegative).',
+        impacts: [
+          'Leader burnout',
+          'Staff dependency and lack of growth',
+          'Bottlenecks in workflow and delayed decisions'
+        ]
+      }
+    },
+    {
+      id: 'c3',
+      title: 'Too Much Flexibility, Not Enough Clarity',
+      hook: 'Flexibility without shared standards leaves teams guessing what &ldquo;correct&rdquo; even means.',
+      sub: 'Leadership has intentionally focused on collaboration and inclusion &mdash; and that openness has quietly created unintended variation.',
+      image: 'Module3-x-case3.jpg',
+      imageAlt: 'Case 3: Too Much Flexibility, Not Enough Clarity',
+      scenario: [
+        { p: 'Leadership has intentionally focused on collaboration and inclusion. Staff are encouraged to provide input, and leaders often ask for feedback before making decisions.' },
+        { p: 'While this has built strong engagement, over time it creates unintended variation:' },
+        { ul: [
+          'Different teams interpret policies differently',
+          'Staff receive conflicting answers depending on which leader they ask',
+          'New staff struggle to know which expectations are &ldquo;correct&rdquo;',
+          'Teams double-check decisions with multiple supervisors before acting'
+        ]},
+        { p: 'When work crosses departments, inconsistencies become more visible. Some teams feel they are being held to different standards than others. Frustration increases as employees try to reconcile conflicting guidance.' },
+        { p: 'Leadership becomes aware of the confusion but hesitates to standardize expectations, concerned that doing so may reduce flexibility or staff voice.' }
+      ],
+      questions: [
+        {
+          prompt: '1. What is happening over time, and what early signs were missed?',
+          options: [
+            'Leadership is deliberately withholding information from certain teams',
+            'Two departments are competing over the same budget line',
+            'Well-intentioned collaboration without shared standards has let different teams and leaders interpret policy differently, creating conflicting guidance',
+            'A single miscommunication in one meeting caused a temporary mix-up'
+          ],
+          correct: 2,
+          explain: 'Collaboration and inclusion are strengths &mdash; but without an agreed-upon standard underneath them, every leader and team fills the gap differently.'
+        },
+        {
+          prompt: '2. What leadership approach is currently showing up?',
+          options: [
+            'Transactional &mdash; consistent rules and consequences',
+            'Authoritative &mdash; a single, clearly communicated standard',
+            'Laissez-faire &mdash; no leadership involvement at all',
+            'Overused democratic leadership &mdash; input gathered, but no shared standard set'
+          ],
+          correct: 3,
+          explain: 'Constantly seeking input is democratic leadership &mdash; but used without ever converging on a shared standard, it produces conflicting answers depending on who is asked.'
+        },
+        {
+          prompt: '3. What leadership shift is needed now?',
+          options: [
+            'Authoritative &rarr; Transactional',
+            'Coaching &rarr; Delegative',
+            'Transformational &rarr; Democratic',
+            'Delegative &rarr; Coaching'
+          ],
+          correct: 0,
+          explain: 'Authoritative clarity establishes one consistent expectation; Transactional follow-through reinforces that shared standard across every team.'
+        },
+        {
+          prompt: '4. What happens if no shift is made?',
+          options: [
+            'Ongoing inconsistency in service delivery, confusion and rework across departments, and reduced trust in leadership clarity',
+            'Staff voice and flexibility improve the longer this continues',
+            'The issue stays contained to one department and never spreads',
+            'New staff eventually stop noticing the inconsistency'
+          ],
+          correct: 0,
+          explain: 'Left alone, the conflicting guidance keeps producing rework and cross-department friction, and staff lose confidence that leadership is aligned.'
+        }
+      ],
+      answerKey: {
+        pattern: 'Overused democratic leadership',
+        chain: ['Authoritative', 'Transactional'],
+        chainNote: 'Establish clear, consistent expectations (Authoritative), then reinforce shared standards across teams (Transactional).',
+        impacts: [
+          'Ongoing inconsistency in service delivery',
+          'Confusion and rework across departments',
+          'Reduced trust in leadership clarity'
+        ]
+      }
+    },
+    {
+      id: 'c4',
+      title: 'The Avoided Conversation',
+      hook: 'A quiet performance issue erodes trust because no one names it directly.',
+      sub: 'A staff performance issue begins emerging over time &mdash; and leadership avoids the direct conversation it needs.',
+      image: 'Module3-x-case4.jpg',
+      imageAlt: 'Case 4: The Avoided Conversation',
+      scenario: [
+        { p: 'A staff performance issue begins emerging over time. At first, the concerns are small &mdash; missed deadlines, incomplete follow-through, or declining consistency. Other team members begin quietly compensating to ensure work continues moving.' },
+        { p: 'Leadership is aware but avoids direct confrontation. Instead, feedback is general and indirect:' },
+        { ul: [
+          '&ldquo;Let&rsquo;s all stay on track&rdquo;',
+          '&ldquo;We need to be mindful of deadlines&rdquo;',
+          'Occasional informal reminders rather than structured performance conversations'
+        ]},
+        { p: 'No clear expectations, documentation, or improvement plan is established.' },
+        { p: 'As time passes:' },
+        { ul: [
+          'Other staff feel increased workload pressure',
+          'Frustration grows due to perceived unfairness',
+          'Expectations feel inconsistent or unenforced',
+          'Team trust in leadership fairness begins to decline'
+        ]},
+        { p: 'The issue shifts from individual performance to team morale and accountability concerns.' }
+      ],
+      questions: [
+        {
+          prompt: '1. What is happening over time, and what early signs were missed?',
+          options: [
+            'A performance issue is growing while leadership gives only vague, indirect feedback instead of a direct conversation, so peers begin compensating and resentment builds',
+            'The team is simply understaffed for its current workload',
+            'One staff member is being unfairly singled out by their peers',
+            'Deadlines were unrealistic from the start and were never adjusted'
+          ],
+          correct: 0,
+          explain: 'General reminders like &ldquo;let&rsquo;s stay on track&rdquo; feel safer in the moment, but they never name the specific issue &mdash; so nothing actually changes, and the team absorbs the cost.'
+        },
+        {
+          prompt: '2. What leadership approach is currently showing up?',
+          options: [
+            'Transactional &mdash; clear consequences consistently applied',
+            'Avoidant / laissez-faire &mdash; minimal, indirect correction',
+            'Coaching &mdash; structured, individualized feedback',
+            'Authoritative &mdash; a clearly communicated performance standard'
+          ],
+          correct: 1,
+          explain: 'General reminders to the whole group, with no documented expectations or improvement plan for the individual, is avoidant leadership &mdash; correction without confrontation.'
+        },
+        {
+          prompt: '3. What leadership shift is needed now?',
+          options: [
+            'Delegative &rarr; Democratic',
+            'Transformational &rarr; Laissez-faire',
+            'Coaching &rarr; Authoritative &rarr; Transactional',
+            'Authoritative &rarr; Delegative'
+          ],
+          correct: 2,
+          explain: 'A direct, individual conversation (Coaching) needs to set clear expectations (Authoritative) that are then followed through on with accountability (Transactional).'
+        },
+        {
+          prompt: '4. What happens if no shift is made?',
+          options: [
+            'Reduced morale, normalization of underperformance, and a breakdown of accountability culture',
+            'The performance issue resolves on its own as the person adjusts',
+            'Only the individual is affected; the rest of the team stays unaffected',
+            'Team trust in leadership improves because no one feels singled out'
+          ],
+          correct: 0,
+          explain: 'Without a direct conversation, underperformance becomes the new normal, and the team&rsquo;s trust that leadership will hold anyone accountable keeps eroding.'
+        }
+      ],
+      answerKey: {
+        pattern: 'Avoidant / laissez-faire with minimal correction',
+        chain: ['Coaching', 'Authoritative', 'Transactional'],
+        chainNote: 'Have the direct conversation (Coaching), set clear expectations (Authoritative), then follow through with accountability (Transactional).',
+        impacts: [
+          'Reduced morale',
+          'Normalization of underperformance',
+          'Breakdown of accountability culture'
+        ]
+      }
+    },
+    {
+      id: 'c5',
+      title: 'Busy but Misaligned',
+      hook: 'Everyone is busy &mdash; but not everyone is rowing the same direction.',
+      sub: 'Teams are highly active and engaged, but leadership communication stays at the vision level without translating into clear operational priorities.',
+      image: 'Module3-x-case5.jpg',
+      imageAlt: 'Case 5: Busy but Misaligned',
+      scenario: [
+        { p: 'Teams across the organization are highly active and engaged. Work is being completed, deadlines are generally met, and there is strong effort across all departments.' },
+        { p: 'However, leadership communication focuses heavily on vision, growth, and big-picture goals without consistently translating those goals into clear operational priorities.' },
+        { p: 'Over time:' },
+        { ul: [
+          'Different teams prioritize different initiatives',
+          'Some work is duplicated while other priorities are missed',
+          'Cross-department collaboration becomes inconsistent',
+          'Staff are unsure how their work connects to organizational priorities'
+        ]},
+        { p: 'In meetings, priorities appear to shift depending on which leader is speaking or which program is being discussed. Staff express confusion:' },
+        { ul: [
+          '&ldquo;What matters most right now?&rdquo;',
+          '&ldquo;Are we all working toward the same goal?&rdquo;'
+        ]},
+        { p: 'Energy remains high, but alignment continues to weaken.' }
+      ],
+      questions: [
+        {
+          prompt: '1. What is happening over time, and what early signs were missed?',
+          options: [
+            'Staff are disengaged and putting in minimal effort',
+            'One department is intentionally ignoring organizational goals',
+            'High energy and effort are real, but vision-level messaging was never translated into shared operational priorities, so teams optimize for different things',
+            'The organization is simply too large to stay coordinated'
+          ],
+          correct: 2,
+          explain: 'The team is working hard &mdash; the gap is that inspiring, big-picture messaging never got translated into a shared, operational &ldquo;here&rsquo;s what matters most right now.&rdquo;'
+        },
+        {
+          prompt: '2. What leadership approach is currently showing up?',
+          options: [
+            'Overextended transformational leadership &mdash; vision without operational translation',
+            'Transactional &mdash; rules and consequences drive daily work',
+            'Delegative &mdash; ownership already clearly assigned',
+            'Laissez-faire &mdash; leadership is largely absent from communication'
+          ],
+          correct: 0,
+          explain: 'Leadership is actively communicating vision and growth &mdash; that&rsquo;s transformational leadership &mdash; but it is overextended, without the operational clarity that should sit underneath it.'
+        },
+        {
+          prompt: '3. What leadership shift is needed now?',
+          options: [
+            'Authoritative &rarr; Coaching',
+            'Transformational &rarr; Authoritative &rarr; Delegative',
+            'Democratic &rarr; Transactional',
+            'Coaching &rarr; Transformational'
+          ],
+          correct: 1,
+          explain: 'The vision (Transformational) stays, but it needs clear operational priorities (Authoritative) with ownership assigned by team (Delegative) so effort converges instead of scattering.'
+        },
+        {
+          prompt: '4. What happens if no shift is made?',
+          options: [
+            'Misaligned work efforts, inefficient use of resources, and reduced coordination and clarity across teams',
+            'Energy and engagement will naturally taper off on their own',
+            'Duplicated work resolves itself once a project ends',
+            'Only cross-department projects are affected'
+          ],
+          correct: 0,
+          explain: 'Without translating vision into shared priorities, teams keep pulling in different directions &mdash; effort stays high, but it is spent inefficiently and coordination keeps slipping.'
+        }
+      ],
+      answerKey: {
+        pattern: 'Overextended transformational leadership',
+        chain: ['Transformational', 'Authoritative', 'Delegative'],
+        chainNote: 'Keep the vision (Transformational), clarify priorities (Authoritative), then assign clear ownership (Delegative).',
+        impacts: [
+          'Misaligned work efforts',
+          'Inefficient use of resources',
+          'Reduced coordination and clarity across teams'
+        ]
+      }
+    }
+  ];
+
+  // ---------- STATE ----------
+  var currentCaseIndex = null;
+  var currentStep = 0;
+  var totalSteps = 3;
+  var quizAnswers = []; // per current case: array of selected option index or null
+
+  function loadProgress(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e){ return {}; }
+  }
+  function saveProgress(progress){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch(e){}
+  }
+
+  // ---------- ELEMENTS ----------
+  var menuScreen = document.getElementById('menuScreen');
+  var caseScreen = document.getElementById('caseScreen');
+  var homeBtn = document.getElementById('homeBtn');
+  var caseGrid = document.getElementById('caseGrid');
+  var menuProgressFill = document.getElementById('menuProgressFill');
+  var menuProgressLabel = document.getElementById('menuProgressLabel');
+  var resetBtn = document.getElementById('resetBtn');
+  var lessonTitle = document.getElementById('lessonTitle');
+
+  var railSteps = document.querySelectorAll('.rail-step');
+  var panels = document.querySelectorAll('.panel');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepCounter = document.getElementById('stepCounter');
+
+  var caseTag = document.getElementById('caseTag');
+  var scenarioTitle = document.getElementById('scenarioTitle');
+  var scenarioTextEl = document.getElementById('scenarioText');
+  var scenarioImageEl = document.getElementById('scenarioImage');
+  var quizList = document.getElementById('quizList');
+  var quizTally = document.getElementById('quizTally');
+  var debriefWrap = document.getElementById('debriefWrap');
+
+  // ---------- MENU RENDER ----------
+  function renderMenu(){
+    var progress = loadProgress();
+    caseGrid.innerHTML = '';
+    var doneCount = 0;
+
+    CASES.forEach(function(c, i){
+      var entry = progress[c.id];
+      if(entry && entry.completed) doneCount++;
+
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'case-card';
+      card.style.animationDelay = (i * 0.05) + 's';
+
+      var statusHtml;
+      if(entry && entry.completed){
+        statusHtml = '<div class="case-status done">&#10003; Explored &middot; matched ' + entry.score + ' of 4</div>';
+      } else {
+        statusHtml = '<div class="case-status not-started">Not started</div>';
+      }
+
+      card.innerHTML =
+        '<span class="case-num">' + (i+1) + '</span>' +
+        '<h3>' + c.title + '</h3>' +
+        '<p>' + c.hook + '</p>' +
+        statusHtml;
+
+      card.addEventListener('click', function(){ openCase(i); });
+      caseGrid.appendChild(card);
+    });
+
+    var pct = Math.round((doneCount / CASES.length) * 100);
+    menuProgressFill.style.width = pct + '%';
+    menuProgressLabel.textContent = doneCount + ' of ' + CASES.length + ' explored';
+  }
+
+  resetBtn.addEventListener('click', function(){
+    saveProgress({});
+    renderMenu();
+  });
+
+  // ---------- CASE OPEN / CLOSE ----------
+  function openCase(index){
+    currentCaseIndex = index;
+    currentStep = 0;
+    quizAnswers = [null, null, null, null];
+
+    menuScreen.hidden = true;
+    caseScreen.hidden = false;
+    homeBtn.hidden = false;
+
+    var c = CASES[index];
+    lessonTitle.textContent = 'The Shift: ' + c.title;
+    caseTag.textContent = 'CASE ' + (index + 1) + ' OF ' + CASES.length;
+    scenarioTitle.textContent = c.title;
+
+    renderScenario(c);
+    renderScenarioImage(c);
+    renderQuiz(c);
+    renderDebrief(c);
+    renderStep();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  homeBtn.addEventListener('click', function(){
+    caseScreen.hidden = true;
+    menuScreen.hidden = false;
+    homeBtn.hidden = true;
+    lessonTitle.textContent = 'The Shift: Leadership Case Studies';
+    renderMenu();
+  });
+
+  // ---------- SCENARIO ----------
+  function renderScenario(c){
+    var html = '';
+    c.scenario.forEach(function(block){
+      if(block.ul){
+        html += '<ul>' + block.ul.map(function(it){ return '<li>' + it + '</li>'; }).join('') + '</ul>';
+      } else {
+        html += '<p>' + block.p + '</p>';
+      }
+    });
+    scenarioTextEl.innerHTML = html;
+  }
+
+  function placeholderMarkup(){
+    return '<div class="image-placeholder">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>' +
+      '<span>Case photo</span>' +
+    '</div>';
+  }
+
+  function renderScenarioImage(c){
+    if(c.image){
+      scenarioImageEl.innerHTML = '<img src="' + c.image + '" alt="' + (c.imageAlt || c.title) + '">';
+      var imgEl = scenarioImageEl.querySelector('img');
+      imgEl.addEventListener('error', function(){
+        scenarioImageEl.innerHTML = placeholderMarkup();
+      });
+    } else {
+      scenarioImageEl.innerHTML = placeholderMarkup();
+    }
+  }
+
+  // ---------- QUIZ ----------
+  function renderQuiz(c){
+    quizList.innerHTML = '';
+    c.questions.forEach(function(q, qi){
+      var card = document.createElement('div');
+      card.className = 'question-card';
+
+      var prompt = document.createElement('p');
+      prompt.className = 'q-prompt';
+      prompt.innerHTML = q.prompt;
+      card.appendChild(prompt);
+
+      var optsWrap = document.createElement('div');
+      optsWrap.className = 'q-options';
+
+      q.options.forEach(function(optText, oi){
+        var optBtn = document.createElement('button');
+        optBtn.type = 'button';
+        optBtn.className = 'q-option';
+        optBtn.innerHTML = optText;
+        optBtn.addEventListener('click', function(){ answerQuestion(c, qi, oi, card); });
+        optsWrap.appendChild(optBtn);
+      });
+
+      card.appendChild(optsWrap);
+
+      var feedback = document.createElement('p');
+      feedback.className = 'q-feedback';
+      feedback.style.display = 'none';
+      feedback.innerHTML = q.explain;
+      card.appendChild(feedback);
+
+      quizList.appendChild(card);
+    });
+    updateQuizTally();
+  }
+
+  function answerQuestion(c, qi, oi, card){
+    if(quizAnswers[qi] !== null) return; // already answered
+    quizAnswers[qi] = oi;
+
+    var q = c.questions[qi];
+    var optionButtons = card.querySelectorAll('.q-option');
+    optionButtons.forEach(function(btn, i){
+      btn.disabled = true;
+      if(i === q.correct){
+        btn.classList.add('correct');
+      } else if(i === oi){
+        btn.classList.add('incorrect');
+      } else {
+        btn.classList.add('muted');
+      }
+    });
+
+    card.querySelector('.q-feedback').style.display = 'block';
+
+    updateQuizTally();
+  }
+
+  function updateQuizTally(){
+    var answered = quizAnswers.filter(function(a){ return a !== null; }).length;
+    quizTally.textContent = answered + ' of 4 answered';
+    nextBtn.disabled = (currentStep === 1 && answered < 4);
+  }
+
+  function currentScore(c){
+    var score = 0;
+    c.questions.forEach(function(q, qi){
+      if(quizAnswers[qi] === q.correct) score++;
+    });
+    return score;
+  }
+
+  // ---------- DEBRIEF ----------
+  function renderDebrief(c){
+    var key = c.answerKey;
+    var chainHtml = key.chain.map(function(stage, i){
+      var chipClass = (i === key.chain.length - 1) ? 'shift-chip to' : 'shift-chip';
+      var arrow = (i < key.chain.length - 1) ? '<span class="shift-arrow">&rarr;</span>' : '';
+      return '<span class="' + chipClass + '">' + stage + '</span>' + arrow;
+    }).join('');
+
+    debriefWrap.innerHTML =
+      '<div class="pattern-card">' +
+        '<p class="eyebrow">Default Leadership Pattern</p>' +
+        '<p class="pattern-name">' + key.pattern + '</p>' +
+      '</div>' +
+      '<div class="shift-card">' +
+        '<p class="eyebrow">The Shift Needed</p>' +
+        '<div class="shift-chain">' + chainHtml + '</div>' +
+        '<p style="margin:10px 0 0; font-size:14px; color:var(--navy-soft); line-height:1.5;">' + key.chainNote + '</p>' +
+      '</div>' +
+      '<div class="impact-card">' +
+        '<p class="eyebrow">Impact of No Shift</p>' +
+        '<ul>' + key.impacts.map(function(im){ return '<li>' + im + '</li>'; }).join('') + '</ul>' +
+      '</div>' +
+      '<div class="score-recap" id="scoreRecap"></div>' +
+      '<div class="debrief-actions">' +
+        '<button type="button" class="btn small" id="backToMenuBtn">&larr; Back to menu</button>' +
+        '<button type="button" class="btn primary small" id="nextCaseBtn">Next case &rarr;</button>' +
+      '</div>';
+
+    var score = currentScore(c);
+    document.getElementById('scoreRecap').innerHTML =
+      'On this pass, your read matched the answer key on <strong>' + score + ' of 4</strong> questions. That&rsquo;s a starting point for discussion, not a grade &mdash; talk through any differences with your group.';
+
+    document.getElementById('backToMenuBtn').addEventListener('click', function(){
+      homeBtn.click();
+    });
+    var nextCaseBtn = document.getElementById('nextCaseBtn');
+    if(currentCaseIndex >= CASES.length - 1){
+      nextCaseBtn.textContent = 'All cases explored \u2713';
+      nextCaseBtn.disabled = true;
+    } else {
+      nextCaseBtn.addEventListener('click', function(){
+        openCase(currentCaseIndex + 1);
+      });
+    }
+
+    // mark complete in storage
+    var progress = loadProgress();
+    progress[c.id] = { completed: true, score: score };
+    saveProgress(progress);
+  }
+
+  // ---------- STEP NAV ----------
+  function replayEntranceAnimations(panel){
+    var animated = panel.querySelectorAll('.scenario-text, .scenario-image, .question-card, .pattern-card, .shift-card, .impact-card, .score-recap');
+    if(!animated.length) return;
+    animated.forEach(function(el){ el.style.animation = 'none'; });
+    void panel.offsetWidth;
+    animated.forEach(function(el){ el.style.animation = ''; });
+  }
+
+  function renderStep(){
+    panels.forEach(function(p, i){
+      p.classList.toggle('active', i === currentStep);
+    });
+    railSteps.forEach(function(r, i){
+      r.classList.toggle('active', i === currentStep);
+      r.classList.toggle('done', i < currentStep);
+      var dot = r.querySelector('.dot');
+      if(i === currentStep){ dot.setAttribute('aria-current', 'step'); }
+      else{ dot.removeAttribute('aria-current'); }
+      dot.disabled = false;
+    });
+    backBtn.disabled = currentStep === 0;
+
+    if(currentStep === 1){
+      updateQuizTally();
+    } else {
+      nextBtn.disabled = false;
+    }
+
+    nextBtn.textContent = currentStep === totalSteps - 1 ? 'Finish' : 'Next \u2192';
+    stepCounter.textContent = 'STEP ' + (currentStep + 1) + ' OF ' + totalSteps;
+
+    var activePanel = panels[currentStep];
+    if(activePanel) replayEntranceAnimations(activePanel);
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(currentStep > 0){ currentStep--; renderStep(); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(currentStep < totalSteps - 1){
+      currentStep++;
+      renderStep();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  railSteps.forEach(function(r, i){
+    r.querySelector('.dot').addEventListener('click', function(){
+      if(i === 1 && currentStep === 0){
+        // allow jump forward freely
+      }
+      currentStep = i;
+      renderStep();
+    });
+  });
+
+  // ---------- INIT ----------
+  renderMenu();
+
+})();
+</script>
+
+</body>
+</html>

@@ -402,6 +402,31 @@
     margin-top:2px;
   }
   .video-play-lg svg{width:28px; height:28px;}
+
+  .video-play-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .video-play-caption{
+    text-align:center;
+    line-height:1.35;
+  }
+  .video-play-caption .cta{
+    display:block;
+    font-size:15px;
+    font-weight:700;
+    color:var(--navy-soft);
+    white-space:nowrap;
+  }
+  .video-play-caption .meta{
+    display:block;
+    font-size:14px;
+    font-style:italic;
+    color:var(--slate);
+    white-space:nowrap;
+  }
   .video-title-lg{
     font-size:22px;
     margin:0 0 10px;
@@ -734,8 +759,11 @@
       <p class="intro-line">Democratic leadership, sometimes called participative leadership, creates space for everyone to contribute, exchange ideas freely, and shape decisions together. It doesn't mean a leader gives up responsibility, it means recognizing that better decisions often come from more perspectives.</p>
 
       <a class="video-card video-card-lg" href="https://youtu.be/fOMp2jgHtkY" target="_blank" rel="noopener">
-        <div class="video-play video-play-lg" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        <div class="video-play-col">
+          <div class="video-play video-play-lg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+          </div>
+          <p class="video-play-caption" aria-hidden="true"><span class="cta">Play the video</span><span class="meta">Opens in new tab</span></p>
         </div>
         <div class="video-body">
           <p class="video-title video-title-lg">Democratic Leadership Style <span class="video-time">3:14 min</span><span class="sr-only"> (opens in a new tab)</span></p>
