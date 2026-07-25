@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zdorovie Adult Day Health — Alternative Redesign (Blue Theme)</title>
+<style>
+  :root {
+    --navy: #1B4F72;
+    --navy-dark: #123A56;
+    --sky: #5DADE2;
+    --sky-tint: #EAF3FB;
+    --coral: #E67E52;
+    --coral-dark: #A8461F;
+    --ink: #263238;
+    --muted: #607078;
+    --white: #FFFFFF;
+    --offwhite: #F7F9FB;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  img { display: block; }
+
+  /* Top strip */
+  .top-strip {
+    background: var(--navy-dark);
+    color: #D6E7F5;
+    font-size: 12.5px;
+    padding: 8px 32px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #E4EBF0;
+  }
+  .logo { font-family: Georgia, serif; font-size: 21px; font-weight: 600; color: var(--navy); }
+  .logo span { color: var(--coral); }
+  nav ul { display: flex; gap: 30px; list-style: none; font-size: 14.5px; color: var(--ink); }
+  nav a:hover { color: var(--navy); }
+  .call-btn {
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 6px;
+  }
+  .menu-toggle { display: none; font-size: 24px; background: none; border: none; cursor: pointer; color: var(--navy); }
+
+  /* Hero — centered, full-bleed */
+  .hero {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27,79,114,0.55) 0%, rgba(18,58,86,0.82) 100%); }
+  .hero-content { position: relative; z-index: 2; max-width: 620px; padding: 0 24px; }
+  .hero-content .eyebrow { color: var(--sky); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .hero-content h1 { font-family: Georgia, serif; color: #fff; font-size: 40px; line-height: 1.25; margin-bottom: 18px; }
+  .hero-content p { color: #E6EFF6; font-size: 16.5px; margin-bottom: 30px; }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--coral); color: #fff; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 6px; }
+  .btn-outline { border: 1.5px solid #fff; color: #fff; font-weight: 500; font-size: 15px; padding: 14px 28px; border-radius: 6px; }
+
+  /* Stat strip */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--sky-tint);
+    padding: 32px;
+  }
+  .stat-strip div { text-align: center; border-right: 1px solid #D3E4F0; }
+  .stat-strip div:last-child { border-right: none; }
+  .stat-num { font-family: Georgia, serif; font-size: 28px; color: var(--navy); font-weight: 600; }
+  .stat-label { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+  /* Section */
+  .section { padding: 80px 0; }
+  .section-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+  .section-eyebrow { color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .section-head h2 { font-family: Georgia, serif; font-size: 30px; margin-bottom: 14px; color: var(--navy); }
+  .section-head p { color: var(--muted); font-size: 15.5px; }
+
+  /* Alternating service rows */
+  .service-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 72px; }
+  .service-row:last-child { margin-bottom: 0; }
+  .service-row.reverse .row-img { order: 2; }
+  .service-row.reverse .row-text { order: 1; }
+  .row-img img { width: 100%; border-radius: 12px; }
+  .row-text .num { color: var(--sky); font-family: Georgia, serif; font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .row-text h3 { font-size: 22px; color: var(--navy); margin-bottom: 12px; }
+  .row-text p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+  .row-text .learn { color: var(--coral); font-weight: 600; font-size: 14px; }
+
+  /* Quote */
+  .quote-section { background: var(--navy); padding: 64px 32px; text-align: center; }
+  .quote-section blockquote { font-family: Georgia, serif; font-size: 24px; font-style: italic; color: #fff; max-width: 640px; margin: 0 auto 16px; line-height: 1.5; }
+  .quote-section cite { color: var(--sky); font-size: 14px; font-style: normal; }
+
+  /* Locations */
+  .location-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .location-card { background: var(--offwhite); border-radius: 12px; padding: 26px; border-top: 3px solid var(--coral); }
+  .location-card h3 { font-size: 16.5px; color: var(--navy); margin-bottom: 14px; }
+  .location-row { display: flex; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 10px; align-items: flex-start; }
+  .location-icon { color: var(--coral); flex-shrink: 0; }
+  .location-card .directions { color: var(--navy); font-size: 13.5px; font-weight: 600; margin-top: 12px; display: inline-block; }
+
+  /* Contact */
+  .contact-section { background: var(--sky-tint); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .contact-grid h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 16px; color: var(--navy); }
+  .contact-grid p { color: var(--muted); margin-bottom: 28px; }
+  .hours-block { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; border: 1px solid #D3E4F0; }
+  .hours-block strong { display: block; margin-bottom: 6px; font-size: 14px; color: var(--navy); }
+  .hours-block span { font-size: 13.5px; color: var(--muted); }
+  form { display: flex; flex-direction: column; gap: 14px; }
+  form input, form textarea {
+    background: #fff; border: 1px solid #D3E4F0; border-radius: 6px;
+    padding: 13px 16px; color: var(--ink); font-size: 14px; font-family: inherit;
+  }
+  form button {
+    background: var(--navy); color: #fff; font-weight: 600; font-size: 15px;
+    padding: 14px; border: none; border-radius: 6px; cursor: pointer; margin-top: 4px;
+  }
+  form button:hover { background: var(--navy-dark); }
+
+  footer {
+    background: var(--navy-dark); color: #B9CEDD; padding: 28px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; flex-wrap: wrap; gap: 12px;
+  }
+  footer .footer-logo { color: #fff; font-weight: 600; }
+
+  @media (max-width: 860px) {
+    nav, .call-btn { display: none; }
+    .menu-toggle { display: block; }
+    .hero-content h1 { font-size: 30px; }
+    .service-row, .contact-grid { grid-template-columns: 1fr; }
+    .service-row.reverse .row-img, .service-row.reverse .row-text { order: initial; }
+    .location-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .stat-strip div { border-right: none; border-bottom: 1px solid #D3E4F0; padding-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-strip">
+  <span>&#9742; Natick (508) 650-0144</span>
+  <span>&#9742; Newton (617) 795-0668</span>
+  <span>&#9742; Needham (781) 433-9855</span>
+</div>
+
+<header>
+  <div class="logo">Zdorovie <span>ADH</span></div>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="call-btn">Schedule a visit</a>
+  <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+</header>
+
+<section class="hero">
+  <img src="https://static.wixstatic.com/media/2ca0acb2aa424182abef253b318dcdc5.jpg" alt="Happy seniors raising hands">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Massachusetts Adult Day Health</div>
+    <h1>A thriving community of people you'll love</h1>
+    <p>Quality, medically supervised day health services in Natick, Newton and Needham — care built around your family's needs.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Schedule a visit</a>
+      <a href="#about" class="btn-outline">Learn more</a>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div><div class="stat-num">3</div><div class="stat-label">Locations across Greater Boston</div></div>
+  <div><div class="stat-num">7</div><div class="stat-label">Days a week, 8am–4pm</div></div>
+  <div><div class="stat-num">364</div><div class="stat-label">Days open a year</div></div>
+  <div><div class="stat-num">100%</div><div class="stat-label">Personalized care plans</div></div>
+</div>
+
+<section class="section" id="about">
+  <div class="container section-head">
+    <div class="section-eyebrow">Committed to caring</div>
+    <h2>The care and compassion your family deserves</h2>
+    <p>Everyone ages — it's an inherent part of life. Zdorovie's trained staff work closely with participants and families to build a plan that helps them keep living the life they want, with preventative care that protects health and independence.</p>
+  </div>
+</section>
+
+<section class="section" id="services" style="background: var(--offwhite); padding-top: 60px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Industry leaders</div>
+      <h2>Adult day health services</h2>
+    </div>
+
+    <div class="service-row">
+      <div class="row-img"><img src="https://static.wixstatic.com/media/13d5f7015c2d4deb92d07a6e9ccbe1ee.jpg" alt="Healing hands"></div>
+      <div class="row-text">
+        <div class="num">Support your lifestyle</div>
+        <h3>Assisted daily living</h3>
+        <p>Zdorovie provides the medical, dietary, therapeutic and hygienic support that retirees need, so families don't have to carry it alone.</p>
+        <a href="#" class="learn">Get in touch &rarr;</a>
+      </div>
+    </div>
+
+    <div class="service-row reverse">
+      <div class="row-img"><img src="https://static.wixstatic.com/media/113022409dbc43c8a5283aed43756aa3.jpg" alt="Pharmacist cutting pills"></div>
+      <div class="row-text">
+        <div class="num">Heal your body</div>
+        <h3>Skilled nursing services</h3>
+        <p>Onsite nurses monitor participant health daily, catching problems early and keeping every care plan on track.</p>
+        <a href="#" class="learn">Get in touch &rarr;</a>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div class="row-img"><img src="https://static.wixstatic.com/media/10b73598b829493498ecd79cb72c321c.jpg" alt="Nutritionist smiling"></div>
+      <div class="row-text">
+        <div class="num">Nourish your soul</div>
+        <h3>Nutritional and dietary counseling</h3>
+        <p>Complimentary, customizable menus and an onsite cook cater to every participant's specific dietary needs.</p>
+        <a href="#" class="learn">Get in touch &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <blockquote>"Age is an issue of mind over matter, if you don't mind, it doesn't matter."</blockquote>
+  <cite>— Mark Twain</cite>
+</section>
+
+<section class="section" id="locations">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Three centers, one community</div>
+      <h2>Find your nearest location</h2>
+    </div>
+    <div class="location-grid">
+      <div class="location-card">
+        <h3>Natick Center</h3>
+        <div class="location-row"><span class="location-icon">&#128205;</span>17 Strathmore Rd, Natick, MA 01760</div>
+        <div class="location-row"><span class="location-icon">&#9742;</span>(508) 650-0144</div>
+        <a href="#" class="directions">Get directions &rarr;</a>
+      </div>
+      <div class="location-card">
+        <h3>Newton Center</h3>
+        <div class="location-row"><span class="location-icon">&#128205;</span>149A California St, Newton, MA 02458</div>
+        <div class="location-row"><span class="location-icon">&#9742;</span>(617) 795-0668</div>
+        <a href="#" class="directions">Get directions &rarr;</a>
+      </div>
+      <div class="location-card">
+        <h3>Needham Center</h3>
+        <div class="location-row"><span class="location-icon">&#128205;</span>35 Highland Cir, Needham, MA 02494</div>
+        <div class="location-row"><span class="location-icon">&#9742;</span>(781) 433-9855</div>
+        <a href="#" class="directions">Get directions &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <h2>Come discover retirement living the way it's meant to be</h2>
+      <p>Pay us a visit to meet some of our wonderful participants, or give us a call to chat with a staff member.</p>
+      <div class="hours-block">
+        <strong>Hours of operation</strong>
+        <span>Monday – Sunday, 8:00 AM – 4:00 PM. Open all holidays except Jan 1st.</span>
+      </div>
+      <div class="hours-block">
+        <strong>Email</strong>
+        <span>info@zdorovieadh.com</span>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <input type="text" placeholder="Full name">
+      <input type="email" placeholder="Email address">
+      <input type="text" placeholder="Participant home address">
+      <textarea rows="4" placeholder="How can we help?"></textarea>
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Zdorovie Adult Day Health</div>
+  <div>&copy; 2026 by Zdorovie Adult Day Health</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zdorovie Adult Day Health — Redesign (Original Palette)</title>
+<style>
+  :root {
+    --navy: #171B36;
+    --navy-darkest: #12152A;
+    --slate: #2B3253;
+    --slate-light: #383F66;
+    --green: #22C381;
+    --green-dark: #1A9C68;
+    --white: #FFFFFF;
+    --text-muted: #B7BBD6;
+    --text-faint: #7D82A8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--navy-darkest);
+    color: var(--white);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  img { display: block; }
+
+  /* Header */
+  .top-bar { background: var(--navy); padding: 10px 32px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-muted); }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px; background: var(--white); position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-family: Georgia, serif; font-size: 20px; font-weight: 600; color: var(--navy); }
+  .logo span { color: var(--green-dark); }
+  nav ul { display: flex; gap: 28px; list-style: none; font-size: 14px; color: var(--navy); }
+  nav a:hover { color: var(--green-dark); }
+  .call-btn { background: var(--green); color: var(--navy); font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 999px; }
+  .menu-toggle { display: none; font-size: 24px; background: none; border: none; cursor: pointer; color: var(--navy); }
+
+  /* Hero — diagonal split */
+  .hero {
+    position: relative;
+    background: var(--green);
+    padding: 64px 32px 0;
+    overflow: hidden;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: end; position: relative; }
+  .hero-copy { padding-bottom: 90px; }
+  .hero-eyebrow { color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; opacity: 0.75; }
+  .hero-copy h1 { font-family: Georgia, serif; font-size: 38px; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .hero-copy p { color: #0F3324; font-size: 15.5px; max-width: 400px; margin-bottom: 26px; }
+  .hero-ctas { display: flex; gap: 12px; }
+  .btn-dark { background: var(--navy); color: var(--white); font-weight: 600; font-size: 14.5px; padding: 13px 24px; border-radius: 999px; }
+  .btn-outline-dark { border: 1.5px solid var(--navy); color: var(--navy); font-weight: 600; font-size: 14.5px; padding: 13px 24px; border-radius: 999px; }
+
+  .hero-photo-wrap { position: relative; }
+  .hero-photo-wrap img { width: 100%; height: 300px; object-fit: cover; border-radius: 16px 16px 0 0; }
+  .hero-card {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 28px 30px;
+    position: relative;
+    top: -1px;
+    box-shadow: 0 -4px 0 var(--navy);
+  }
+  .hero-card .label { color: var(--green); font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+  .hero-card .stat { font-family: Georgia, serif; font-size: 26px; margin-bottom: 4px; }
+  .hero-card .sub { color: var(--text-muted); font-size: 13px; }
+
+  /* Trust rail */
+  .trust-rail { background: var(--navy-darkest); display: flex; justify-content: center; gap: 44px; padding: 18px 32px; font-size: 13.5px; color: var(--text-muted); flex-wrap: wrap; border-bottom: 1px solid var(--slate); }
+  .trust-rail strong { color: var(--green); }
+
+  /* About — vertical timeline style */
+  .section { padding: 80px 0; }
+  .about-wrap { background: var(--slate); border-radius: 24px; padding: 56px 48px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; }
+  .about-label { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .about-wrap h2 { font-family: Georgia, serif; font-size: 30px; margin-bottom: 10px; }
+  .about-wrap .sub { color: var(--text-muted); font-size: 14.5px; }
+  .about-copy p { color: var(--text-muted); font-size: 15px; margin-bottom: 18px; }
+  .about-copy .btn-dark { background: var(--green); color: var(--navy); display: inline-block; }
+
+  /* Services — bento grid */
+  .services-head { text-align: center; max-width: 560px; margin: 0 auto 44px; }
+  .services-head .about-label { justify-content: center; }
+  .services-head h2 { font-family: Georgia, serif; font-size: 30px; }
+  .bento { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 20px; }
+  .bento-card { background: var(--slate); border-radius: 18px; padding: 28px; position: relative; overflow: hidden; }
+  .bento-card.wide { grid-column: span 2; display: flex; gap: 24px; align-items: center; }
+  .bento-card img { border-radius: 12px; object-fit: cover; }
+  .bento-card.wide img { width: 160px; height: 130px; flex-shrink: 0; }
+  .bento-card:not(.wide) img { width: 100%; height: 120px; margin-bottom: 16px; }
+  .bento-icon { width: 38px; height: 38px; background: rgba(34,195,129,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 17px; margin-bottom: 12px; }
+  .bento-card h3 { font-size: 17px; margin-bottom: 8px; }
+  .bento-card p { color: var(--text-muted); font-size: 13.5px; }
+  .bento-link { color: var(--green); font-size: 13px; font-weight: 600; margin-top: 12px; display: inline-block; }
+
+  /* Quote */
+  .quote-section { background: var(--green); padding: 56px 32px; text-align: center; border-radius: 24px; margin: 0 32px; }
+  .quote-section blockquote { font-family: Georgia, serif; font-size: 22px; font-style: italic; color: var(--navy); max-width: 620px; margin: 0 auto 12px; line-height: 1.5; }
+  .quote-section cite { color: #0F3324; font-size: 13.5px; font-style: normal; }
+
+  /* Locations — vertical list */
+  .location-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--slate); }
+  .location-item { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 20px; padding: 24px 8px; border-bottom: 1px solid var(--slate); }
+  .location-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+  .location-item h3 { font-size: 16.5px; margin-bottom: 6px; }
+  .location-item .addr { color: var(--text-muted); font-size: 13.5px; }
+  .location-item .phone { color: var(--green); font-weight: 600; font-size: 14px; white-space: nowrap; }
+
+  /* Contact */
+  .contact-wrap { background: var(--slate); border-radius: 24px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-wrap h2 { font-family: Georgia, serif; font-size: 26px; margin-bottom: 14px; }
+  .contact-wrap p { color: var(--text-muted); margin-bottom: 24px; font-size: 14.5px; }
+  .hours-pill { display: inline-flex; align-items: center; gap: 10px; background: var(--navy-darkest); border-radius: 999px; padding: 12px 20px; font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px; }
+  .hours-pill strong { color: var(--white); }
+  form { display: flex; flex-direction: column; gap: 12px; }
+  form input, form textarea { background: var(--navy-darkest); border: 1px solid var(--slate-light); border-radius: 10px; padding: 13px 16px; color: var(--white); font-size: 14px; font-family: inherit; }
+  form button { background: var(--green); color: var(--navy); font-weight: 700; font-size: 14.5px; padding: 14px; border: none; border-radius: 10px; cursor: pointer; margin-top: 4px; }
+
+  footer { background: var(--navy); padding: 26px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--text-faint); flex-wrap: wrap; gap: 12px; }
+  footer .footer-logo { color: var(--white); font-weight: 600; }
+
+  @media (max-width: 860px) {
+    nav, .call-btn { display: none; }
+    .menu-toggle { display: block; }
+    .hero-grid, .about-wrap, .contact-wrap { grid-template-columns: 1fr; }
+    .hero-copy { padding-bottom: 32px; }
+    .bento-card.wide { grid-column: span 1; flex-direction: column; align-items: flex-start; }
+    .bento { grid-template-columns: 1fr; }
+    .location-item { grid-template-columns: 24px 1fr; }
+    .location-item .phone { grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>info@zdorovieadh.com</span>
+  <span>A thriving community of people you'll love</span>
+</div>
+
+<header>
+  <div class="logo">Zdorovie <span>ADH</span></div>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="call-btn">Schedule a visit</a>
+  <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Massachusetts Adult Day Health</div>
+      <h1>A thriving community of people you'll love</h1>
+      <p>Quality, compassionate day health services in Natick, Newton and Needham — built around each participant's needs.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-dark">Schedule a visit</a>
+        <a href="#about" class="btn-outline-dark">Learn more</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="https://static.wixstatic.com/media/2ca0acb2aa424182abef253b318dcdc5.jpg" alt="Happy seniors raising hands">
+      <div class="hero-card">
+        <div class="label">Now enrolling</div>
+        <div class="stat">3 centers</div>
+        <div class="sub">Natick &middot; Newton &middot; Needham, MA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-rail">
+  <div><strong>Mon&ndash;Sun</strong> &nbsp;8am&ndash;4pm</div>
+  <div><strong>Open</strong> &nbsp;all holidays except Jan 1</div>
+  <div><strong>Onsite</strong> &nbsp;nursing, dietary and daily care</div>
+</div>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div>
+        <div class="about-label">Committed to caring</div>
+        <h2>About Zdorovie</h2>
+        <div class="sub">Care that grows with you</div>
+      </div>
+      <div class="about-copy">
+        <p>Everyone ages — it's an inherent part of life. Zdorovie's trained staff work closely with participants and families to understand each person's needs and build a plan that helps them keep living the life they want.</p>
+        <p>Our preventative, hands-on approach is designed to protect the health and independence of the elders we serve.</p>
+        <a href="#contact" class="btn-dark">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="services-head">
+      <div class="about-label" style="display:flex;">Industry leaders</div>
+      <h2>Adult day health services</h2>
+    </div>
+    <div class="bento">
+      <div class="bento-card wide">
+        <img src="https://static.wixstatic.com/media/13d5f7015c2d4deb92d07a6e9ccbe1ee.jpg" alt="Healing hands">
+        <div>
+          <div class="bento-icon">&#10084;</div>
+          <h3>Assisted daily living</h3>
+          <p>Medical, dietary, therapeutic and hygienic support for the retirees who need it most.</p>
+          <a href="#" class="bento-link">Get in touch &rarr;</a>
+        </div>
+      </div>
+      <div class="bento-card">
+        <img src="https://static.wixstatic.com/media/113022409dbc43c8a5283aed43756aa3.jpg" alt="Pharmacist cutting pills">
+        <div class="bento-icon">&#9877;</div>
+        <h3>Skilled nursing</h3>
+        <p>Onsite nurses monitor health daily and catch issues early.</p>
+        <a href="#" class="bento-link">Get in touch &rarr;</a>
+      </div>
+      <div class="bento-card">
+        <img src="https://static.wixstatic.com/media/10b73598b829493498ecd79cb72c321c.jpg" alt="Nutritionist smiling">
+        <div class="bento-icon">&#127811;</div>
+        <h3>Nutritional counseling</h3>
+        <p>Customizable menus and an onsite cook for every diet.</p>
+        <a href="#" class="bento-link">Get in touch &rarr;</a>
+      </div>
+      <div class="bento-card wide" style="background: var(--navy);">
+        <div>
+          <div class="bento-icon">&#128172;</div>
+          <h3>Come visit us</h3>
+          <p>Pay us a visit to meet some of our wonderful participants, or give us a call to chat with a staff member.</p>
+          <a href="#contact" class="bento-link">Plan your visit &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="quote-section">
+    <blockquote>"Age is an issue of mind over matter, if you don't mind, it doesn't matter."</blockquote>
+    <cite>&mdash; Mark Twain</cite>
+  </div>
+</section>
+
+<section class="section" id="locations">
+  <div class="container">
+    <div class="services-head">
+      <div class="about-label" style="display:flex;">Three centers, one community</div>
+      <h2>Find your nearest location</h2>
+    </div>
+    <div class="location-list">
+      <div class="location-item">
+        <div class="location-dot"></div>
+        <div><h3>Natick Center</h3><div class="addr">17 Strathmore Rd, Natick, MA 01760</div></div>
+        <div class="phone">(508) 650-0144</div>
+      </div>
+      <div class="location-item">
+        <div class="location-dot"></div>
+        <div><h3>Newton Center</h3><div class="addr">149A California St, Newton, MA 02458</div></div>
+        <div class="phone">(617) 795-0668</div>
+      </div>
+      <div class="location-item">
+        <div class="location-dot"></div>
+        <div><h3>Needham Center</h3><div class="addr">35 Highland Cir, Needham, MA 02494</div></div>
+        <div class="phone">(781) 433-9855</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <div class="about-label">Get in touch</div>
+        <h2>Come discover retirement living the way it's meant to be</h2>
+        <p>Pay us a visit to meet some of our wonderful participants, or give us a call to chat with a staff member.</p>
+        <div class="hours-pill"><strong>Hours:</strong> Mon&ndash;Sun, 8am&ndash;4pm. Open all holidays except Jan 1.</div>
+        <div class="hours-pill"><strong>Email:</strong> info@zdorovieadh.com</div>
+      </div>
+      <form onsubmit="return false;">
+        <input type="text" placeholder="Full name">
+        <input type="email" placeholder="Email address">
+        <input type="text" placeholder="Participant home address">
+        <textarea rows="4" placeholder="How can we help?"></textarea>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Zdorovie Adult Day Health</div>
+  <div>&copy; 2026 by Zdorovie Adult Day Health</div>
+</footer>
+
+</body>
+</html>
