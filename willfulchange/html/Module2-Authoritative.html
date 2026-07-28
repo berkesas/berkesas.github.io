@@ -358,7 +358,7 @@
   /* ---------- STEP 3: Ripple Effect ---------- */
   .ripple-layout{
     display:grid;
-    grid-template-columns:210px 1fr;
+    grid-template-columns:1fr;
     gap:28px;
     align-items:start;
     flex:1;
@@ -455,6 +455,7 @@
     opacity:0;
     transform:translateY(10px);
     animation: itemIn .45s var(--ease-standard) forwards;
+	margin-bottom: 18px;
   }
   .reflect-card .tag{
     font-size:16px;
@@ -611,12 +612,6 @@
       <p class="panel-sub">Every decision sends a signal. Here is how the Authoritative style ripples out across the team.</p>
 
       <div class="ripple-layout">
-        <div class="ripple-left">
-          <div class="ripple-visual">
-            <p class="ripple-core">One decision, clearly explained</p>
-          </div>
-          <span class="ripple-badge mixed">Mixed</span>
-        </div>
         <div class="ripple-right">
           <div class="impact-card">
             <p class="impact-label">Clarity</p>
@@ -641,6 +636,10 @@
 
       <div class="reflect-card">
         <p class="question">In a setting with seasoned or knowledgeable employees, how would you reword the quoted statement to make it sound more receptive and inclusive of the team's ideas &ndash; even if the final decision is still yours to make?</p>
+      </div>
+	  
+	  <div class="quote-card">
+        <p class="quote-text">"Based on my experience and analysis, we'll proceed with this approach. Trust my judgment."</p>
       </div>
 
 

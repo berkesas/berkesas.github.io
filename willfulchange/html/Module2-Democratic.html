@@ -470,6 +470,15 @@
     color:var(--navy-soft);
     line-height:1.55;
   }
+  
+  .strategy-card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:10px 10px;
+    opacity:0;
+    transform:translateY(10px);
+    animation: itemIn .45s var(--ease-standard) forwards;
+  }
 
   /* ---------- NAV CONTROLS ---------- */
   .nav-controls{
@@ -640,7 +649,30 @@
       <p class="panel-sub">Take a moment with this before moving on.</p>
 
       <div class="reflect-card">
+		<p>One of the downfalls of this decision making approach is that leaders can experience decision paralysis. Which means being unable to make a choice due to an overwhelming number of options. Compile a list of strategies a leader can employ to facilitate progress when the team encounters decision paralysis.</p>
         <p class="question">Compile a list of strategies a leader can employ to facilitate progress when the team encounters decision paralysis.</p>
+      </div>
+	  <div style="margin-top:18px;"><button class="btn" onclick="revealReflection();">Click to see some suitable options</button></div>
+
+
+    </section>
+	
+	<!-- STEP 4: REFLECTION ANSWERS-->
+    <section class="panel" data-panel="4">
+      <h2 class="panel-title">Reflection</h2>
+      <p class="panel-sub">These are suitable strategies to facilitate progress when the team encounters decision paralysis.</p>
+
+      <div class="strategy-card">
+		<p>
+  <ul>
+    <li><strong>Clarify Objectives:</strong> Ensure that the team understands the goals and objectives of the decision-making process, providing clarity on what needs to be achieved.</li>
+    <li><strong>Break Down the Decision:</strong> Divide the decision into smaller, manageable components or steps, making it less overwhelming for the team to analyze and address.</li>
+    <li><strong>Set a Deadline:</strong> Establish a clear timeline for decision-making to prevent procrastination and maintain momentum, while allowing sufficient time for thorough analysis and discussion.</li>
+    <li><strong>Utilize Decision-Making Tools:</strong> Employ decision-making frameworks, such as SWOT analysis, cost-benefit analysis, or pros and cons lists, to systematically evaluate options and reach a consensus.</li>
+    <li><strong>Minimize Cognitive Load:</strong> Reduce unnecessary mental effort by presenting information clearly, limiting distractions, and focusing attention on the most relevant factors, enabling the team to process information and make decisions more effectively.</li>
+    <li><strong>Normalize "Good Enough" Decisions:</strong> Encourage the team to recognize when a decision sufficiently meets the objectives, avoiding perfectionism and analysis paralysis by accepting practical solutions that are effective, timely, and appropriate for the situation.</li>
+  </ul>
+</p>
       </div>
 
 
@@ -650,7 +682,7 @@
 
   <div class="nav-controls">
     <button class="btn" id="backBtn" disabled>&larr; Back</button>
-    <span class="step-counter" id="stepCounter">STEP 1 OF 4</span>
+    <span class="step-counter" id="stepCounter">STEP 1 OF 5</span>
     <button class="btn primary" id="nextBtn">Next &rarr;</button>
   </div>
 
@@ -659,7 +691,7 @@
 <script>
 (function(){
   var currentStep = 0;
-  var totalSteps = 4;
+  var totalSteps = 5;
   var panels = document.querySelectorAll('.panel');
   var railSteps = document.querySelectorAll('.rail-step');
   var backBtn = document.getElementById('backBtn');
@@ -712,6 +744,12 @@
       renderStep();
     });
   });
+  
+  // ← Expose only this function to global scope
+  window.revealReflection = function(){
+    currentStep = 4; // or 3 depending on your panel indexing
+    renderStep();
+  };
 
   renderStep();
 })();
